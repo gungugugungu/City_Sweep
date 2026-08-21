@@ -50,10 +50,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="rewrote the gltf mesh loader to return vertex data and materials">
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="uh I did a thing I think">
       <change afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/glfw" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/glfw" afterDir="false" />
@@ -61,6 +61,7 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,61 +101,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.01566970612536" />
-      <entry key="MS500" value="1.785428354049476" />
-      <entry key="S2" value="3.0868162139937847" />
-      <entry key="S5" value="3.5882213023500906" />
-      <entry key="S10" value="3.785360143394218" />
-      <entry key="S30" value="3.9264049958208256" />
-      <entry key="S60" value="3.9629396548640345" />
-      <entry key="M2" value="3.981403595126258" />
-      <entry key="M5" value="3.9927501020861595" />
-      <entry key="M10" value="4.102074017708949" />
-      <entry key="M15" value="5.026645729633027" />
-      <entry key="M30" value="17.849932330427578" />
-      <entry key="H1" value="69.25079011508936" />
-      <entry key="H2" value="164.8122636036808" />
-      <entry key="H4" value="271.57701011654956" />
-      <entry key="D1" value="432.56573246066483" />
-      <entry key="W1" value="471.15534269580746" />
+      <entry key="MS100" value="1.0184514469382997" />
+      <entry key="MS500" value="2.215108916656082" />
+      <entry key="S2" value="5.573244174741317" />
+      <entry key="S5" value="7.345306379491991" />
+      <entry key="S10" value="8.146858026529216" />
+      <entry key="S30" value="11.076165279872573" />
+      <entry key="S60" value="16.58363289336019" />
+      <entry key="M2" value="23.677135890512652" />
+      <entry key="M5" value="31.348736518995064" />
+      <entry key="M10" value="34.935621369451134" />
+      <entry key="M15" value="37.031163987103525" />
+      <entry key="M30" value="50.29964582156094" />
+      <entry key="H1" value="100.89051105759954" />
+      <entry key="H2" value="196.17820364541222" />
+      <entry key="H4" value="303.66289696492015" />
+      <entry key="D1" value="466.8033977714763" />
+      <entry key="W1" value="506.03694842695904" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="3.0199242181600916E-306" />
-      <entry key="S10" value="2.8239817728057963E-153" />
-      <entry key="S30" value="3.432941241972268E-51" />
-      <entry key="S60" value="1.437199524853449E-25" />
-      <entry key="M2" value="1.0290440628324072E-12" />
-      <entry key="M5" value="5.8548150768715284E-5" />
-      <entry key="M10" value="0.026218547891190828" />
-      <entry key="M15" value="0.21758118019335596" />
-      <entry key="M30" value="2.2469364717549247" />
-      <entry key="H1" value="9.779344529169704" />
-      <entry key="H2" value="24.589398756286055" />
-      <entry key="H4" value="42.46257627241739" />
-      <entry key="D1" value="71.46489388327434" />
-      <entry key="W1" value="78.70573176727382" />
+      <entry key="S5" value="4.653E-319" />
+      <entry key="S10" value="1.10849275904592E-159" />
+      <entry key="S30" value="2.513564460545225E-53" />
+      <entry key="S60" value="1.2297841560367948E-26" />
+      <entry key="M2" value="3.0101621151775145E-13" />
+      <entry key="M5" value="3.580762760258721E-5" />
+      <entry key="M10" value="0.020504057806193347" />
+      <entry key="M15" value="0.18468946220219123" />
+      <entry key="M30" value="2.070147011380518" />
+      <entry key="H1" value="9.386743354441881" />
+      <entry key="H2" value="24.090760404789975" />
+      <entry key="H4" value="42.029830566901175" />
+      <entry key="D1" value="71.34298939133292" />
+      <entry key="W1" value="78.6865383197597" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9675766195386336" />
-      <entry key="MS500" value="1.7637285721805318" />
-      <entry key="S2" value="3.0758083336104156" />
-      <entry key="S5" value="3.5829607695937833" />
-      <entry key="S10" value="3.7825619786500457" />
-      <entry key="S30" value="3.925432311004636" />
-      <entry key="S60" value="3.962448141993382" />
-      <entry key="M2" value="3.981156532582743" />
-      <entry key="M5" value="3.992707983175201" />
-      <entry key="M10" value="4.127943002025608" />
-      <entry key="M15" value="5.242687906911033" />
-      <entry key="M30" value="20.09059609457627" />
-      <entry key="H1" value="79.01917660109638" />
-      <entry key="H2" value="189.38950243487426" />
-      <entry key="H4" value="314.02967534954115" />
-      <entry key="D1" value="504.0279619440611" />
-      <entry key="W1" value="549.8606580365067" />
+      <entry key="MS100" value="0.9505459111650745" />
+      <entry key="MS500" value="2.1870556877888614" />
+      <entry key="S2" value="5.5566268920344095" />
+      <entry key="S5" value="7.336706605894206" />
+      <entry key="S10" value="8.142123545552634" />
+      <entry key="S30" value="11.074030661217876" />
+      <entry key="S60" value="16.58172385952639" />
+      <entry key="M2" value="23.675372155084695" />
+      <entry key="M5" value="31.347620249662338" />
+      <entry key="M10" value="34.95520113766316" />
+      <entry key="M15" value="37.21408593096379" />
+      <entry key="M30" value="52.3637684046472" />
+      <entry key="H1" value="110.26660977880417" />
+      <entry key="H2" value="220.25698645729838" />
+      <entry key="H4" value="345.6828851179119" />
+      <entry key="D1" value="538.1437218756989" />
+      <entry key="W1" value="584.7230696448005" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -203,78 +204,17 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="CMake Application.City_Sweep">
+  <component name="RunManager">
     <configuration name="City_Sweep" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="City_Sweep" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="City_Sweep" RUN_TARGET_NAME="City_Sweep">
-      <envs>
-        <env name="VULKAN_SDK" value="$USER_HOME$/VulkanSDK/1.4.341.1/" />
-      </envs>
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ImGui" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="ImGui" CONFIG_NAME="Debug">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SDL3-shared" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="SDL3-shared" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SDL3_test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="SDL3_test" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SDL_uclibc" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="SDL_uclibc" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="fmt-c" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="fmt-c" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="fmt" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="fmt" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="glm" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="glm" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="reactphysics3d" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="reactphysics3d" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="tinygltf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="tinygltf" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="vk-bootstrap" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="vk-bootstrap" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="CMake Application.City_Sweep" />
-      <item itemvalue="CMake Application.ImGui" />
-      <item itemvalue="CMake Application.tinygltf" />
-      <item itemvalue="CMake Application.fmt" />
-      <item itemvalue="CMake Application.fmt-c" />
-      <item itemvalue="CMake Application.glm" />
-      <item itemvalue="CMake Application.SDL3-shared" />
-      <item itemvalue="CMake Application.SDL3_test" />
-      <item itemvalue="CMake Application.SDL_uclibc" />
-      <item itemvalue="CMake Application.vk-bootstrap" />
-      <item itemvalue="CMake Application.reactphysics3d" />
-    </list>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -294,7 +234,7 @@
       <workItem from="1787213318860" duration="1445000" />
       <workItem from="1787214944512" duration="8727000" />
       <workItem from="1787250872395" duration="10603000" />
-      <workItem from="1787299646191" duration="398000" />
+      <workItem from="1787299646191" duration="2733000" />
     </task>
     <task id="LOCAL-00001" summary="after toying with the cmake for like 4.5 hours I finally managed to make this project a proper library that you can add as a subdirectory. I also edited the readme">
       <option name="closed" value="true" />
@@ -304,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787224183402</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="uh I did a thing I think">
+      <option name="closed" value="true" />
+      <created>1787300065646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787300065646</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +268,7 @@
     <MESSAGE value="after toying with the cmake for like 4.5 hours I finally managed to make this project a proper library that you can add as a subdirectory. I also edited the readme" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="rewrote the gltf mesh loader to return vertex data and materials" />
-    <option name="LAST_COMMIT_MESSAGE" value="rewrote the gltf mesh loader to return vertex data and materials" />
+    <MESSAGE value="uh I did a thing I think" />
+    <option name="LAST_COMMIT_MESSAGE" value="uh I did a thing I think" />
   </component>
 </project>
