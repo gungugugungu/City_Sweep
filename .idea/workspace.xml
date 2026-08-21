@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="36" type="long" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="26" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
   </component>
   <component name="CMakePresetLoader">{
@@ -50,9 +50,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="convex collider generation">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="made the scene loader return vertices and indices as well">
+      <change afterPath="$PROJECT_DIR$/.idea/City_Sweep.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -72,7 +75,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7838" />
+    <option name="cachedIndexableFilesCount" value="7843" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
@@ -92,6 +95,10 @@
     &quot;accountId&quot;: &quot;528277da-126e-4ad2-b421-f6952c66122b&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/include/GVK-Engine/gvk.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="mbIrZKIq" />
   </component>
@@ -101,61 +108,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000273934514" />
-      <entry key="MS500" value="1.0671715167330378" />
-      <entry key="S2" value="2.2218053440279837" />
-      <entry key="S5" value="4.480634664599963" />
-      <entry key="S10" value="7.0271079677667805" />
-      <entry key="S30" value="11.168603181469306" />
-      <entry key="S60" value="13.32566497112932" />
-      <entry key="M2" value="15.82586528978165" />
-      <entry key="M5" value="21.099890341378835" />
-      <entry key="M10" value="27.00665763454971" />
-      <entry key="M15" value="31.69415772857589" />
-      <entry key="M30" value="45.55445601688033" />
-      <entry key="H1" value="84.65369620971462" />
-      <entry key="H2" value="173.26925387055567" />
-      <entry key="H4" value="291.2946575935687" />
-      <entry key="D1" value="493.84493929373167" />
-      <entry key="W1" value="545.690857142266" />
+      <entry key="MS100" value="1.0380429650626062E-4" />
+      <entry key="MS500" value="0.21312710150827002" />
+      <entry key="S2" value="1.1220207081308207" />
+      <entry key="S5" value="1.792994080147862" />
+      <entry key="S10" value="2.4904011424942007" />
+      <entry key="S30" value="5.79944649239751" />
+      <entry key="S60" value="12.392972654274049" />
+      <entry key="M2" value="22.37007780264672" />
+      <entry key="M5" value="35.32137080098498" />
+      <entry key="M10" value="45.927025493810184" />
+      <entry key="M15" value="54.35806612822231" />
+      <entry key="M30" value="77.2046492770608" />
+      <entry key="H1" value="120.64984455871156" />
+      <entry key="H2" value="209.46681462259298" />
+      <entry key="H4" value="339.1564165324045" />
+      <entry key="D1" value="587.8895004922457" />
+      <entry key="W1" value="655.6769441234421" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="5.2504729275776804E-96" />
-      <entry key="S2" value="2.103251352568912E-24" />
-      <entry key="S5" value="5.671789706666617E-10" />
-      <entry key="S10" value="3.983678013180389E-5" />
-      <entry key="S30" value="0.07075823388263555" />
-      <entry key="S60" value="0.48984500241584233" />
-      <entry key="M2" value="1.4845643433509728" />
-      <entry key="M5" value="3.5015846619923447" />
-      <entry key="M10" value="5.0823144297823655" />
-      <entry key="M15" value="5.85855051258785" />
-      <entry key="M30" value="7.244826995378559" />
-      <entry key="H1" value="11.704025405369762" />
-      <entry key="H2" value="24.050403480806793" />
-      <entry key="H4" value="42.487791305284134" />
-      <entry key="D1" value="77.05687620521128" />
-      <entry key="W1" value="86.3218131308862" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0002928587308058" />
+      <entry key="S2" value="1.1519969707226987" />
+      <entry key="S5" value="1.7466024200846564" />
+      <entry key="S10" value="2.507273133240914" />
+      <entry key="S30" value="5.786714296217014" />
+      <entry key="S60" value="10.578637674827842" />
+      <entry key="M2" value="16.130981704626688" />
+      <entry key="M5" value="22.425150145352116" />
+      <entry key="M10" value="27.449474691007314" />
+      <entry key="M15" value="30.66267192034212" />
+      <entry key="M30" value="36.30701704339683" />
+      <entry key="H1" value="43.06499858094591" />
+      <entry key="H2" value="55.58509422907098" />
+      <entry key="H4" value="75.2035174236469" />
+      <entry key="D1" value="116.16093528804245" />
+      <entry key="W1" value="127.8546388441722" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.01332243502077552" />
-      <entry key="MS500" value="0.45730193948926423" />
-      <entry key="S2" value="1.842332107182812" />
-      <entry key="S5" value="4.168023851272372" />
-      <entry key="S10" value="6.77710822805079" />
-      <entry key="S30" value="11.097811410287981" />
-      <entry key="S60" value="13.709585077481796" />
-      <entry key="M2" value="17.2235894830581" />
-      <entry key="M5" value="24.541745151449312" />
-      <entry key="M10" value="32.05009391897743" />
-      <entry key="M15" value="37.52391227658308" />
-      <entry key="M30" value="52.781939153811365" />
-      <entry key="H1" value="96.34427941560327" />
-      <entry key="H2" value="197.3071197333082" />
-      <entry key="H4" value="333.77210138338967" />
-      <entry key="D1" value="570.8988575334984" />
-      <entry key="W1" value="632.0122010973472" />
+      <entry key="MS100" value="1.651060719403198E-4" />
+      <entry key="MS500" value="0.251110895995662" />
+      <entry key="S2" value="1.6178189399683902" />
+      <entry key="S5" value="3.121835249958211" />
+      <entry key="S10" value="4.713712129420134" />
+      <entry key="S30" value="11.370030093801999" />
+      <entry key="S60" value="22.763032398092584" />
+      <entry key="M2" value="38.3333279609915" />
+      <entry key="M5" value="57.64107970270791" />
+      <entry key="M10" value="73.29556762576568" />
+      <entry key="M15" value="84.95176704615618" />
+      <entry key="M30" value="113.46293748641102" />
+      <entry key="H1" value="163.6821496084034" />
+      <entry key="H2" value="265.0289833562227" />
+      <entry key="H4" value="414.34385434810594" />
+      <entry key="D1" value="704.0462412243534" />
+      <entry key="W1" value="783.5309233405205" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -179,6 +186,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake Application.City_Sweep.executor": "Run",
+    "CidrDebugProfileConversion": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -189,6 +197,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
@@ -219,6 +228,18 @@
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
+  <component name="SelectedDebugProfileService"><![CDATA[{
+  "profileIdByStamp": [
+    {
+      "first": {
+        "##RUN_CONFIGURATION##": "CMake Application.City_Sweep",
+        "cmake": "CMakeBuildProfile:Release"
+      },
+      "second": "25277b9a-c02e-431e-91ab-c9b96984cd92"
+    }
+  ],
+  "modificationCount": 8
+}]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="" />
@@ -234,7 +255,8 @@
       <workItem from="1787213318860" duration="1445000" />
       <workItem from="1787214944512" duration="8727000" />
       <workItem from="1787250872395" duration="10603000" />
-      <workItem from="1787299646191" duration="4886000" />
+      <workItem from="1787299646191" duration="8129000" />
+      <workItem from="1787336542753" duration="90000" />
     </task>
     <task id="LOCAL-00001" summary="after toying with the cmake for like 4.5 hours I finally managed to make this project a proper library that you can add as a subdirectory. I also edited the readme">
       <option name="closed" value="true" />
@@ -260,7 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787302415087</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ported over the fpscontroller and the charactercontroller">
+      <option name="closed" value="true" />
+      <created>1787304582721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1787304582721</updated>
+    </task>
+    <task id="LOCAL-00005" summary="left these whatever files out of last commit sorry">
+      <option name="closed" value="true" />
+      <created>1787304613297</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1787304613297</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +316,10 @@
     <MESSAGE value="rewrote the gltf mesh loader to return vertex data and materials" />
     <MESSAGE value="uh I did a thing I think" />
     <MESSAGE value="convex collider generation" />
-    <option name="LAST_COMMIT_MESSAGE" value="convex collider generation" />
+    <MESSAGE value="ported over the fpscontroller and the charactercontroller" />
+    <MESSAGE value="left these whatever files out of last commit sorry" />
+    <MESSAGE value="had to rewrite the texture loading the gltf loading functions so it works" />
+    <MESSAGE value="made the scene loader return vertices and indices as well" />
+    <option name="LAST_COMMIT_MESSAGE" value="made the scene loader return vertices and indices as well" />
   </component>
 </project>

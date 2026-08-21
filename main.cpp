@@ -21,7 +21,7 @@ public:
     glm::quat rotation;
     reactphysics3d::RigidBody* body;
 
-    PhysicsObject(gvk::MeshAsset* mesh_asset, gvk::Material mat, std::vector<gvk::Vertex> mesh_vertices, glm::vec3 pos = {0.f, 0.f, 0.f}, glm::vec3 scl = {1.f, 1.f, 1.f}, glm::quat rot = {1.f, 0.f, 0.f, 0.f}, reactphysics3d::BodyType body_type = reactphysics3d::BodyType::DYNAMIC)
+    PhysicsObject(gvk::MeshAsset* mesh_asset, gvk::Material mat, std::vector<gvk::Vertex> mesh_vertices, glm::vec3 pos = {0.f, 0.f, 0.f}, glm::vec3 scl = {1.f, 1.f, 1.f}, glm::quat rot = {1.f, 0.f, 0.f, 0.f}, reactphysics3d::BodyType body_type = reactphysics3d::BodyType::STATIC)
         : mesh(mesh_asset), material(mat), position(pos), scale(scl), rotation(rot)
     {
         reactphysics3d::Vector3 rp_position(position.x, position.y, position.z);
@@ -105,7 +105,7 @@ public:
         }
     }
 
-        void create_concave_collider(std::vector<gvk::Vertex> vertices, std::vector<uint32_t> indices) {
+    void create_concave_collider(std::vector<gvk::Vertex> vertices, std::vector<uint32_t> indices) {
         if (vertices.empty() || indices.empty() || indices.size() % 3 != 0) {
             create_box_collider(vertices);
             return;
@@ -307,43 +307,120 @@ public:
     }
 };
 
+void load_scene_lights(gvk::GLTFReturns* scene) {
+    gvk::directional_light.intensity = scene->dir_light.intensity;
+    gvk::directional_light.direction = scene->dir_light.direction;
+    gvk::directional_light.color = scene->dir_light.color;
+    for (auto pl : scene->point_lights) {
+        gvk::point_lights.push_back(pl);
+    }
+    for (auto sl : scene->spot_lights) {
+        gvk::spot_lights.push_back(sl);
+    }
+}
+
+vector<PhysicsObject*> phys_objs;
+
+vector<PhysicsObject*> load_scene_colliders(gvk::GLTFReturns* scene) {
+    vector<PhysicsObject*> objs;
+    for (auto& m : scene->meshes) {
+        PhysicsObject* obj = new PhysicsObject(&m.mesh, m.material, m.vertices, m.position, m.scale, m.rot);
+        objs.push_back(obj);
+        phys_objs.push_back(obj);
+    }
+    return objs;
+}
+
+// -------------------- INIT --------------------
 int main() {
     relative_gvk_path = "../include/GVK-Engine";
     gvk::init();
+    gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
 
     world = physics_common.createPhysicsWorld();
-
-    gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
+    map<SDL_Keycode, bool> key_inputs;
+    glm::vec2 mouse_motion_relative;
+    bool mouse_locked = true;
 
     gvk::load_skybox("../include/GVK-Engine/textures/skyboxes/generic clouds.png");
 
-    Uint64 last_time = SDL_GetTicks();
+    // dev env loading
+    gvk::GLTFReturns dev_env = gvk::load_gltf_scene("../scenes/devenv.glb").value();
+    load_scene_lights(&dev_env);
+    vector<PhysicsObject*> dev_env_POs = load_scene_colliders(&dev_env);
+    for (auto po : dev_env_POs) {
+        po->body->setType(rp3d::BodyType::KINEMATIC);
+    }
+    dev_env_POs[0]->body->setType(rp3d::BodyType::KINEMATIC);
 
+    FPSController player;
+    player.initalize(0.5f, 2.f);
+    player.mouse_sensitivity = 0.03f;
+    player.position.y = 5.f;
+
+    gvk::camera.position.y = 2.f;
+
+    Uint64 last_time = SDL_GetTicks();
     bool running = true;
+
+    // -------------------- FRAME --------------------
     while (running) {
+        // general shit
         Uint64 now = SDL_GetTicks();
         float dt = (float)(now - last_time) / 1000.f;
         last_time = now;
         int w_width, w_height;
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
 
+        mouse_motion_relative.x = 0.f;
+        mouse_motion_relative.y = 0.f;
+
+        // mouse locking
+        if (mouse_locked) {
+            SDL_HideCursor();
+            SDL_WarpMouseInWindow(gvk::window, w_width*0.5f, w_height*0.5f);
+        } else {
+            SDL_ShowCursor();
+        }
+
+        // sdl events
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_EVENT_QUIT) {
                 running = false;
             }
+            if (e.type == SDL_EVENT_KEY_DOWN) {
+                key_inputs[e.key.key] = true;
+            }
+            if (e.type == SDL_EVENT_KEY_UP) {
+                key_inputs[e.key.key] = false;
+            }
+            if (e.type == SDL_EVENT_MOUSE_MOTION) {
+                mouse_motion_relative.x = e.motion.xrel;
+                mouse_motion_relative.y = e.motion.yrel;
+            }
         }
+        //player.update_input(key_inputs, mouse_motion_relative.x, -mouse_motion_relative.y);
 
         world->update(dt);
 
+        // imgui
         ImGui_ImplVulkan_NewFrame();
         ImGui_ImplSDL3_NewFrame();
         ImGui::NewFrame();
         // imgui goes here
         ImGui::Render();
 
+        // -------------------- RENDERING --------------------
+        for (auto& po : phys_objs) {
+            po->update();
+            po->render();
+        }
+
         gvk::draw();
     }
+
+    // -------------------- QUIT --------------------
 
     vkDeviceWaitIdle(gvk::_vk_device);
 
