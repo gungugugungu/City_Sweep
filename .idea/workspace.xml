@@ -50,12 +50,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="made the scene loader return vertices and indices as well">
-      <change afterPath="$PROJECT_DIR$/.idea/City_Sweep.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something">
       <change afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -320,6 +317,7 @@
     <MESSAGE value="left these whatever files out of last commit sorry" />
     <MESSAGE value="had to rewrite the texture loading the gltf loading functions so it works" />
     <MESSAGE value="made the scene loader return vertices and indices as well" />
-    <option name="LAST_COMMIT_MESSAGE" value="made the scene loader return vertices and indices as well" />
+    <MESSAGE value="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something" />
+    <option name="LAST_COMMIT_MESSAGE" value="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something" />
   </component>
 </project>

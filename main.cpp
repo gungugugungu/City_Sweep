@@ -17,7 +17,7 @@ public:
     gvk::MeshAsset* mesh;
     gvk::Material material;
     glm::vec3 position;
-    glm::vec3 scale;
+    glm::vec3 scale={1.f, 1.f, 1.f};
     glm::quat rotation;
     reactphysics3d::RigidBody* body;
 
@@ -378,9 +378,10 @@ int main() {
         // mouse locking
         if (mouse_locked) {
             SDL_HideCursor();
-            SDL_WarpMouseInWindow(gvk::window, w_width*0.5f, w_height*0.5f);
+            SDL_SetWindowRelativeMouseMode(gvk::window, true);
         } else {
             SDL_ShowCursor();
+            SDL_SetWindowRelativeMouseMode(gvk::window, false);
         }
 
         // sdl events
