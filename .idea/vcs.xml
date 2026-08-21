@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/SDL" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/fastgltf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/fmt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/glm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/imgui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/stb" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/tinygltf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/vk-bootstrap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/glfw" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanovg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanovg_metal" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" vcs="Git" />
+  </component>
+</project>

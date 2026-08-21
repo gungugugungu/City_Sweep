@@ -1,0 +1,6 @@
+[submodule "include/reactphysics3d"]
+	path = include/reactphysics3d
+	url = https://github.com/DanielChappuis/reactphysics3d.git
+[submodule "include/GVK-Engine"]
+	path = include/GVK-Engine
+	url = https://github.com/gungugugungu/GVK-Engine.git
