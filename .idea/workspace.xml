@@ -50,7 +50,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="uh I did a thing I think">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="convex collider generation">
       <change afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -101,61 +101,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0184514469382997" />
-      <entry key="MS500" value="2.215108916656082" />
-      <entry key="S2" value="5.573244174741317" />
-      <entry key="S5" value="7.345306379491991" />
-      <entry key="S10" value="8.146858026529216" />
-      <entry key="S30" value="11.076165279872573" />
-      <entry key="S60" value="16.58363289336019" />
-      <entry key="M2" value="23.677135890512652" />
-      <entry key="M5" value="31.348736518995064" />
-      <entry key="M10" value="34.935621369451134" />
-      <entry key="M15" value="37.031163987103525" />
-      <entry key="M30" value="50.29964582156094" />
-      <entry key="H1" value="100.89051105759954" />
-      <entry key="H2" value="196.17820364541222" />
-      <entry key="H4" value="303.66289696492015" />
-      <entry key="D1" value="466.8033977714763" />
-      <entry key="W1" value="506.03694842695904" />
+      <entry key="MS100" value="1.000000273934514" />
+      <entry key="MS500" value="1.0671715167330378" />
+      <entry key="S2" value="2.2218053440279837" />
+      <entry key="S5" value="4.480634664599963" />
+      <entry key="S10" value="7.0271079677667805" />
+      <entry key="S30" value="11.168603181469306" />
+      <entry key="S60" value="13.32566497112932" />
+      <entry key="M2" value="15.82586528978165" />
+      <entry key="M5" value="21.099890341378835" />
+      <entry key="M10" value="27.00665763454971" />
+      <entry key="M15" value="31.69415772857589" />
+      <entry key="M30" value="45.55445601688033" />
+      <entry key="H1" value="84.65369620971462" />
+      <entry key="H2" value="173.26925387055567" />
+      <entry key="H4" value="291.2946575935687" />
+      <entry key="D1" value="493.84493929373167" />
+      <entry key="W1" value="545.690857142266" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="4.653E-319" />
-      <entry key="S10" value="1.10849275904592E-159" />
-      <entry key="S30" value="2.513564460545225E-53" />
-      <entry key="S60" value="1.2297841560367948E-26" />
-      <entry key="M2" value="3.0101621151775145E-13" />
-      <entry key="M5" value="3.580762760258721E-5" />
-      <entry key="M10" value="0.020504057806193347" />
-      <entry key="M15" value="0.18468946220219123" />
-      <entry key="M30" value="2.070147011380518" />
-      <entry key="H1" value="9.386743354441881" />
-      <entry key="H2" value="24.090760404789975" />
-      <entry key="H4" value="42.029830566901175" />
-      <entry key="D1" value="71.34298939133292" />
-      <entry key="W1" value="78.6865383197597" />
+      <entry key="MS500" value="5.2504729275776804E-96" />
+      <entry key="S2" value="2.103251352568912E-24" />
+      <entry key="S5" value="5.671789706666617E-10" />
+      <entry key="S10" value="3.983678013180389E-5" />
+      <entry key="S30" value="0.07075823388263555" />
+      <entry key="S60" value="0.48984500241584233" />
+      <entry key="M2" value="1.4845643433509728" />
+      <entry key="M5" value="3.5015846619923447" />
+      <entry key="M10" value="5.0823144297823655" />
+      <entry key="M15" value="5.85855051258785" />
+      <entry key="M30" value="7.244826995378559" />
+      <entry key="H1" value="11.704025405369762" />
+      <entry key="H2" value="24.050403480806793" />
+      <entry key="H4" value="42.487791305284134" />
+      <entry key="D1" value="77.05687620521128" />
+      <entry key="W1" value="86.3218131308862" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9505459111650745" />
-      <entry key="MS500" value="2.1870556877888614" />
-      <entry key="S2" value="5.5566268920344095" />
-      <entry key="S5" value="7.336706605894206" />
-      <entry key="S10" value="8.142123545552634" />
-      <entry key="S30" value="11.074030661217876" />
-      <entry key="S60" value="16.58172385952639" />
-      <entry key="M2" value="23.675372155084695" />
-      <entry key="M5" value="31.347620249662338" />
-      <entry key="M10" value="34.95520113766316" />
-      <entry key="M15" value="37.21408593096379" />
-      <entry key="M30" value="52.3637684046472" />
-      <entry key="H1" value="110.26660977880417" />
-      <entry key="H2" value="220.25698645729838" />
-      <entry key="H4" value="345.6828851179119" />
-      <entry key="D1" value="538.1437218756989" />
-      <entry key="W1" value="584.7230696448005" />
+      <entry key="MS100" value="0.01332243502077552" />
+      <entry key="MS500" value="0.45730193948926423" />
+      <entry key="S2" value="1.842332107182812" />
+      <entry key="S5" value="4.168023851272372" />
+      <entry key="S10" value="6.77710822805079" />
+      <entry key="S30" value="11.097811410287981" />
+      <entry key="S60" value="13.709585077481796" />
+      <entry key="M2" value="17.2235894830581" />
+      <entry key="M5" value="24.541745151449312" />
+      <entry key="M10" value="32.05009391897743" />
+      <entry key="M15" value="37.52391227658308" />
+      <entry key="M30" value="52.781939153811365" />
+      <entry key="H1" value="96.34427941560327" />
+      <entry key="H2" value="197.3071197333082" />
+      <entry key="H4" value="333.77210138338967" />
+      <entry key="D1" value="570.8988575334984" />
+      <entry key="W1" value="632.0122010973472" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -234,7 +234,7 @@
       <workItem from="1787213318860" duration="1445000" />
       <workItem from="1787214944512" duration="8727000" />
       <workItem from="1787250872395" duration="10603000" />
-      <workItem from="1787299646191" duration="2733000" />
+      <workItem from="1787299646191" duration="4886000" />
     </task>
     <task id="LOCAL-00001" summary="after toying with the cmake for like 4.5 hours I finally managed to make this project a proper library that you can add as a subdirectory. I also edited the readme">
       <option name="closed" value="true" />
@@ -252,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787300065646</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="convex collider generation">
+      <option name="closed" value="true" />
+      <created>1787302415087</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787302415087</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,6 +277,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="rewrote the gltf mesh loader to return vertex data and materials" />
     <MESSAGE value="uh I did a thing I think" />
-    <option name="LAST_COMMIT_MESSAGE" value="uh I did a thing I think" />
+    <MESSAGE value="convex collider generation" />
+    <option name="LAST_COMMIT_MESSAGE" value="convex collider generation" />
   </component>
 </project>
