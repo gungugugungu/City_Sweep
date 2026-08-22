@@ -167,7 +167,7 @@ public:
 class CharacterController {
 public:
     reactphysics3d::Vector3 position;
-    reactphysics3d::Quaternion orientation;
+    reactphysics3d::Quaternion orientation = reactphysics3d::Quaternion::identity();
     reactphysics3d::Transform transform;
     reactphysics3d::RigidBody* body = nullptr;
     float speed = 10.0f;
@@ -181,38 +181,48 @@ public:
     void initalize(float collider_width, float collider_height) {
         transform = reactphysics3d::Transform::identity();
         body = world->createRigidBody(transform);
+
         reactphysics3d::CapsuleShape* capsuleShape = physics_common.createCapsuleShape(collider_width, collider_height);
-        body->addCollider(capsuleShape, transform);
+        body->addCollider(capsuleShape, reactphysics3d::Transform::identity());
+        body->updateMassPropertiesFromColliders();
+
         body->setType(reactphysics3d::BodyType::DYNAMIC);
         body->enableGravity(true);
         body->setLinearDamping(0.0f);
         body->setAngularDamping(0.0f);
-        body->setAngularLockAxisFactor({0.0f,0.0f,0.0f});
+        body->setAngularLockAxisFactor({0.0f, 0.0f, 0.0f});
         body->setIsAllowedToSleep(false);
+        body->setMass(70.0f);
     }
 
-    void move_to(reactphysics3d::Vector3 position) {
+    void move_to(reactphysics3d::Vector3 pos) {
+        position = pos;
         transform = reactphysics3d::Transform(position, orientation);
         body->setTransform(transform);
     }
 
     void update() {
-        auto transform = body->getTransform();
+        if (!body) return;
+
+        auto bodyTransform = body->getTransform();
+        position = bodyTransform.getPosition();
+        orientation = bodyTransform.getOrientation();
+
         reactphysics3d::CapsuleShape* capsule = dynamic_cast<reactphysics3d::CapsuleShape*>(body->getCollider(0)->getCollisionShape());
         if (capsule) {
             float radius = capsule->getRadius();
             float height = capsule->getHeight();
-            float half_height = (height*0.5f)+radius;
-            const float ground_check_distance = 0.1f;
+            float half_height = height * 0.5f + radius;
+            const float ground_check_distance = 0.15f;
 
-            reactphysics3d::Vector3 start = transform.getPosition();
-            reactphysics3d::Vector3 end = start - reactphysics3d::Vector3(0.0f, half_height+ground_check_distance, 0.0f);
+            reactphysics3d::Vector3 start = bodyTransform.getPosition();
+            reactphysics3d::Vector3 end = start - reactphysics3d::Vector3(0.0f, half_height + ground_check_distance, 0.0f);
 
             struct GroundRaycastCallback : public reactphysics3d::RaycastCallback {
                 bool hit = false;
-                reactphysics3d::decimal notifyRaycastHit(const reactphysics3d::RaycastInfo& raycastinfo) override {
+                reactphysics3d::decimal notifyRaycastHit(const reactphysics3d::RaycastInfo&) override {
                     hit = true;
-                    return 0.0f;
+                    return static_cast<rp3d::decimal>(0.0f);
                 }
             };
 
@@ -224,7 +234,7 @@ public:
     }
 
     void move(glm::vec3 direction) {
-        if (!can_move) return;
+        if (!can_move || !body) return;
 
         reactphysics3d::Vector3 local_dir(direction.x, 0.0f, direction.z);
         if (local_dir.lengthSquare() < 0.001f) {
@@ -235,31 +245,29 @@ public:
 
         local_dir.normalize();
         reactphysics3d::Vector3 world_dir = orientation * local_dir;
-
         world_dir *= speed;
 
         auto current_vel = body->getLinearVelocity();
-        reactphysics3d::Vector3 new_vel(world_dir.x, current_vel.y, world_dir.z);
-        body->setLinearVelocity(new_vel);
+        body->setLinearVelocity(reactphysics3d::Vector3(world_dir.x, current_vel.y, world_dir.z));
     }
 
     void jump() {
-        if (!can_jump) return;
+        if (!can_jump || !on_ground || !body) return;
 
         reactphysics3d::Vector3 gravity = world->getGravity();
         float g = -gravity.y;
-        float jump_velocity = std::sqrt(2.0f*jump_height*g);
+        float jump_velocity = std::sqrt(2.0f * jump_height * g);
 
         auto current_vel = body->getLinearVelocity();
-        reactphysics3d::Vector3 new_vel(current_vel.x, jump_velocity, current_vel.z);
-        body->setLinearVelocity(new_vel);
+        body->setLinearVelocity(reactphysics3d::Vector3(current_vel.x, jump_velocity, current_vel.z));
     }
 };
 
 class FPSController : public CharacterController {
 public:
     float mouse_sensitivity = 0.005f;
-    float relative_camera_height;
+    float relative_camera_height = 1.6f;
+
     void update_input(std::map<SDL_Keycode, bool>& inputs, float mouse_dx, float mouse_dy) {
         update();
 
@@ -269,41 +277,42 @@ public:
         yaw -= mouse_dx * mouse_sensitivity;
         pitch -= mouse_dy * mouse_sensitivity;
 
-        float pitch_limit = glm::pi<float>() / 2.0f - 0.01f;
-        if (pitch > pitch_limit) pitch = pitch_limit;
-        if (pitch < -pitch_limit) pitch = -pitch_limit;
+        const float pitch_limit = glm::pi<float>() / 2.0f - 0.01f;
+        pitch = glm::clamp(pitch, -pitch_limit, pitch_limit);
 
         yaw = std::fmod(yaw, 2.0f * glm::pi<float>());
         if (yaw < 0.0f) yaw += 2.0f * glm::pi<float>();
 
         orientation = reactphysics3d::Quaternion::fromEulerAngles(0.0f, yaw, 0.0f);
 
-        glm::vec3 direction = {0.0f, 0.0f, 0.0f};
-        if (inputs[SDLK_W] == true) direction.x += 1.0f;
-        if (inputs[SDLK_S] == true) direction.x -= 1.0f;
-        if (inputs[SDLK_A] == true) direction.z -= 1.0f;
-        if (inputs[SDLK_D] == true) direction.z += 1.0f;
+        {
+            auto t = body->getTransform();
+            t.setOrientation(orientation);
+            body->setTransform(t);
+        }
+
+        glm::vec3 direction{0.0f};
+        if (inputs[SDLK_W]) direction.x += 1.0f;
+        if (inputs[SDLK_S]) direction.x -= 1.0f;
+        if (inputs[SDLK_A]) direction.z -= 1.0f;
+        if (inputs[SDLK_D]) direction.z += 1.0f;
         move(direction);
 
-        if (inputs.find(SDLK_SPACE) != inputs.end() && inputs.at(SDLK_SPACE) && on_ground) {
+        if (inputs.count(SDLK_SPACE) && inputs.at(SDLK_SPACE) && on_ground) {
             jump();
         }
 
-        bool is_crouching = (inputs.find(SDLK_C) != inputs.end() && inputs.at(SDLK_C));
-        if (can_crouch && is_crouching) {
-            speed = 5.0f;
-        } else {
-            speed = 10.0f;
-        }
+        bool is_crouching = inputs.count(SDLK_C) && inputs.at(SDLK_C);
+        speed = (can_crouch && is_crouching) ? 5.0f : 10.0f;
 
-        gvk::camera.position.x = body->getTransform().getPosition().x;
-        gvk::camera.position.y = body->getTransform().getPosition().y + relative_camera_height;
-        gvk::camera.position.z = body->getTransform().getPosition().z;
+        const auto& p = body->getTransform().getPosition();
+        gvk::camera.position = {p.x, p.y + relative_camera_height, p.z};
 
-        direction.x = cosf(-yaw) * cosf(pitch);
-        direction.y = sinf(pitch);
-        direction.z = sinf(-yaw) * cosf(pitch);
-        gvk::camera.direction = glm::normalize(direction);
+        glm::vec3 cam_dir;
+        cam_dir.x = cosf(-yaw) * cosf(pitch);
+        cam_dir.y = sinf(pitch);
+        cam_dir.z = sinf(-yaw) * cosf(pitch);
+        gvk::camera.direction = glm::normalize(cam_dir);
     }
 };
 
@@ -337,11 +346,20 @@ int main() {
     gvk::init();
     gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
 
-    world = physics_common.createPhysicsWorld();
+    // physics
+    rp3d::PhysicsWorld::WorldSettings _world_settings;
+    _world_settings.gravity = rp3d::Vector3(0.f, -9.81f, 0.f);
+    _world_settings.defaultVelocitySolverNbIterations = 20;
+    world = physics_common.createPhysicsWorld(_world_settings);
+    const float time_step = 1.f / 60.f; // physics fps (basically)
+    float accumulator = 0.f;
+
+    // input
     map<SDL_Keycode, bool> key_inputs;
     glm::vec2 mouse_motion_relative;
     bool mouse_locked = true;
 
+    // textures
     gvk::load_skybox("../include/GVK-Engine/textures/skyboxes/generic clouds.png");
 
     // dev env loading
@@ -351,12 +369,11 @@ int main() {
     for (auto po : dev_env_POs) {
         po->body->setType(rp3d::BodyType::KINEMATIC);
     }
-    dev_env_POs[0]->body->setType(rp3d::BodyType::KINEMATIC);
 
     FPSController player;
     player.initalize(0.5f, 2.f);
     player.mouse_sensitivity = 0.03f;
-    player.position.y = 5.f;
+    player.move_to({0.f, 5.f, 0.f});
 
     gvk::camera.position.y = 2.f;
 
@@ -367,7 +384,8 @@ int main() {
     while (running) {
         // general shit
         Uint64 now = SDL_GetTicks();
-        float dt = (float)(now - last_time) / 1000.f;
+        float dt = static_cast<float>(now - last_time) / 1000.f;
+        accumulator += dt;
         last_time = now;
         int w_width, w_height;
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
@@ -401,9 +419,13 @@ int main() {
                 mouse_motion_relative.y = e.motion.yrel;
             }
         }
-        //player.update_input(key_inputs, mouse_motion_relative.x, -mouse_motion_relative.y);
+        // player stuffity stuff
+        player.update_input(key_inputs, mouse_motion_relative.x, mouse_motion_relative.y);
 
-        world->update(dt);
+        if (accumulator>=time_step) {
+            world->update(time_step);
+            accumulator -= time_step;
+        }
 
         // imgui
         ImGui_ImplVulkan_NewFrame();
@@ -424,6 +446,7 @@ int main() {
     // -------------------- QUIT --------------------
 
     vkDeviceWaitIdle(gvk::_vk_device);
+    physics_common.destroyPhysicsWorld(world);
 
     gvk::quit();
     return 0;

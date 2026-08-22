@@ -6,6 +6,7 @@
   <component name="BackendCodeEditorMiscSettings">
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="26" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/LiveTemplatesHousekeeping/HotspotSessionHintIsShown/@EntryValue" value="true" type="bool" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -50,10 +51,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="nah man I give up I already programmed for 3.25 hours today I'ma go watch Andor for 2 hours and eat dinner">
       <change afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/glfw" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/glfw" afterDir="false" />
@@ -77,7 +80,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/include/GVK-Engine" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -216,11 +219,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -230,12 +228,19 @@
     {
       "first": {
         "##RUN_CONFIGURATION##": "CMake Application.City_Sweep",
+        "cmake": "CMakeBuildProfile:Debug"
+      },
+      "second": "25277b9a-c02e-431e-91ab-c9b96984cd92"
+    },
+    {
+      "first": {
+        "##RUN_CONFIGURATION##": "CMake Application.City_Sweep",
         "cmake": "CMakeBuildProfile:Release"
       },
       "second": "25277b9a-c02e-431e-91ab-c9b96984cd92"
     }
   ],
-  "modificationCount": 8
+  "modificationCount": 12
 }]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -318,6 +323,7 @@
     <MESSAGE value="had to rewrite the texture loading the gltf loading functions so it works" />
     <MESSAGE value="made the scene loader return vertices and indices as well" />
     <MESSAGE value="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something" />
-    <option name="LAST_COMMIT_MESSAGE" value="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something" />
+    <MESSAGE value="nah man I give up I already programmed for 3.25 hours today I'ma go watch Andor for 2 hours and eat dinner" />
+    <option name="LAST_COMMIT_MESSAGE" value="nah man I give up I already programmed for 3.25 hours today I'ma go watch Andor for 2 hours and eat dinner" />
   </component>
 </project>
