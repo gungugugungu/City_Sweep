@@ -380,6 +380,20 @@ int main() {
     gvk::init();
     gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
 
+    // fonts
+    stbtt_fontinfo font_regular;
+    stbtt_fontinfo font_bold;
+    stbtt_fontinfo font_semibold;
+    stbtt_fontinfo font_light;
+    stbtt_fontinfo font_medium;
+    stbtt_fontinfo font_italic;
+    gvk::load_font(&font_regular, "../fonts/regular.ttf");
+    gvk::load_font(&font_bold, "../fonts/bold.ttf");
+    gvk::load_font(&font_semibold, "../fonts/semibold.ttf");
+    gvk::load_font(&font_light, "../fonts/light.ttf");
+    gvk::load_font(&font_medium, "../fonts/medium.ttf");
+    gvk::load_font(&font_italic, "../fonts/italic.ttf");
+
     // physics
     rp3d::PhysicsWorld::WorldSettings _world_settings;
     _world_settings.gravity = rp3d::Vector3(0.f, -9.81f, 0.f);
@@ -395,6 +409,8 @@ int main() {
 
     // textures
     gvk::load_skybox("../include/GVK-Engine/textures/skyboxes/generic clouds.png");
+    gvk::Surface image_trashbag;
+    image_trashbag.load_from_file("../textures/trashbag.png");
 
     // dev env loading
     gvk::GLTFReturns dev_env = gvk::load_gltf_scene("../scenes/devenv.glb").value();
@@ -410,17 +426,21 @@ int main() {
         }
     }
 
+    // player
     FPSController player;
     player.initalize(0.5f, 2.f);
-    player.mouse_sensitivity = 0.03f;
+    player.mouse_sensitivity = 0.01f;
     player.move_to({0.f, 5.f, 0.f});
 
-    gvk::camera.position.y = 2.f;
+    // trash data
+    struct {
+        int currently_stored = 0;
+    } trash;
 
     Uint64 last_time = SDL_GetTicks();
     bool running = true;
 
-    // -------------------- FRAME --------------------
+// -------------------- FRAME --------------------
     while (running) {
         // general shit
         Uint64 now = SDL_GetTicks();
@@ -429,6 +449,7 @@ int main() {
         last_time = now;
         int w_width, w_height;
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
+        gvk::display.clear(w_width, w_height, {1, 1, 1, 0.f});
 
         mouse_motion_relative.x = 0.f;
         mouse_motion_relative.y = 0.f;
@@ -460,20 +481,26 @@ int main() {
             }
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
                 if (e.button.button == SDL_BUTTON_LEFT) {
-                    auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * gvk::proj_far);
+                    auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
 
                     if (hit_opt.has_value()) {
                         RaycastReturns& hit = *hit_opt;
-                        if (hit.object && hit.object->mesh->name.contains("pickuptrash")) {
+
+// -------------------- RAYCASTS --------------------
+                        if (hit.object && hit.object->mesh->name.contains("pickuptrash")) { // trash
                             auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
                             if (it != phys_objs.end()) {
                                 phys_objs.erase(it);
                             }
+
+                            trash.currently_stored += 1;
                         }
+
                     }
                 }
             }
         }
+// -------------------- POST-EVENT UPDATES --------------------
         // player stuffity stuff
         player.update_input(key_inputs, mouse_motion_relative.x, mouse_motion_relative.y);
 
@@ -489,16 +516,26 @@ int main() {
         // imgui goes here
         ImGui::Render();
 
-        // -------------------- RENDERING --------------------
+// -------------------- 2D RENDERING --------------------
+        // trash amount display
+        gvk::display.draw(image_trashbag, {1624, 768});
+        // TODO: Center properly
+        gvk::display.draw_text(&font_bold, to_string(trash.currently_stored), {1624+94, 768+200}, 128.f, {0.396078431372549f, 0.45098039215686275f, 0.5725490196078431f, 1.f});
+
+        // crosshair
+        gvk::display.draw_rect(16, 16, {w_width*0.5f-8, w_height*0.5f-8}, {1, 1, 1, 0.5f});
+
+// -------------------- RENDERING --------------------
         for (auto& po : phys_objs) {
             po->update();
             po->render();
         }
 
+        gvk::display.refresh();
         gvk::draw();
     }
 
-    // -------------------- QUIT --------------------
+// -------------------- QUIT --------------------
 
     vkDeviceWaitIdle(gvk::_vk_device);
     physics_common.destroyPhysicsWorld(world);
