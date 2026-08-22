@@ -8,6 +8,8 @@
 #include <cfloat>
 #include <map>
 #include <glm/gtc/constants.hpp>
+#include <memory>
+#include <algorithm>
 
 reactphysics3d::PhysicsCommon physics_common;
 reactphysics3d::PhysicsWorld* world;
@@ -316,6 +318,38 @@ public:
     }
 };
 
+struct RaycastReturns {
+    PhysicsObject* object;
+    float distance;
+    glm::vec3 hit_position;
+};
+
+optional<RaycastReturns> raycast(const vector<std::unique_ptr<PhysicsObject>>& objs, glm::vec3 start, glm::vec3 end) {
+    rp3d::Ray ray{{start.x, start.y, start.z}, {end.x, end.y, end.z}, 1.f};
+
+    PhysicsObject* closest_obj = nullptr;
+    float closest_fraction = 1.f;
+    glm::vec3 closest_hit_pos;
+
+    for (auto& obj : objs) {
+        if (!obj || !obj->body) continue;
+
+        reactphysics3d::RaycastInfo info;
+        if (obj->body->raycast(ray, info)) {
+            if (info.hitFraction < closest_fraction) {
+                closest_fraction = info.hitFraction;
+                closest_obj = obj.get();
+                closest_hit_pos = {info.worldPoint.x, info.worldPoint.y, info.worldPoint.z};
+            }
+        }
+    }
+
+    if (closest_obj) {
+        float dist = closest_fraction * glm::length(end - start);
+        return RaycastReturns{closest_obj, dist, closest_hit_pos};
+    }
+}
+
 void load_scene_lights(gvk::GLTFReturns* scene) {
     gvk::directional_light.intensity = scene->dir_light.intensity;
     gvk::directional_light.direction = scene->dir_light.direction;
@@ -328,14 +362,14 @@ void load_scene_lights(gvk::GLTFReturns* scene) {
     }
 }
 
-vector<PhysicsObject*> phys_objs;
+vector<std::unique_ptr<PhysicsObject>> phys_objs;
 
 vector<PhysicsObject*> load_scene_colliders(gvk::GLTFReturns* scene) {
     vector<PhysicsObject*> objs;
     for (auto& m : scene->meshes) {
-        PhysicsObject* obj = new PhysicsObject(&m.mesh, m.material, m.vertices, m.position, m.scale, m.rot);
-        objs.push_back(obj);
-        phys_objs.push_back(obj);
+        auto obj = std::make_unique<PhysicsObject>(&m.mesh, m.material, m.vertices, m.position, m.scale, m.rot);
+        objs.push_back(obj.get());
+        phys_objs.push_back(std::move(obj));
     }
     return objs;
 }
@@ -367,7 +401,13 @@ int main() {
     load_scene_lights(&dev_env);
     vector<PhysicsObject*> dev_env_POs = load_scene_colliders(&dev_env);
     for (auto po : dev_env_POs) {
-        po->body->setType(rp3d::BodyType::KINEMATIC);
+        if (po->mesh->name.contains("pickuptrash")) { // trash
+            po->body->setType(rp3d::BodyType::DYNAMIC);
+            po->body->setMass(5.f);
+            po->body->setLinearDamping(5.f);
+        } else {
+            po->body->setType(rp3d::BodyType::KINEMATIC);
+        }
     }
 
     FPSController player;
@@ -408,15 +448,30 @@ int main() {
             if (e.type == SDL_EVENT_QUIT) {
                 running = false;
             }
-            if (e.type == SDL_EVENT_KEY_DOWN) {
+            if (e.type == SDL_EVENT_KEY_DOWN) { // KEY DOWN
                 key_inputs[e.key.key] = true;
             }
-            if (e.type == SDL_EVENT_KEY_UP) {
+            if (e.type == SDL_EVENT_KEY_UP) { // KEY UP
                 key_inputs[e.key.key] = false;
             }
-            if (e.type == SDL_EVENT_MOUSE_MOTION) {
+            if (e.type == SDL_EVENT_MOUSE_MOTION) { // MOUSE MOVED
                 mouse_motion_relative.x = e.motion.xrel;
                 mouse_motion_relative.y = e.motion.yrel;
+            }
+            if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
+                if (e.button.button == SDL_BUTTON_LEFT) {
+                    auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * gvk::proj_far);
+
+                    if (hit_opt.has_value()) {
+                        RaycastReturns& hit = *hit_opt;
+                        if (hit.object && hit.object->mesh->name.contains("pickuptrash")) {
+                            auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
+                            if (it != phys_objs.end()) {
+                                phys_objs.erase(it);
+                            }
+                        }
+                    }
+                }
             }
         }
         // player stuffity stuff

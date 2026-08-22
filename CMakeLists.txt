@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 project(City_Sweep)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include/GVK-Engine)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include/reactphysics3d)
