@@ -14,6 +14,14 @@
 reactphysics3d::PhysicsCommon physics_common;
 reactphysics3d::PhysicsWorld* world;
 
+enum class ColliderShape {BOX, CONVEX};
+
+enum CollisionCategory : unsigned short {
+    CATEGORY_ENV = 1 << 0,
+    CATEGORY_TRASH = 1 << 1,
+    CATEGORY_PLAYER = 1 << 2,
+};
+
 class PhysicsObject {
 public:
     gvk::MeshAsset* mesh;
@@ -22,8 +30,9 @@ public:
     glm::vec3 scale={1.f, 1.f, 1.f};
     glm::quat rotation;
     reactphysics3d::RigidBody* body;
+    int still_frames = 0;
 
-    PhysicsObject(gvk::MeshAsset* mesh_asset, gvk::Material mat, std::vector<gvk::Vertex> mesh_vertices, glm::vec3 pos = {0.f, 0.f, 0.f}, glm::vec3 scl = {1.f, 1.f, 1.f}, glm::quat rot = {1.f, 0.f, 0.f, 0.f}, reactphysics3d::BodyType body_type = reactphysics3d::BodyType::STATIC)
+    PhysicsObject(gvk::MeshAsset* mesh_asset, gvk::Material mat, std::vector<gvk::Vertex> mesh_vertices, glm::vec3 pos = {0.f, 0.f, 0.f}, glm::vec3 scl = {1.f, 1.f, 1.f}, glm::quat rot = {1.f, 0.f, 0.f, 0.f}, reactphysics3d::BodyType body_type = reactphysics3d::BodyType::STATIC, ColliderShape shape = ColliderShape::CONVEX)
         : mesh(mesh_asset), material(mat), position(pos), scale(scl), rotation(rot)
     {
         reactphysics3d::Vector3 rp_position(position.x, position.y, position.z);
@@ -33,7 +42,8 @@ public:
         body = world->createRigidBody(transform);
         body->setType(body_type);
 
-        create_convex_collider(mesh_vertices);
+        if (shape == ColliderShape::BOX) create_box_collider(mesh_vertices);
+        else create_convex_collider(mesh_vertices);
     }
 
     ~PhysicsObject() {
@@ -149,6 +159,12 @@ public:
 
     void update() {
         if (body != nullptr) {
+            if (body->getLinearVelocity().lengthSquare() < 0.01f * 0.01f && body->getAngularVelocity().lengthSquare() < 0.02f * 0.02f) {
+                still_frames++;
+                if (still_frames > 30) body->setIsSleeping(true);
+            } else {
+                still_frames = 0;
+            }
             reactphysics3d::Vector3 p = body->getTransform().getPosition();
             reactphysics3d::Quaternion q = body->getTransform().getOrientation();
             position.x = p.x;
@@ -195,6 +211,8 @@ public:
         body->setAngularLockAxisFactor({0.0f, 0.0f, 0.0f});
         body->setIsAllowedToSleep(false);
         body->setMass(70.0f);
+        body->getCollider(0)->setCollisionCategoryBits(CATEGORY_PLAYER);
+        body->getCollider(0)->setCollideWithMaskBits(CATEGORY_TRASH | CATEGORY_ENV);
     }
 
     void move_to(reactphysics3d::Vector3 pos) {
@@ -367,7 +385,7 @@ vector<std::unique_ptr<PhysicsObject>> phys_objs;
 vector<PhysicsObject*> load_scene_colliders(gvk::GLTFReturns* scene) {
     vector<PhysicsObject*> objs;
     for (auto& m : scene->meshes) {
-        auto obj = std::make_unique<PhysicsObject>(&m.mesh, m.material, m.vertices, m.position, m.scale, m.rot);
+        auto obj = std::make_unique<PhysicsObject>(&m.mesh, m.material, m.mesh.vertices, m.position, m.scale, m.rot);
         objs.push_back(obj.get());
         phys_objs.push_back(std::move(obj));
     }
@@ -397,7 +415,7 @@ int main() {
     // physics
     rp3d::PhysicsWorld::WorldSettings _world_settings;
     _world_settings.gravity = rp3d::Vector3(0.f, -9.81f, 0.f);
-    _world_settings.defaultVelocitySolverNbIterations = 20;
+    _world_settings.defaultVelocitySolverNbIterations = 10;
     world = physics_common.createPhysicsWorld(_world_settings);
     const float time_step = 1.f / 60.f; // physics fps (basically)
     float accumulator = 0.f;
@@ -418,11 +436,17 @@ int main() {
     vector<PhysicsObject*> dev_env_POs = load_scene_colliders(&dev_env);
     for (auto po : dev_env_POs) {
         if (po->mesh->name.contains("pickuptrash")) { // trash
+            po->body->removeCollider(po->body->getCollider(0));
+            po->create_box_collider(po->mesh->vertices);
             po->body->setType(rp3d::BodyType::DYNAMIC);
             po->body->setMass(5.f);
             po->body->setLinearDamping(5.f);
+            po->body->getCollider(0)->setCollisionCategoryBits(CATEGORY_TRASH);
+            po->body->getCollider(0)->setCollideWithMaskBits(CATEGORY_ENV | CATEGORY_PLAYER);
         } else {
             po->body->setType(rp3d::BodyType::KINEMATIC);
+            po->body->getCollider(0)->setCollisionCategoryBits(CATEGORY_ENV);
+            po->body->getCollider(0)->setCollideWithMaskBits(CATEGORY_TRASH | CATEGORY_PLAYER);
         }
     }
 
