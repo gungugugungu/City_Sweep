@@ -565,8 +565,10 @@ int main() {
         // sdl events
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
-            for (auto& b : buttons_to_update) {
-                b->update(&e);
+            if (pause_menu_open) {
+                for (auto& b : buttons_to_update) {
+                    b->update(&e);
+                }
             }
 
             if (e.type == SDL_EVENT_QUIT) {
