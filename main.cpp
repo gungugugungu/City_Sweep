@@ -352,8 +352,6 @@ public:
                 if (on_click_callback) {
                     on_click_callback();
                 }
-            } else {
-                cout << "oh no" << endl;
             }
         }
     }
@@ -462,6 +460,8 @@ int main() {
     gvk::load_skybox("../include/GVK-Engine/textures/skyboxes/generic clouds.png");
     gvk::Surface image_trashbag;
     image_trashbag.load_from_file("../textures/trashbag.png");
+    gvk::Surface image_ui_background;
+    image_ui_background.load_from_file("../textures/ui background.png");
 
     // dev env loading
     gvk::GLTFReturns dev_env = gvk::load_gltf_scene("../scenes/devenv.glb").value();
@@ -490,9 +490,42 @@ int main() {
     player.move_to({0.f, 5.f, 0.f});
 
     // UI
+    vector<UIButton*> buttons_to_update;
     bool pause_menu_open = false;
     function<void()> open_pause_menu = [&]{ pause_menu_open = true; mouse_locked = false; };
     function<void()> close_pause_menu = [&]{ pause_menu_open = false; mouse_locked = true; };
+    UIButton button_help;
+    button_help.surf.load_from_file("../textures/ui help button.png");
+    button_help.pos = {272, 212};
+    buttons_to_update.push_back(&button_help);
+
+    UIButton button_upgrades;
+    button_upgrades.surf.load_from_file("../textures/ui upgrade button.png");
+    button_upgrades.pos = {272, 324};
+    buttons_to_update.push_back(&button_upgrades);
+
+    UIButton button_storage_upgrades;
+    button_storage_upgrades.surf.load_from_file("../textures/ui storage upgrade button.png");
+    button_storage_upgrades.pos = {272, 436};
+    buttons_to_update.push_back(&button_storage_upgrades);
+
+    UIButton button_settings;
+    button_settings.surf.load_from_file("../textures/ui settings button.png");
+    button_settings.pos = {272, 652};
+    buttons_to_update.push_back(&button_settings);
+
+    UIButton button_quit;
+    button_quit.surf.load_from_file("../textures/ui quit button.png");
+    button_quit.pos = {272, 764};
+    buttons_to_update.push_back(&button_quit);
+
+    UIButton button_close;
+    button_close.surf.load_from_file("../textures/ui close button.png");
+    button_close.pos = {1600, 212};
+    button_close.on_click_callback = [&] {
+        close_pause_menu();
+    };
+    buttons_to_update.push_back(&button_close);
 
     // trash data
     struct {
@@ -502,6 +535,9 @@ int main() {
 
     Uint64 last_time = SDL_GetTicks();
     bool running = true;
+    button_quit.on_click_callback = [&] {
+        running = false;
+    };
 
 // -------------------- FRAME --------------------
     while (running) {
@@ -529,6 +565,10 @@ int main() {
         // sdl events
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
+            for (auto& b : buttons_to_update) {
+                b->update(&e);
+            }
+
             if (e.type == SDL_EVENT_QUIT) {
                 running = false;
             }
@@ -548,35 +588,26 @@ int main() {
             }
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
                 if (e.button.button == SDL_BUTTON_LEFT) {
-                    cout << "--- raycasting ---" << endl;
                     auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
-                    cout << "raycasted fine" << endl;
 
                     if (hit_opt.has_value()) {
-                        cout << "has value" << endl;
                         RaycastReturns& hit = *hit_opt;
 
 // -------------------- RAYCASTS --------------------
                         if (hit.object) {
-                            cout << "hit" << endl;
                             // trash
                             if (hit.object->mesh->name.contains("pickuptrash")) {
-                                cout << "hit trash" << endl;
                                 if (trash.currently_stored < trash.max_storable) {
-                                    cout << "picking up trash" << endl;
                                     auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
                                     if (it != phys_objs.end()) {
                                         phys_objs.erase(it);
                                     }
-                                    cout << "removed trash" << endl;
                                     trash.currently_stored++;
-                                    cout << "counted trash" << endl;
                                 }
                             }
 
                             // trash bin
                             else if (hit.object->mesh->name.contains("trashbin")) {
-                                cout << "trash bin" << endl;
                                 trash.currently_stored = 0;
                             }
                         }
@@ -609,6 +640,15 @@ int main() {
 
         // crosshair
         gvk::display.draw_rect(6, 6, {w_width*0.5f-3, w_height*0.5f-3}, {1, 1, 1, 0.5f});
+
+// -------------------- PAUSE MENU --------------------
+        if (pause_menu_open) {
+            gvk::display.clear(w_width, w_height, {0.f, 0.f, 0.f, 0.5f});
+            gvk::display.draw(image_ui_background, {384, 192});
+            for (auto& b : buttons_to_update) {
+                b->draw();
+            }
+        }
 
 // -------------------- RENDERING --------------------
         for (auto& po : phys_objs) {
