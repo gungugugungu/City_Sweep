@@ -519,11 +519,11 @@ int main() {
 // -------------------- 2D RENDERING --------------------
         // trash amount display
         gvk::display.draw(image_trashbag, {1624, 768});
-        // TODO: Center properly
-        gvk::display.draw_text(&font_bold, to_string(trash.currently_stored), {1624+94, 768+200}, 128.f, {0.396078431372549f, 0.45098039215686275f, 0.5725490196078431f, 1.f});
+        glm::vec2 counter_text_size = gvk::get_text_size(&font_bold, to_string(trash.currently_stored), 128.f);
+        gvk::display.draw_text(&font_bold, to_string(trash.currently_stored), {1624+116-(counter_text_size.x*0.5f), 768+128-(counter_text_size.y*0.5f)}, 128.f, {0.396078431372549f, 0.45098039215686275f, 0.5725490196078431f, 1.f});
 
         // crosshair
-        gvk::display.draw_rect(16, 16, {w_width*0.5f-8, w_height*0.5f-8}, {1, 1, 1, 0.5f});
+        gvk::display.draw_rect(6, 6, {w_width*0.5f-3, w_height*0.5f-3}, {1, 1, 1, 0.5f});
 
 // -------------------- RENDERING --------------------
         for (auto& po : phys_objs) {
