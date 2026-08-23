@@ -459,6 +459,7 @@ int main() {
     // trash data
     struct {
         int currently_stored = 0;
+        int max_storable = 10;
     } trash;
 
     Uint64 last_time = SDL_GetTicks();
@@ -511,15 +512,23 @@ int main() {
                         RaycastReturns& hit = *hit_opt;
 
 // -------------------- RAYCASTS --------------------
-                        if (hit.object && hit.object->mesh->name.contains("pickuptrash")) { // trash
-                            auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
-                            if (it != phys_objs.end()) {
-                                phys_objs.erase(it);
+                        if (hit.object) {
+                            // trash
+                            if (hit.object->mesh->name.contains("pickuptrash")) {
+                                if (trash.currently_stored < trash.max_storable) {
+                                    auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
+                                    if (it != phys_objs.end()) {
+                                        phys_objs.erase(it);
+                                    }
+                                    trash.currently_stored++;
+                                }
                             }
 
-                            trash.currently_stored += 1;
+                            // trash bin
+                            else if (hit.object->mesh->name.contains("trashbin")) {
+                                trash.currently_stored = 0;
+                            }
                         }
-
                     }
                 }
             }
