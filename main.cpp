@@ -351,7 +351,7 @@ public:
             if (event->button.button == SDL_BUTTON_LEFT && event->button.x >= pos.x && event->button.x <= pos.x + surf.pixels[0].size() && event->button.y >= pos.y && event->button.y <= pos.y + surf.pixels.size()) {
                 if (on_click_callback) {
                     on_click_callback();
-5                }
+                }
             } else {
                 cout << "oh no" << endl;
             }

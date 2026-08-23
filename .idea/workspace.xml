@@ -51,7 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="added a trashbin and max trash amount">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="UIButton class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
@@ -342,7 +342,8 @@
     <MESSAGE value="added vertex data to MeshAsset" />
     <MESSAGE value="optimized the physics" />
     <MESSAGE value="added a trashbin and max trash amount" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a trashbin and max trash amount" />
+    <MESSAGE value="UIButton class" />
+    <option name="LAST_COMMIT_MESSAGE" value="UIButton class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
