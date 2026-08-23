@@ -417,11 +417,17 @@ vector<PhysicsObject*> load_scene_colliders(gvk::GLTFReturns* scene) {
 
 // -------------------- INIT --------------------
 int main() {
+
+    // engine
     relative_gvk_path = "../include/GVK-Engine";
     gvk::init();
     gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
 
     SDL_SetWindowTitle(gvk::window, "Town Sweep");
+
+    gvk::main_post_processing_stack.ao_radius = 2.f;
+    gvk::main_post_processing_stack.ao_bias = 0.008f;
+    gvk::main_post_processing_stack.ao_samples = 32;
 
     // fonts
     stbtt_fontinfo font_regular;
@@ -483,6 +489,8 @@ int main() {
 
     // UI
     bool pause_menu_open = false;
+    function<void()> open_pause_menu = [&]{ pause_menu_open = true; mouse_locked = false; };
+    function<void()> close_pause_menu = [&]{ pause_menu_open = false; mouse_locked = true; };
 
     // trash data
     struct {
@@ -524,6 +532,10 @@ int main() {
             }
             if (e.type == SDL_EVENT_KEY_DOWN) { // KEY DOWN
                 key_inputs[e.key.key] = true;
+
+                if (e.key.key == SDLK_ESCAPE) {
+                    if (pause_menu_open) close_pause_menu(); else open_pause_menu();
+                }
             }
             if (e.type == SDL_EVENT_KEY_UP) { // KEY UP
                 key_inputs[e.key.key] = false;
@@ -534,26 +546,35 @@ int main() {
             }
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
                 if (e.button.button == SDL_BUTTON_LEFT) {
+                    cout << "--- raycasting ---" << endl;
                     auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
+                    cout << "raycasted fine" << endl;
 
                     if (hit_opt.has_value()) {
+                        cout << "has value" << endl;
                         RaycastReturns& hit = *hit_opt;
 
 // -------------------- RAYCASTS --------------------
                         if (hit.object) {
+                            cout << "hit" << endl;
                             // trash
                             if (hit.object->mesh->name.contains("pickuptrash")) {
+                                cout << "hit trash" << endl;
                                 if (trash.currently_stored < trash.max_storable) {
+                                    cout << "picking up trash" << endl;
                                     auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
                                     if (it != phys_objs.end()) {
                                         phys_objs.erase(it);
                                     }
+                                    cout << "removed trash" << endl;
                                     trash.currently_stored++;
+                                    cout << "counted trash" << endl;
                                 }
                             }
 
                             // trash bin
                             else if (hit.object->mesh->name.contains("trashbin")) {
+                                cout << "trash bin" << endl;
                                 trash.currently_stored = 0;
                             }
                         }
@@ -563,8 +584,9 @@ int main() {
         }
 // -------------------- POST-EVENT UPDATES --------------------
         // player stuffity stuff
-        player.update_input(key_inputs, mouse_motion_relative.x, mouse_motion_relative.y);
+        if (mouse_locked) player.update_input(key_inputs, mouse_motion_relative.x, mouse_motion_relative.y);
 
+        // physics
         if (accumulator>=time_step) {
             world->update(time_step);
             accumulator -= time_step;
