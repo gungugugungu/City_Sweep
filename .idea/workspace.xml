@@ -51,7 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="did a UI mockup">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="whoa something's making this crash and I have no clue what">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
@@ -324,7 +324,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="after toying with the cmake for like 4.5 hours I finally managed to make this project a proper library that you can add as a subdirectory. I also edited the readme" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="rewrote the gltf mesh loader to return vertex data and materials" />
     <MESSAGE value="uh I did a thing I think" />
@@ -349,7 +348,8 @@
     <MESSAGE value="UIButton class" />
     <MESSAGE value="I had a typo in the last commit" />
     <MESSAGE value="did a UI mockup" />
-    <option name="LAST_COMMIT_MESSAGE" value="did a UI mockup" />
+    <MESSAGE value="whoa something's making this crash and I have no clue what" />
+    <option name="LAST_COMMIT_MESSAGE" value="whoa something's making this crash and I have no clue what" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

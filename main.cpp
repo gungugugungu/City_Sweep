@@ -389,6 +389,8 @@ optional<RaycastReturns> raycast(const vector<std::unique_ptr<PhysicsObject>>& o
         float dist = closest_fraction * glm::length(end - start);
         return RaycastReturns{closest_obj, dist, closest_hit_pos};
     }
+
+    return nullopt;
 }
 
 void load_scene_lights(gvk::GLTFReturns* scene) {
