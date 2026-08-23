@@ -336,6 +336,29 @@ public:
     }
 };
 
+class UIButton {
+public:
+    gvk::Surface surf;
+    glm::vec2 pos;
+    std::function<void()> on_click_callback;
+
+    void draw() {
+        gvk::display.draw(surf, pos);
+    }
+
+    void update(SDL_Event* event) {
+        if (event->type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+            if (event->button.button == SDL_BUTTON_LEFT && event->button.x >= pos.x && event->button.x <= pos.x + surf.pixels[0].size() && event->button.y >= pos.y && event->button.y <= pos.y + surf.pixels.size()) {
+                if (on_click_callback) {
+                    on_click_callback();
+5                }
+            } else {
+                cout << "oh no" << endl;
+            }
+        }
+    }
+};
+
 struct RaycastReturns {
     PhysicsObject* object;
     float distance;
@@ -397,6 +420,8 @@ int main() {
     relative_gvk_path = "../include/GVK-Engine";
     gvk::init();
     gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
+
+    SDL_SetWindowTitle(gvk::window, "Town Sweep");
 
     // fonts
     stbtt_fontinfo font_regular;
