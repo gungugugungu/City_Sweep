@@ -481,6 +481,9 @@ int main() {
     player.mouse_sensitivity = 0.01f;
     player.move_to({0.f, 5.f, 0.f});
 
+    // UI
+    bool pause_menu_open = false;
+
     // trash data
     struct {
         int currently_stored = 0;
