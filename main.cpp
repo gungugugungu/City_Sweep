@@ -506,6 +506,8 @@ int main() {
     player.initalize(0.5f, 2.f);
     player.mouse_sensitivity = 0.01f;
     player.move_to({0.f, 5.f, 0.f});
+    bool mouse_left = false;
+    bool mouse_right = false;
 
     // upgrades
     function<void()> upgrade_1_buy = [&]{};
@@ -519,11 +521,19 @@ int main() {
     string upgrade_3_name = "";
 
     struct {
-        float time_between_pickups = 0.4f;
+        float time_between_pickups = 0.5f;
         float timer = 0.f;
         int upgrade_1_progress = 0;
-        int upgrade_1_max = 8;
+        int upgrade_1_max = 10;
         float upgrade_1_decrease_by = 0.05f;
+
+        int upgrade_2_progress = 0;
+        int upgrade_2_max = 4;
+        float pickup_radius = 0.f;
+        float upgrade_2_increase_by = 0.3f;
+        int max_items_to_pick_up = 6;
+
+        bool upgrade_3_bought = false;
     } hand;
     function<void()> hand_upgrade_1_buy = [&] {
         if (hand.upgrade_1_progress < hand.upgrade_1_max) {
@@ -532,8 +542,17 @@ int main() {
             upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
         }
     };
-    function<void()> hand_upgrade_2_buy = [&]{};
-    function<void()> hand_upgrade_3_buy = [&]{};
+    function<void()> hand_upgrade_2_buy = [&] {
+        if (hand.upgrade_2_progress < hand.upgrade_2_max) {
+            hand.pickup_radius += hand.upgrade_2_increase_by;
+            hand.upgrade_2_progress++;
+            upgrade_2_completion = static_cast<float>(hand.upgrade_2_progress)/static_cast<float>(hand.upgrade_2_max);
+        }
+    };
+    function<void()> hand_upgrade_3_buy = [&] {
+        hand.upgrade_3_bought = true;
+        upgrade_3_completion = 1.f;
+    };
 
     function<void()> broom_upgrade_1_buy = [&]{};
     function<void()> broom_upgrade_2_buy = [&]{};
@@ -606,8 +625,10 @@ int main() {
         upgrade_3_buy = hand_upgrade_3_buy;
         upgrade_1_name = "Pick up speed";
         upgrade_2_name = "Palm size";
-        upgrade_3_name = "Hold pickup";
+        upgrade_3_name = "Hold to pick up";
         upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
+        upgrade_2_completion = 0.f;
+        upgrade_3_completion = (hand.upgrade_3_bought) ? 1.f : 0.f;
     };
     button_upgrade_hand.on_click_callback();
     buttons_upgrade_menu.push_back(&button_upgrade_hand);
@@ -657,6 +678,43 @@ int main() {
         int currently_stored = 0;
         int max_storable = 10;
     } trash;
+
+    // picking up trash
+    function<void(RaycastReturns hit)> pickup_trash = [&](RaycastReturns hit) {
+        if (trash.currently_stored < trash.max_storable && hand.timer <= 0.f) {
+            // pickup radius
+            if (hand.upgrade_2_progress > 0) {
+                glm::vec3 ogpos = {hit.object->body->getTransform().getPosition().x, hit.object->body->getTransform().getPosition().y, hit.object->body->getTransform().getPosition().z};
+                glm::vec3 pos;
+                vector<PhysicsObject*> close_objs;
+                for (auto& o : phys_objs) {
+                    pos = {o->body->getTransform().getPosition().x, o->body->getTransform().getPosition().y, o->body->getTransform().getPosition().z};
+                    if (glm::distance(ogpos, pos) <= hand.pickup_radius && o.get()->mesh->name.contains("pickuptrash") && o.get() != hit.object) {
+                        close_objs.push_back(o.get());
+                    }
+                }
+                for (int i = 0; i<hand.max_items_to_pick_up; i++) {
+                    if (trash.currently_stored >= trash.max_storable) break;
+                    if (i < static_cast<int>(close_objs.size())) {
+                        auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == close_objs[i]; });
+                        if (it != phys_objs.end()) {
+                            phys_objs.erase(it);
+                        }
+                        trash.currently_stored++;
+                    } else break;
+                }
+            }
+
+            if (trash.currently_stored < trash.max_storable) {
+                auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
+                if (it != phys_objs.end()) {
+                    phys_objs.erase(it);
+                }
+                trash.currently_stored++;
+                hand.timer = hand.time_between_pickups;
+            }
+        }
+    };
 
     Uint64 last_time = SDL_GetTicks();
     bool running = true;
@@ -723,39 +781,52 @@ int main() {
             }
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
                 if (e.button.button == SDL_BUTTON_LEFT) {
-                    auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
+                    mouse_left = true;
 
-                    if (hit_opt.has_value()) {
-                        RaycastReturns& hit = *hit_opt;
+                    if (!pause_menu_open) {
+                        auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
+
+                        if (hit_opt.has_value()) {
+                            RaycastReturns& hit = *hit_opt;
 
 // -------------------- RAYCASTS --------------------
-                        if (hit.object) {
-                            // trash
-                            if (hit.object->mesh->name.contains("pickuptrash")) {
-                                if (trash.currently_stored < trash.max_storable) {
-                                    if (hand.timer <= 0.f) {
-                                        auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
-                                        if (it != phys_objs.end()) {
-                                            phys_objs.erase(it);
-                                        }
-                                        trash.currently_stored++;
-                                        hand.timer = hand.time_between_pickups;
-                                    }
+                            if (hit.object) {
+                                // trash
+                                if (hit.object->mesh->name.contains("pickuptrash")) {
+                                    pickup_trash(hit);
                                 }
-                            }
 
-                            // trash bin
-                            else if (hit.object->mesh->name.contains("trashbin")) {
-                                trash.currently_stored = 0;
+                                // trash bin
+                                else if (hit.object->mesh->name.contains("trashbin")) {
+                                    trash.currently_stored = 0;
+                                }
                             }
                         }
                     }
                 }
+                if (e.button.button == SDL_BUTTON_RIGHT) mouse_right=true;
+            }
+            if (e.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                if (e.button.button == SDL_BUTTON_LEFT) mouse_left=false;
+                if (e.button.button == SDL_BUTTON_RIGHT) mouse_right=false;
             }
         }
 // -------------------- POST-EVENT UPDATES --------------------
         // player stuffity stuff
         if (mouse_locked) player.update_input(key_inputs, mouse_motion_relative.x, mouse_motion_relative.y);
+        // hold pickup
+        if (!pause_menu_open && mouse_left && hand.upgrade_3_bought) {
+            auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
+
+            if (hit_opt.has_value()) {
+                RaycastReturns& hit = *hit_opt;
+                if (hit.object) {
+                    if (hit.object->mesh->name.contains("pickuptrash")) {
+                        pickup_trash(hit);
+                    }
+                }
+            }
+        }
 
         // physics
         if (accumulator>=time_step) {
@@ -809,6 +880,14 @@ int main() {
                 if (upgrade_1_name != "") {
                     glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_1_name, 72);
                     gvk::display.draw_text(&font_medium, upgrade_1_name, {492+564-text_size.x*0.5, 376+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                }
+                if (upgrade_2_name != "") {
+                    glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_2_name, 72);
+                    gvk::display.draw_text(&font_medium, upgrade_2_name, {492+564-text_size.x*0.5, 540+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                }
+                if (upgrade_3_name != "") {
+                    glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_3_name, 72);
+                    gvk::display.draw_text(&font_medium, upgrade_3_name, {492+564-text_size.x*0.5, 704+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
                 }
             }
 
