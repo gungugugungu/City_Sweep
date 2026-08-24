@@ -357,6 +357,19 @@ public:
     }
 };
 
+enum MenuPages {
+    HELP,
+    UPGRADE,
+    STORAGE_UPGRADE,
+    SETTINGS
+};
+
+enum UpgradePages {
+    HAND,
+    BROOM,
+    VACUUM
+};
+
 struct RaycastReturns {
     PhysicsObject* object;
     float distance;
@@ -417,17 +430,18 @@ vector<PhysicsObject*> load_scene_colliders(gvk::GLTFReturns* scene) {
 
 // -------------------- INIT --------------------
 int main() {
-
     // engine
     relative_gvk_path = "../include/GVK-Engine";
     gvk::init();
     gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
+    int max_fps = 120;
 
     SDL_SetWindowTitle(gvk::window, "Town Sweep");
 
     gvk::main_post_processing_stack.ao_radius = 2.f;
     gvk::main_post_processing_stack.ao_bias = 0.008f;
     gvk::main_post_processing_stack.ao_samples = 32;
+    gvk::main_post_processing_stack.vignette_strength = 0.5f;
 
     // fonts
     stbtt_fontinfo font_regular;
@@ -462,6 +476,10 @@ int main() {
     image_trashbag.load_from_file("../textures/trashbag.png");
     gvk::Surface image_ui_background;
     image_ui_background.load_from_file("../textures/ui background.png");
+    gvk::Surface image_ui_help_background;
+    image_ui_help_background.load_from_file("../textures/ui help background.png");
+    gvk::Surface image_ui_upgrade_background;
+    image_ui_upgrade_background.load_from_file("../textures/ui upgrade background.png");
 
     // dev env loading
     gvk::GLTFReturns dev_env = gvk::load_gltf_scene("../scenes/devenv.glb").value();
@@ -489,29 +507,80 @@ int main() {
     player.mouse_sensitivity = 0.01f;
     player.move_to({0.f, 5.f, 0.f});
 
+    // upgrades
+    function<void()> upgrade_1_buy = [&]{};
+    function<void()> upgrade_2_buy = [&]{};
+    function<void()> upgrade_3_buy = [&]{};
+    float upgrade_1_completion = 0.f;
+    float upgrade_2_completion = 0.f;
+    float upgrade_3_completion = 0.f;
+    string upgrade_1_name = "";
+    string upgrade_2_name = "";
+    string upgrade_3_name = "";
+
+    struct {
+        float time_between_pickups = 0.4f;
+        float timer = 0.f;
+        int upgrade_1_progress = 0;
+        int upgrade_1_max = 8;
+        float upgrade_1_decrease_by = 0.05f;
+    } hand;
+    function<void()> hand_upgrade_1_buy = [&] {
+        if (hand.upgrade_1_progress < hand.upgrade_1_max) {
+            hand.time_between_pickups -= hand.upgrade_1_decrease_by;
+            hand.upgrade_1_progress++;
+            upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
+        }
+    };
+    function<void()> hand_upgrade_2_buy = [&]{};
+    function<void()> hand_upgrade_3_buy = [&]{};
+
+    function<void()> broom_upgrade_1_buy = [&]{};
+    function<void()> broom_upgrade_2_buy = [&]{};
+    function<void()> broom_upgrade_3_buy = [&]{};
+
+    function<void()> vacuum_upgrade_1_buy = [&]{};
+    function<void()> vacuum_upgrade_2_buy = [&]{};
+    function<void()> vacuum_upgrade_3_buy = [&]{};
+
     // UI
     vector<UIButton*> buttons_to_update;
+    vector<UIButton*> buttons_upgrade_menu;
+    MenuPages current_menu_page = HELP;
+    UpgradePages current_upgrade_page = HAND;
     bool pause_menu_open = false;
     function<void()> open_pause_menu = [&]{ pause_menu_open = true; mouse_locked = false; };
     function<void()> close_pause_menu = [&]{ pause_menu_open = false; mouse_locked = true; };
     UIButton button_help;
     button_help.surf.load_from_file("../textures/ui help button.png");
     button_help.pos = {272, 212};
+    button_help.on_click_callback = [&] {
+        current_menu_page = HELP;
+    };
     buttons_to_update.push_back(&button_help);
 
     UIButton button_upgrades;
     button_upgrades.surf.load_from_file("../textures/ui upgrade button.png");
     button_upgrades.pos = {272, 324};
+    button_upgrades.on_click_callback = [&] {
+        current_menu_page = UPGRADE;
+    };
     buttons_to_update.push_back(&button_upgrades);
 
     UIButton button_storage_upgrades;
     button_storage_upgrades.surf.load_from_file("../textures/ui storage upgrade button.png");
     button_storage_upgrades.pos = {272, 436};
+    button_storage_upgrades.on_click_callback = [&] {
+        current_menu_page = STORAGE_UPGRADE;
+    };
     buttons_to_update.push_back(&button_storage_upgrades);
 
     UIButton button_settings;
     button_settings.surf.load_from_file("../textures/ui settings button.png");
     button_settings.pos = {272, 652};
+    button_settings.on_click_callback = [&] {
+        current_menu_page = SETTINGS;
+    };
     buttons_to_update.push_back(&button_settings);
 
     UIButton button_quit;
@@ -526,6 +595,62 @@ int main() {
         close_pause_menu();
     };
     buttons_to_update.push_back(&button_close);
+
+    UIButton button_upgrade_hand;
+    button_upgrade_hand.surf.load_from_file("../textures/ui upgrade hand button.png");
+    button_upgrade_hand.pos = {492, 248};
+    button_upgrade_hand.on_click_callback = [&] {
+        current_upgrade_page = HAND;
+        upgrade_1_buy = hand_upgrade_1_buy;
+        upgrade_2_buy = hand_upgrade_2_buy;
+        upgrade_3_buy = hand_upgrade_3_buy;
+        upgrade_1_name = "Pick up speed";
+        upgrade_2_name = "Palm size";
+        upgrade_3_name = "Hold pickup";
+        upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
+    };
+    button_upgrade_hand.on_click_callback();
+    buttons_upgrade_menu.push_back(&button_upgrade_hand);
+
+    UIButton button_upgrade_broom;
+    button_upgrade_broom.surf.load_from_file("../textures/ui upgrade broom button.png");
+    button_upgrade_broom.pos = {844, 248};
+    button_upgrade_broom.on_click_callback = [&] {
+        current_upgrade_page = BROOM;
+    };
+    buttons_upgrade_menu.push_back(&button_upgrade_broom);
+
+    UIButton button_upgrade_vacuum;
+    button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade vacuum button.png");
+    button_upgrade_vacuum.pos = {1196, 248};
+    button_upgrade_vacuum.on_click_callback = [&] {
+        current_upgrade_page = VACUUM;
+    };
+    buttons_upgrade_menu.push_back(&button_upgrade_vacuum);
+
+    UIButton button_upgrade_frame_1;
+    button_upgrade_frame_1.surf.load_from_file("../textures/ui upgrade frame button.png");
+    button_upgrade_frame_1.pos = {492, 376};
+    button_upgrade_frame_1.on_click_callback = [&] {
+        if (upgrade_1_buy) upgrade_1_buy();
+    };
+    buttons_upgrade_menu.push_back(&button_upgrade_frame_1);
+
+    UIButton button_upgrade_frame_2;
+    button_upgrade_frame_2.surf.load_from_file("../textures/ui upgrade frame button.png");
+    button_upgrade_frame_2.pos = {492, 540};
+    button_upgrade_frame_2.on_click_callback = [&] {
+        if (upgrade_2_buy) upgrade_2_buy();
+    };
+    buttons_upgrade_menu.push_back(&button_upgrade_frame_2);
+
+    UIButton button_upgrade_frame_3;
+    button_upgrade_frame_3.surf.load_from_file("../textures/ui upgrade frame button.png");
+    button_upgrade_frame_3.pos = {492, 704};
+    button_upgrade_frame_3.on_click_callback = [&] {
+        if (upgrade_3_buy) upgrade_3_buy();
+    };
+    buttons_upgrade_menu.push_back(&button_upgrade_frame_3);
 
     // trash data
     struct {
@@ -548,7 +673,9 @@ int main() {
         last_time = now;
         int w_width, w_height;
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
-        gvk::display.clear(w_width, w_height, {1, 1, 1, 0.f});
+        gvk::display.clear(w_width, w_height, {1, 1, 1, 0});
+
+        hand.timer = clamp(hand.timer-dt, 0.f, 10.f);
 
         mouse_motion_relative.x = 0.f;
         mouse_motion_relative.y = 0.f;
@@ -568,6 +695,12 @@ int main() {
             if (pause_menu_open) {
                 for (auto& b : buttons_to_update) {
                     b->update(&e);
+                }
+
+                if (current_menu_page == UPGRADE) {
+                    for (auto& b : buttons_upgrade_menu) {
+                        b->update(&e);
+                    }
                 }
             }
 
@@ -600,11 +733,14 @@ int main() {
                             // trash
                             if (hit.object->mesh->name.contains("pickuptrash")) {
                                 if (trash.currently_stored < trash.max_storable) {
-                                    auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
-                                    if (it != phys_objs.end()) {
-                                        phys_objs.erase(it);
+                                    if (hand.timer <= 0.f) {
+                                        auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == hit.object; });
+                                        if (it != phys_objs.end()) {
+                                            phys_objs.erase(it);
+                                        }
+                                        trash.currently_stored++;
+                                        hand.timer = hand.time_between_pickups;
                                     }
-                                    trash.currently_stored++;
                                 }
                             }
 
@@ -647,6 +783,45 @@ int main() {
         if (pause_menu_open) {
             gvk::display.clear(w_width, w_height, {0.f, 0.f, 0.f, 0.5f});
             gvk::display.draw(image_ui_background, {384, 192});
+
+            // help menu
+            if (current_menu_page == MenuPages::HELP) {
+                gvk::display.draw(image_ui_help_background, {384, 192});
+            }
+
+            // upgrade menu
+            else if (current_menu_page == MenuPages::UPGRADE) {
+                gvk::display.draw(image_ui_upgrade_background, {384, 192});
+
+                for (auto& b : buttons_upgrade_menu) {
+                    b->draw();
+                }
+
+                // upgrade completion bars
+                gvk::display.draw_rect(1096, 112, {508, 392}, {0.9647058823529412f, 0.5058823529411764f, 0.5294117647058824f, 1.f});
+                if (upgrade_1_completion > 0.f) gvk::display.draw_rect(static_cast<int>(1096.f*upgrade_1_completion), 112, {508, 392}, {0.35294117647058826f, 0.7725490196078432f, 0.30980392156862746f, 1.f});
+                gvk::display.draw_rect(1096, 112, {508, 556}, {0.9647058823529412f, 0.5058823529411764f, 0.5294117647058824f, 1.f});
+                if (upgrade_2_completion > 0.f) gvk::display.draw_rect(static_cast<int>(1096.f*upgrade_2_completion), 112, {508, 556}, {0.35294117647058826f, 0.7725490196078432f, 0.30980392156862746f, 1.f});
+                gvk::display.draw_rect(1096, 112, {508, 720}, {0.9647058823529412f, 0.5058823529411764f, 0.5294117647058824f, 1.f});
+                if (upgrade_3_completion > 0.f) gvk::display.draw_rect(static_cast<int>(1096.f*upgrade_3_completion), 112, {508, 720}, {0.35294117647058826f, 0.7725490196078432f, 0.30980392156862746f, 1.f});
+
+                // upgrade names
+                if (upgrade_1_name != "") {
+                    glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_1_name, 72);
+                    gvk::display.draw_text(&font_medium, upgrade_1_name, {492+564-text_size.x*0.5, 376+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                }
+            }
+
+            // storage upgrade menu
+            else if (current_menu_page == MenuPages::STORAGE_UPGRADE) {
+                gvk::display.draw_text(&font_medium, "STORAGE UPGRADE MENU", {384+64, 192+64}, 72, {1, 1, 1, 1});
+            }
+
+            // settings menu
+            else if (current_menu_page == MenuPages::SETTINGS) {
+                gvk::display.draw_text(&font_medium, "SETTINGS MENU", {384+64, 192+64}, 72, {1, 1, 1, 1});
+            }
+
             for (auto& b : buttons_to_update) {
                 b->draw();
             }

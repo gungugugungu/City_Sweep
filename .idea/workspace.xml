@@ -51,8 +51,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="base for pause menu">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="actually fixed blending this time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -62,6 +63,7 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen demo.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/screen demo.aseprite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,9 +98,6 @@
     <setting file="file://$PROJECT_DIR$/include/GVK-Engine/gvk.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///dap.json" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/gvk.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/main.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="mbIrZKIq" />
@@ -212,7 +211,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "cidr.DebugProfilesConfigurable",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -222,34 +221,29 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
-  <component name="SelectedDebugProfileService"><![CDATA[{
-  "profileIdByStamp": [
+  <component name="SelectedDebugProfileService">{
+  &quot;profileIdByStamp&quot;: [
     {
-      "first": {
-        "##RUN_CONFIGURATION##": "CMake Application.City_Sweep",
-        "cmake": "CMakeBuildProfile:Debug"
+      &quot;first&quot;: {
+        &quot;##RUN_CONFIGURATION##&quot;: &quot;CMake Application.City_Sweep&quot;,
+        &quot;cmake&quot;: &quot;CMakeBuildProfile:Debug&quot;
       },
-      "second": "25277b9a-c02e-431e-91ab-c9b96984cd92"
+      &quot;second&quot;: &quot;25277b9a-c02e-431e-91ab-c9b96984cd92&quot;
     },
     {
-      "first": {
-        "##RUN_CONFIGURATION##": "CMake Application.City_Sweep",
-        "cmake": "CMakeBuildProfile:Release"
+      &quot;first&quot;: {
+        &quot;##RUN_CONFIGURATION##&quot;: &quot;CMake Application.City_Sweep&quot;,
+        &quot;cmake&quot;: &quot;CMakeBuildProfile:Release&quot;
       },
-      "second": "25277b9a-c02e-431e-91ab-c9b96984cd92"
+      &quot;second&quot;: &quot;25277b9a-c02e-431e-91ab-c9b96984cd92&quot;
     }
   ],
-  "modificationCount": 15
-}]]></component>
+  &quot;modificationCount&quot;: 15
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="" />
@@ -324,8 +318,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="ported over the fpscontroller and the charactercontroller" />
-    <MESSAGE value="left these whatever files out of last commit sorry" />
     <MESSAGE value="had to rewrite the texture loading the gltf loading functions so it works" />
     <MESSAGE value="made the scene loader return vertices and indices as well" />
     <MESSAGE value="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something" />
@@ -349,7 +341,9 @@
     <MESSAGE value="fixed ao appearing over 2D rendering" />
     <MESSAGE value="surface blending" />
     <MESSAGE value="base for pause menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="base for pause menu" />
+    <MESSAGE value="this was a funny bug for sure" />
+    <MESSAGE value="actually fixed blending this time" />
+    <option name="LAST_COMMIT_MESSAGE" value="actually fixed blending this time" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
