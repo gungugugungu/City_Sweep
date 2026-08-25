@@ -480,6 +480,8 @@ int main() {
     image_ui_help_background.load_from_file("../textures/ui help background.png");
     gvk::Surface image_ui_upgrade_background;
     image_ui_upgrade_background.load_from_file("../textures/ui upgrade background.png");
+    gvk::Surface image_ui_su_background;
+    image_ui_su_background.load_from_file("../textures/ui storage upgrade background.png");
 
     // dev env loading
     gvk::GLTFReturns dev_env = gvk::load_gltf_scene("../scenes/devenv.glb").value();
@@ -508,6 +510,12 @@ int main() {
     player.move_to({0.f, 5.f, 0.f});
     bool mouse_left = false;
     bool mouse_right = false;
+
+    // trash data
+    struct {
+        int currently_stored = 0;
+        int max_storable = 10;
+    } trash;
 
     // upgrades
     function<void()> upgrade_1_buy = [&]{};
@@ -562,9 +570,38 @@ int main() {
     function<void()> vacuum_upgrade_2_buy = [&]{};
     function<void()> vacuum_upgrade_3_buy = [&]{};
 
+    // storage upgrades
+    bool upgrade_backpack_bought=false;
+    bool upgrade_trashbag_bought=false;
+    bool upgrade_wheelbarrow_bought=false;
+    bool upgrade_trashcan_bought=false;
+    int upgrade_backpack_price = 50;
+    int upgrade_backpack_amount = 50;
+    int upgrade_trashbag_price = 150;
+    int upgrade_trashbag_amount = 250;
+    function<void()> buy_backpack_upgrade = [&] {
+        if (!upgrade_backpack_bought) {
+            upgrade_backpack_bought = true;
+            if (trash.max_storable < upgrade_backpack_amount) trash.max_storable = upgrade_backpack_amount;
+        }
+    };
+    function<void()> buy_trashbag_upgrade = [&] {
+        if (!upgrade_trashbag_bought) {
+            upgrade_trashbag_bought = true;
+            if (trash.max_storable < upgrade_trashbag_amount) trash.max_storable = upgrade_trashbag_amount;
+        }
+    };
+    function<void()> buy_wheelbarrow_upgrade = [&] {
+        if (!upgrade_wheelbarrow_bought) upgrade_wheelbarrow_bought = true;
+    };
+    function<void()> buy_trashcan_upgrade = [&] {
+        if (!upgrade_trashcan_bought) upgrade_trashcan_bought = true;
+    };
+
     // UI
     vector<UIButton*> buttons_to_update;
     vector<UIButton*> buttons_upgrade_menu;
+    vector<UIButton*> buttons_storage_upgrade_menu;
     MenuPages current_menu_page = HELP;
     UpgradePages current_upgrade_page = HAND;
     bool pause_menu_open = false;
@@ -623,11 +660,11 @@ int main() {
         upgrade_1_buy = hand_upgrade_1_buy;
         upgrade_2_buy = hand_upgrade_2_buy;
         upgrade_3_buy = hand_upgrade_3_buy;
-        upgrade_1_name = "Pick up speed";
+        upgrade_1_name = "Pickup speed";
         upgrade_2_name = "Palm size";
         upgrade_3_name = "Hold to pick up";
         upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
-        upgrade_2_completion = 0.f;
+        upgrade_2_completion = static_cast<float>(hand.upgrade_2_progress)/static_cast<float>(hand.upgrade_2_max);
         upgrade_3_completion = (hand.upgrade_3_bought) ? 1.f : 0.f;
     };
     button_upgrade_hand.on_click_callback();
@@ -673,11 +710,36 @@ int main() {
     };
     buttons_upgrade_menu.push_back(&button_upgrade_frame_3);
 
-    // trash data
-    struct {
-        int currently_stored = 0;
-        int max_storable = 10;
-    } trash;
+    UIButton button_su_trashcan;
+    button_su_trashcan.surf.load_from_file("../textures/ui su trashcan buy.png");
+    button_su_trashcan.pos = {448, 252};
+    button_su_trashcan.on_click_callback = buy_trashcan_upgrade;
+    buttons_storage_upgrade_menu.push_back(&button_su_trashcan);
+
+    UIButton button_su_wheelbarrow;
+    button_su_wheelbarrow.surf.load_from_file("../textures/ui su wheelbarrow buy.png");
+    button_su_wheelbarrow.pos = {772, 292};
+    button_su_wheelbarrow.on_click_callback = buy_wheelbarrow_upgrade;
+    buttons_storage_upgrade_menu.push_back(&button_su_wheelbarrow);
+
+    UIButton button_su_trashbag;
+    button_su_trashbag.surf.load_from_file("../textures/ui su trashbag buy.png");
+    button_su_trashbag.pos = {1068, 332};
+    button_su_trashbag.on_click_callback = buy_trashbag_upgrade;
+    buttons_storage_upgrade_menu.push_back(&button_su_trashbag);
+
+    UIButton button_su_backpack;
+    button_su_backpack.surf.load_from_file("../textures/ui su backpack buy.png");
+    button_su_backpack.pos = {1364, 368};
+    button_su_backpack.on_click_callback = buy_backpack_upgrade;
+    buttons_storage_upgrade_menu.push_back(&button_su_backpack);
+
+    function<void()> load_storage_upgrade_images = [&] {
+        (upgrade_backpack_bought) ? button_su_backpack.surf.load_from_file("../textures/ui su backpack bought.png") : button_su_backpack.surf.load_from_file("../textures/ui su backpack buy.png");
+        (upgrade_trashbag_bought) ? button_su_trashbag.surf.load_from_file("../textures/ui su trashbag bought.png") : button_su_trashbag.surf.load_from_file("../textures/ui su trashbag buy.png");
+        (upgrade_wheelbarrow_bought) ? button_su_wheelbarrow.surf.load_from_file("../textures/ui su wheelbarrow bought.png") : button_su_wheelbarrow.surf.load_from_file("../textures/ui su wheelbarrow buy.png");
+        (upgrade_trashcan_bought) ? button_su_trashcan.surf.load_from_file("../textures/ui su trashcan bought.png") : button_su_trashcan.surf.load_from_file("../textures/ui su trashcan buy.png");
+    };
 
     // picking up trash
     function<void(RaycastReturns hit)> pickup_trash = [&](RaycastReturns hit) {
@@ -759,6 +821,10 @@ int main() {
                     for (auto& b : buttons_upgrade_menu) {
                         b->update(&e);
                     }
+                } else if (current_menu_page == STORAGE_UPGRADE) {
+                    for (auto& b : buttons_storage_upgrade_menu) {
+                        b->update(&e);
+                    }
                 }
             }
 
@@ -782,6 +848,8 @@ int main() {
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
                 if (e.button.button == SDL_BUTTON_LEFT) {
                     mouse_left = true;
+
+                    if (pause_menu_open && current_menu_page==STORAGE_UPGRADE) load_storage_upgrade_images();
 
                     if (!pause_menu_open) {
                         auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
@@ -893,7 +961,11 @@ int main() {
 
             // storage upgrade menu
             else if (current_menu_page == MenuPages::STORAGE_UPGRADE) {
-                gvk::display.draw_text(&font_medium, "STORAGE UPGRADE MENU", {384+64, 192+64}, 72, {1, 1, 1, 1});
+                gvk::display.draw(image_ui_su_background, {384, 192});
+
+                for (auto& b : buttons_storage_upgrade_menu) {
+                    b->draw();
+                }
             }
 
             // settings menu

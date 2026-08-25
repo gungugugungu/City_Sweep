@@ -51,7 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="first upgrade is working and fine">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="implemented all the hand upgrades">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
@@ -62,6 +62,7 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen demo.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/screen demo.aseprite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +73,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7843" />
+    <option name="cachedIndexableFilesCount" value="7918" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
@@ -106,61 +107,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0380429650626062E-4" />
-      <entry key="MS500" value="0.21312710150827002" />
-      <entry key="S2" value="1.1220207081308207" />
-      <entry key="S5" value="1.792994080147862" />
-      <entry key="S10" value="2.4904011424942007" />
-      <entry key="S30" value="5.79944649239751" />
-      <entry key="S60" value="12.392972654274049" />
-      <entry key="M2" value="22.37007780264672" />
-      <entry key="M5" value="35.32137080098498" />
-      <entry key="M10" value="45.927025493810184" />
-      <entry key="M15" value="54.35806612822231" />
-      <entry key="M30" value="77.2046492770608" />
-      <entry key="H1" value="120.64984455871156" />
-      <entry key="H2" value="209.46681462259298" />
-      <entry key="H4" value="339.1564165324045" />
-      <entry key="D1" value="587.8895004922457" />
-      <entry key="W1" value="655.6769441234421" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000758136451" />
+      <entry key="S2" value="1.0286583747261941" />
+      <entry key="S5" value="1.4494217234810511" />
+      <entry key="S10" value="2.323938763284854" />
+      <entry key="S30" value="4.709560558883799" />
+      <entry key="S60" value="6.6335263264714355" />
+      <entry key="M2" value="12.060336230104133" />
+      <entry key="M5" value="49.763068388281795" />
+      <entry key="M10" value="118.1124034095461" />
+      <entry key="M15" value="170.89352440032707" />
+      <entry key="M30" value="266.8547109364549" />
+      <entry key="H1" value="364.1530712970329" />
+      <entry key="H2" value="485.4153067883441" />
+      <entry key="H4" value="637.1545274591325" />
+      <entry key="D1" value="921.0924717290987" />
+      <entry key="W1" value="998.8366475658587" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0002928587308058" />
-      <entry key="S2" value="1.1519969707226987" />
-      <entry key="S5" value="1.7466024200846564" />
-      <entry key="S10" value="2.507273133240914" />
-      <entry key="S30" value="5.786714296217014" />
-      <entry key="S60" value="10.578637674827842" />
-      <entry key="M2" value="16.130981704626688" />
-      <entry key="M5" value="22.425150145352116" />
-      <entry key="M10" value="27.449474691007314" />
-      <entry key="M15" value="30.66267192034212" />
-      <entry key="M30" value="36.30701704339683" />
-      <entry key="H1" value="43.06499858094591" />
-      <entry key="H2" value="55.58509422907098" />
-      <entry key="H4" value="75.2035174236469" />
-      <entry key="D1" value="116.16093528804245" />
-      <entry key="W1" value="127.8546388441722" />
+      <entry key="MS100" value="1.0729393813026518E-6" />
+      <entry key="MS500" value="0.06402401216727406" />
+      <entry key="S2" value="0.5798825398561247" />
+      <entry key="S5" value="1.1923148204778293" />
+      <entry key="S10" value="1.8457025452665379" />
+      <entry key="S30" value="2.9356584367250362" />
+      <entry key="S60" value="3.4571498795748266" />
+      <entry key="M2" value="4.335215239477406" />
+      <entry key="M5" value="8.120065390186587" />
+      <entry key="M10" value="16.07743165558618" />
+      <entry key="M15" value="23.62267281529375" />
+      <entry key="M30" value="39.314803343310324" />
+      <entry key="H1" value="55.376066827969176" />
+      <entry key="H2" value="73.95562912657074" />
+      <entry key="H4" value="97.45847070029657" />
+      <entry key="D1" value="144.2146099387403" />
+      <entry key="W1" value="157.54985828096184" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.651060719403198E-4" />
-      <entry key="MS500" value="0.251110895995662" />
-      <entry key="S2" value="1.6178189399683902" />
-      <entry key="S5" value="3.121835249958211" />
-      <entry key="S10" value="4.713712129420134" />
-      <entry key="S30" value="11.370030093801999" />
-      <entry key="S60" value="22.763032398092584" />
-      <entry key="M2" value="38.3333279609915" />
-      <entry key="M5" value="57.64107970270791" />
-      <entry key="M10" value="73.29556762576568" />
-      <entry key="M15" value="84.95176704615618" />
-      <entry key="M30" value="113.46293748641102" />
-      <entry key="H1" value="163.6821496084034" />
-      <entry key="H2" value="265.0289833562227" />
-      <entry key="H4" value="414.34385434810594" />
-      <entry key="D1" value="704.0462412243534" />
-      <entry key="W1" value="783.5309233405205" />
+      <entry key="MS100" value="0.008431470597700882" />
+      <entry key="MS500" value="0.38633843232388637" />
+      <entry key="S2" value="1.0334478534050924" />
+      <entry key="S5" value="2.115794539889891" />
+      <entry key="S10" value="3.7081268311035283" />
+      <entry key="S30" value="7.34955685213506" />
+      <entry key="S60" value="9.89724405476049" />
+      <entry key="M2" value="16.26008460428057" />
+      <entry key="M5" value="57.77180323688149" />
+      <entry key="M10" value="134.09001481181048" />
+      <entry key="M15" value="194.42440092006646" />
+      <entry key="M30" value="306.0967856734552" />
+      <entry key="H1" value="419.47795583027846" />
+      <entry key="H2" value="559.3364583856438" />
+      <entry key="H4" value="734.5903273448951" />
+      <entry key="D1" value="1065.3015749176645" />
+      <entry key="W1" value="1156.3856501120054" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -181,38 +182,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "CMake Application.City_Sweep.executor": "Run",
-    "CidrDebugProfileConversion": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion": "Natvis support suggestion",
-    "Notification.DoNotAsk-CidrNatvisSuggestion": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/gungu/Documents/coding/c++/City Sweep",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.City_Sweep.executor&quot;: &quot;Run&quot;,
+    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion&quot;: &quot;Natvis support suggestion&quot;,
+    &quot;Notification.DoNotAsk-CidrNatvisSuggestion&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gungu/Documents/coding/c++/City Sweep&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="City_Sweep" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="City_Sweep" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="City_Sweep" RUN_TARGET_NAME="City_Sweep">
       <method v="2">
@@ -316,7 +317,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="made the scene loader return vertices and indices as well" />
     <MESSAGE value="this doesn't work but I have no idea how it'd work, so I guess I'll just continue tomorrow with a fresh mind or something" />
     <MESSAGE value="nah man I give up I already programmed for 3.25 hours today I'ma go watch Andor for 2 hours and eat dinner" />
     <MESSAGE value="fixed frustum culling and also a zero devision in the gltf loader" />
@@ -341,7 +341,8 @@
     <MESSAGE value="this was a funny bug for sure" />
     <MESSAGE value="actually fixed blending this time" />
     <MESSAGE value="first upgrade is working and fine" />
-    <option name="LAST_COMMIT_MESSAGE" value="first upgrade is working and fine" />
+    <MESSAGE value="implemented all the hand upgrades" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented all the hand upgrades" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
