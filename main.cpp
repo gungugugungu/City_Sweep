@@ -517,6 +517,8 @@ int main() {
     float money = 0;
     float trash_price = 0.5f;
     Tools current_tool = TOOLHAND;
+    vector<Tools> available_tools = {TOOLHAND};
+    int current_tool_idx = 0;
     float tool_animation_frametime = 0.1f;
     float frame_accum = 0.f;
     int current_tool_anim_frame = 0;
@@ -537,16 +539,6 @@ int main() {
     string upgrade_1_name;
     string upgrade_2_name;
     string upgrade_3_name;
-
-    struct {
-        bool unlocked = false;
-        float price=50.f;
-    } broom;
-
-    struct {
-        bool unlocked = false;
-        float price=1000.f;
-    } vacuum;
 
     struct {
         float time_between_pickups = 0.5f;
@@ -573,13 +565,11 @@ int main() {
         stringstream ss;
         ss<<"../textures/hand_idle"<<i+1<<".png";
         hand.idle_anim[i].load_from_file(ss.str());
-        cout << "loaded " << ss.str() << endl;
     }
     for (int i = 0; i < 4; i++) {
         stringstream ss;
         ss<<"../textures/hand_click"<<i+1<<".png";
         hand.click_anim[i].load_from_file(ss.str());
-        cout << "loaded " << ss.str() << endl;
     }
 
     function<void()> hand_upgrade_1_buy = [&] {
@@ -601,9 +591,39 @@ int main() {
         upgrade_3_completion = 1.f;
     };
 
+    struct {
+        bool unlocked = false;
+        float price=50.f;
+
+        vector<gvk::Surface> idle_anim;
+        vector<gvk::Surface> click_anim;
+        bool anim_clicking;
+    } broom;
+
+    broom.idle_anim.resize(4); broom.click_anim.resize(4);
+    for (int i = 0; i < 4; i++) {
+        stringstream ss;
+        ss<<"../textures/broom_idle"<<i+1<<".png";
+        broom.idle_anim[i].load_from_file(ss.str());
+    }
+    for (int i = 0; i < 4; i++) {
+        stringstream ss;
+        ss<<"../textures/broom_click"<<i+1<<".png";
+        broom.click_anim[i].load_from_file(ss.str());
+    }
+
     function<void()> broom_upgrade_1_buy = [&]{};
     function<void()> broom_upgrade_2_buy = [&]{};
     function<void()> broom_upgrade_3_buy = [&]{};
+
+    struct {
+        bool unlocked = false;
+        float price=1000.f;
+
+        vector<gvk::Surface> idle_anim;
+        vector<gvk::Surface> click_anim;
+        bool anim_clicking;
+    } vacuum;
 
     function<void()> vacuum_upgrade_1_buy = [&]{};
     function<void()> vacuum_upgrade_2_buy = [&]{};
@@ -713,7 +733,12 @@ int main() {
     button_upgrade_broom.surf.load_from_file("../textures/ui upgrade broom button.png");
     button_upgrade_broom.pos = {844, 248};
     button_upgrade_broom.on_click_callback = [&] {
-        if (!broom.unlocked) broom.unlocked = true;
+        if (!broom.unlocked) {
+            broom.unlocked = true;
+            current_tool = TOOLBROOM;
+            available_tools.push_back(TOOLBROOM);
+            current_tool_idx = available_tools.size()-1;
+        }
         current_upgrade_page = BROOM;
     };
     buttons_upgrade_menu.push_back(&button_upgrade_broom);
@@ -722,7 +747,12 @@ int main() {
     button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade vacuum button.png");
     button_upgrade_vacuum.pos = {1196, 248};
     button_upgrade_vacuum.on_click_callback = [&] {
-        if (!vacuum.unlocked) vacuum.unlocked = true;
+        if (!vacuum.unlocked) {
+            vacuum.unlocked = true;
+            current_tool = TOOLVACUUM;
+            available_tools.push_back(TOOLVACUUM);
+            current_tool_idx = available_tools.size()-1;
+        }
         current_upgrade_page = VACUUM;
     };
     buttons_upgrade_menu.push_back(&button_upgrade_vacuum);
@@ -896,6 +926,12 @@ int main() {
                 mouse_motion_relative.x = e.motion.xrel;
                 mouse_motion_relative.y = e.motion.yrel;
             }
+            if (e.type == SDL_EVENT_MOUSE_WHEEL) { // MOUSE SCROLL
+                current_tool_idx += e.wheel.integer_y;
+                if (current_tool_idx < 0) current_tool_idx = available_tools.size()-1;
+                if (current_tool_idx > available_tools.size()-1) current_tool_idx = 0;
+                current_tool = available_tools[current_tool_idx];
+            }
             if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) { // MOUSE PRESSED
                 if (e.button.button == SDL_BUTTON_LEFT) {
                     mouse_left = true;
@@ -974,6 +1010,14 @@ int main() {
                 if (current_tool_anim_frame == 3) hand.anim_clicking = false;
             } else {
                 gvk::display.draw(hand.idle_anim[current_tool_anim_frame], {0,0});
+            }
+        }
+        if (current_tool == TOOLBROOM) {
+            if (broom.anim_clicking) {
+                gvk::display.draw(broom.click_anim[current_tool_anim_frame], {0,0});
+                if (current_tool_anim_frame == 3) broom.anim_clicking = false;
+            } else {
+                gvk::display.draw(broom.idle_anim[current_tool_anim_frame], {0,0});
             }
         }
 

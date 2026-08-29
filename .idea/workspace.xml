@@ -51,16 +51,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="trash upgrades minus the wheelbarrow and trashcan for obvious reasons">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="and these I forgot to commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devenv.blend" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devenv.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.blend1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/semibold.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
@@ -72,9 +64,8 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/devenv.glb" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/devenv.glb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screen demo.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/screen demo.aseprite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/ui storage upgrade background.png" beforeDir="false" afterPath="$PROJECT_DIR$/textures/ui storage upgrade background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/broom.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/textures/broom.aseprite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/hand.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/textures/hand.aseprite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +99,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/include/GVK-Engine/gvk.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/gvk.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/main.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
@@ -119,61 +111,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000397804" />
-      <entry key="MS500" value="1.011466444834085" />
-      <entry key="S2" value="1.6166755995160353" />
-      <entry key="S5" value="2.5447115766804362" />
-      <entry key="S10" value="3.278451738859335" />
-      <entry key="S30" value="6.453345726678341" />
-      <entry key="S60" value="12.178830822102144" />
-      <entry key="M2" value="23.75530346462642" />
-      <entry key="M5" value="53.16045487346198" />
-      <entry key="M10" value="98.01454319837951" />
-      <entry key="M15" value="134.1040249003511" />
-      <entry key="M30" value="204.5294205743241" />
-      <entry key="H1" value="292.43370076208936" />
-      <entry key="H2" value="449.9077433802192" />
-      <entry key="H4" value="731.8636131394416" />
-      <entry key="D1" value="1511.2853819250868" />
-      <entry key="W1" value="1782.0251378429093" />
+      <entry key="MS100" value="1.0323459640383237" />
+      <entry key="MS500" value="1.8834759320059224" />
+      <entry key="S2" value="4.694251018492295" />
+      <entry key="S5" value="6.743085058583971" />
+      <entry key="S10" value="7.7528398465715735" />
+      <entry key="S30" value="8.561828379215932" />
+      <entry key="S60" value="8.910106840659456" />
+      <entry key="M2" value="9.721953254886722" />
+      <entry key="M5" value="16.0945825987696" />
+      <entry key="M10" value="34.41284842390924" />
+      <entry key="M15" value="52.03692771491212" />
+      <entry key="M30" value="99.38436971172851" />
+      <entry key="H1" value="194.14990892087891" />
+      <entry key="H2" value="371.8814317569287" />
+      <entry key="H4" value="680.0003619454636" />
+      <entry key="D1" value="1595.4670574028685" />
+      <entry key="W1" value="1934.0074812052476" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="6.196993990754967E-6" />
-      <entry key="MS500" value="0.0908732823325194" />
-      <entry key="S2" value="0.5490464386312539" />
-      <entry key="S5" value="0.7880256785286294" />
-      <entry key="S10" value="0.9438591640879703" />
-      <entry key="S30" value="1.955369040517885" />
-      <entry key="S60" value="3.243680749732703" />
-      <entry key="M2" value="4.655717114281967" />
-      <entry key="M5" value="7.135255312198162" />
-      <entry key="M10" value="10.517395647240878" />
-      <entry key="M15" value="13.198660581780503" />
-      <entry key="M30" value="18.406172644581982" />
-      <entry key="H1" value="24.967970826213577" />
-      <entry key="H2" value="41.60059742807761" />
-      <entry key="H4" value="78.97961958992619" />
-      <entry key="D1" value="194.7096096045215" />
-      <entry key="W1" value="236.83528531602298" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="3.6329604594479996E-144" />
+      <entry key="S5" value="4.208276514856235E-58" />
+      <entry key="S10" value="2.0514084222446375E-29" />
+      <entry key="S30" value="2.7375278586484E-10" />
+      <entry key="S60" value="1.677807850713544E-5" />
+      <entry key="M2" value="0.0060754411696370275" />
+      <entry key="M5" value="0.6611402542576589" />
+      <entry key="M10" value="4.1173766828011775" />
+      <entry key="M15" value="7.802478264093624" />
+      <entry key="M30" value="16.052680373135264" />
+      <entry key="H1" value="27.13440719234493" />
+      <entry key="H2" value="45.67132509389759" />
+      <entry key="H4" value="83.08508672665504" />
+      <entry key="D1" value="212.1789014518921" />
+      <entry key="W1" value="262.9760325988086" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.008608633763477605" />
-      <entry key="MS500" value="0.3997296307610619" />
-      <entry key="S2" value="1.5624111576042117" />
-      <entry key="S5" value="2.921383386073471" />
-      <entry key="S10" value="3.957520465722638" />
-      <entry key="S30" value="8.228427658549746" />
-      <entry key="S60" value="15.247932370941388" />
-      <entry key="M2" value="28.259100900252687" />
-      <entry key="M5" value="60.18061720307015" />
-      <entry key="M10" value="108.4283236467567" />
-      <entry key="M15" value="147.20711822000547" />
-      <entry key="M30" value="222.8622153911743" />
-      <entry key="H1" value="317.3506168293908" />
-      <entry key="H2" value="491.46963789257205" />
-      <entry key="H4" value="810.8118733413248" />
-      <entry key="D1" value="1705.9844074509792" />
-      <entry key="W1" value="2018.858650233711" />
+      <entry key="MS100" value="1.0041164454095648" />
+      <entry key="MS500" value="1.8725227996889018" />
+      <entry key="S2" value="4.680144843520156" />
+      <entry key="S5" value="6.732778017374917" />
+      <entry key="S10" value="7.746448914461531" />
+      <entry key="S30" value="8.559328119937243" />
+      <entry key="S60" value="8.908300850329699" />
+      <entry key="M2" value="9.72484095629161" />
+      <entry key="M5" value="16.7392933936315" />
+      <entry key="M10" value="38.494888352410385" />
+      <entry key="M15" value="59.79799844555202" />
+      <entry key="M30" value="115.39493308261021" />
+      <entry key="H1" value="221.24554411025315" />
+      <entry key="H2" value="417.51804213543505" />
+      <entry key="H4" value="763.0549516417468" />
+      <entry key="D1" value="1807.6345479344723" />
+      <entry key="W1" value="2196.9815552308764" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -329,8 +321,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="nah man I give up I already programmed for 3.25 hours today I'ma go watch Andor for 2 hours and eat dinner" />
-    <MESSAGE value="fixed frustum culling and also a zero devision in the gltf loader" />
     <MESSAGE value="holy shit it finally works, there's movement now" />
     <MESSAGE value="added trash you can pick up" />
     <MESSAGE value="trash counter woohoo" />
@@ -354,7 +344,9 @@
     <MESSAGE value="first upgrade is working and fine" />
     <MESSAGE value="implemented all the hand upgrades" />
     <MESSAGE value="trash upgrades minus the wheelbarrow and trashcan for obvious reasons" />
-    <option name="LAST_COMMIT_MESSAGE" value="trash upgrades minus the wheelbarrow and trashcan for obvious reasons" />
+    <MESSAGE value="money, buying tools, hand animation, broom animation wip" />
+    <MESSAGE value="and these I forgot to commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="and these I forgot to commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
