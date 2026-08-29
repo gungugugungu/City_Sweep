@@ -10,6 +10,12 @@
 #include <glm/gtc/constants.hpp>
 #include <memory>
 #include <algorithm>
+#include <chrono>
+
+using std::chrono::high_resolution_clock;
+using std::chrono::duration_cast;
+using std::chrono::duration;
+using std::chrono::milliseconds;
 
 reactphysics3d::PhysicsCommon physics_common;
 reactphysics3d::PhysicsWorld* world;
@@ -370,6 +376,12 @@ enum UpgradePages {
     VACUUM
 };
 
+enum Tools {
+    TOOLHAND,
+    TOOLBROOM,
+    TOOLVACUUM
+};
+
 struct RaycastReturns {
     PhysicsObject* object;
     float distance;
@@ -440,27 +452,19 @@ int main() {
 
     gvk::main_post_processing_stack.ao_radius = 2.f;
     gvk::main_post_processing_stack.ao_bias = 0.008f;
-    gvk::main_post_processing_stack.ao_samples = 32;
+    gvk::main_post_processing_stack.ao_samples = 8;
     gvk::main_post_processing_stack.vignette_strength = 0.5f;
 
     // fonts
-    stbtt_fontinfo font_regular;
-    stbtt_fontinfo font_bold;
-    stbtt_fontinfo font_semibold;
-    stbtt_fontinfo font_light;
-    stbtt_fontinfo font_medium;
-    stbtt_fontinfo font_italic;
-    gvk::load_font(&font_regular, "../fonts/regular.ttf");
-    gvk::load_font(&font_bold, "../fonts/bold.ttf");
-    gvk::load_font(&font_semibold, "../fonts/semibold.ttf");
-    gvk::load_font(&font_light, "../fonts/light.ttf");
-    gvk::load_font(&font_medium, "../fonts/medium.ttf");
-    gvk::load_font(&font_italic, "../fonts/italic.ttf");
+    stbtt_fontinfo font;
+    stbtt_fontinfo font_thin;
+    gvk::load_font(&font, "../fonts/font.ttf");
+    gvk::load_font(&font_thin, "../fonts/thin font.ttf");
 
     // physics
     rp3d::PhysicsWorld::WorldSettings _world_settings;
     _world_settings.gravity = rp3d::Vector3(0.f, -9.81f, 0.f);
-    _world_settings.defaultVelocitySolverNbIterations = 10;
+    _world_settings.defaultVelocitySolverNbIterations = 5;
     world = physics_common.createPhysicsWorld(_world_settings);
     const float time_step = 1.f / 60.f; // physics fps (basically)
     float accumulator = 0.f;
@@ -510,6 +514,12 @@ int main() {
     player.move_to({0.f, 5.f, 0.f});
     bool mouse_left = false;
     bool mouse_right = false;
+    float money = 0;
+    float trash_price = 0.5f;
+    Tools current_tool = TOOLHAND;
+    float tool_animation_frametime = 0.1f;
+    float frame_accum = 0.f;
+    int current_tool_anim_frame = 0;
 
     // trash data
     struct {
@@ -524,9 +534,19 @@ int main() {
     float upgrade_1_completion = 0.f;
     float upgrade_2_completion = 0.f;
     float upgrade_3_completion = 0.f;
-    string upgrade_1_name = "";
-    string upgrade_2_name = "";
-    string upgrade_3_name = "";
+    string upgrade_1_name;
+    string upgrade_2_name;
+    string upgrade_3_name;
+
+    struct {
+        bool unlocked = false;
+        float price=50.f;
+    } broom;
+
+    struct {
+        bool unlocked = false;
+        float price=1000.f;
+    } vacuum;
 
     struct {
         float time_between_pickups = 0.5f;
@@ -542,7 +562,26 @@ int main() {
         int max_items_to_pick_up = 6;
 
         bool upgrade_3_bought = false;
+
+        vector<gvk::Surface> idle_anim;
+        vector<gvk::Surface> click_anim;
+        bool anim_clicking;
     } hand;
+
+    hand.idle_anim.resize(4); hand.click_anim.resize(4);
+    for (int i = 0; i < 4; i++) {
+        stringstream ss;
+        ss<<"../textures/hand_idle"<<i+1<<".png";
+        hand.idle_anim[i].load_from_file(ss.str());
+        cout << "loaded " << ss.str() << endl;
+    }
+    for (int i = 0; i < 4; i++) {
+        stringstream ss;
+        ss<<"../textures/hand_click"<<i+1<<".png";
+        hand.click_anim[i].load_from_file(ss.str());
+        cout << "loaded " << ss.str() << endl;
+    }
+
     function<void()> hand_upgrade_1_buy = [&] {
         if (hand.upgrade_1_progress < hand.upgrade_1_max) {
             hand.time_between_pickups -= hand.upgrade_1_decrease_by;
@@ -576,9 +615,9 @@ int main() {
     bool upgrade_wheelbarrow_bought=false;
     bool upgrade_trashcan_bought=false;
     int upgrade_backpack_price = 50;
-    int upgrade_backpack_amount = 50;
+    int upgrade_backpack_amount = 25;
     int upgrade_trashbag_price = 150;
-    int upgrade_trashbag_amount = 250;
+    int upgrade_trashbag_amount = 75;
     function<void()> buy_backpack_upgrade = [&] {
         if (!upgrade_backpack_bought) {
             upgrade_backpack_bought = true;
@@ -674,6 +713,7 @@ int main() {
     button_upgrade_broom.surf.load_from_file("../textures/ui upgrade broom button.png");
     button_upgrade_broom.pos = {844, 248};
     button_upgrade_broom.on_click_callback = [&] {
+        if (!broom.unlocked) broom.unlocked = true;
         current_upgrade_page = BROOM;
     };
     buttons_upgrade_menu.push_back(&button_upgrade_broom);
@@ -682,6 +722,7 @@ int main() {
     button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade vacuum button.png");
     button_upgrade_vacuum.pos = {1196, 248};
     button_upgrade_vacuum.on_click_callback = [&] {
+        if (!vacuum.unlocked) vacuum.unlocked = true;
         current_upgrade_page = VACUUM;
     };
     buttons_upgrade_menu.push_back(&button_upgrade_vacuum);
@@ -741,6 +782,11 @@ int main() {
         (upgrade_trashcan_bought) ? button_su_trashcan.surf.load_from_file("../textures/ui su trashcan bought.png") : button_su_trashcan.surf.load_from_file("../textures/ui su trashcan buy.png");
     };
 
+    function<void()> load_tool_button_images = [&] {
+        (broom.unlocked) ? button_upgrade_broom.surf.load_from_file("../textures/ui upgrade broom button.png") : button_upgrade_broom.surf.load_from_file("../textures/ui upgrade buy button.png");
+        (vacuum.unlocked) ? button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade vacuum button.png") : button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade buy button.png");
+    };
+
     // picking up trash
     function<void(RaycastReturns hit)> pickup_trash = [&](RaycastReturns hit) {
         if (trash.currently_stored < trash.max_storable && hand.timer <= 0.f) {
@@ -775,6 +821,10 @@ int main() {
                 trash.currently_stored++;
                 hand.timer = hand.time_between_pickups;
             }
+
+            // anim
+            current_tool_anim_frame = 0;
+            hand.anim_clicking = true;
         }
     };
 
@@ -790,6 +840,7 @@ int main() {
         Uint64 now = SDL_GetTicks();
         float dt = static_cast<float>(now - last_time) / 1000.f;
         accumulator += dt;
+        frame_accum += dt;
         last_time = now;
         int w_width, w_height;
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
@@ -850,6 +901,7 @@ int main() {
                     mouse_left = true;
 
                     if (pause_menu_open && current_menu_page==STORAGE_UPGRADE) load_storage_upgrade_images();
+                    if (pause_menu_open && current_menu_page==UPGRADE) load_tool_button_images();
 
                     if (!pause_menu_open) {
                         auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
@@ -866,6 +918,7 @@ int main() {
 
                                 // trash bin
                                 else if (hit.object->mesh->name.contains("trashbin")) {
+                                    money += trash.currently_stored*trash_price;
                                     trash.currently_stored = 0;
                                 }
                             }
@@ -910,30 +963,66 @@ int main() {
         ImGui::Render();
 
 // -------------------- 2D RENDERING --------------------
+        // current tool
+        if (frame_accum >= tool_animation_frametime) {
+            if (current_tool_anim_frame < 3) { current_tool_anim_frame++; } else { current_tool_anim_frame = 0; }
+            frame_accum -= tool_animation_frametime;
+        }
+        if (current_tool == TOOLHAND) {
+            if (hand.anim_clicking) {
+                gvk::display.draw(hand.click_anim[current_tool_anim_frame], {0,0});
+                if (current_tool_anim_frame == 3) hand.anim_clicking = false;
+            } else {
+                gvk::display.draw(hand.idle_anim[current_tool_anim_frame], {0,0});
+            }
+        }
+
         // trash amount display
         gvk::display.draw(image_trashbag, {1624, 768});
-        glm::vec2 counter_text_size = gvk::get_text_size(&font_bold, to_string(trash.currently_stored), 128.f);
-        gvk::display.draw_text(&font_bold, to_string(trash.currently_stored), {1624+116-(counter_text_size.x*0.5f), 768+128-(counter_text_size.y*0.5f)}, 128.f, {0.396078431372549f, 0.45098039215686275f, 0.5725490196078431f, 1.f});
+        glm::vec2 counter_text_size = gvk::get_text_size(&font, to_string(trash.currently_stored), 128.f);
+        gvk::display.draw_text(&font, to_string(trash.currently_stored), {1624+116-(counter_text_size.x*0.5f), 768+128-(counter_text_size.y*0.5f)}, 128.f, {0.396078431372549f, 0.45098039215686275f, 0.5725490196078431f, 1.f});
 
         // crosshair
         gvk::display.draw_rect(6, 6, {w_width*0.5f-3, w_height*0.5f-3}, {1, 1, 1, 0.5f});
 
 // -------------------- PAUSE MENU --------------------
+        // money
+        stringstream money_text;
+        money_text<<money<<"$";
+        glm::vec2 money_text_size = gvk::get_text_size(&font, money_text.str(), 96.f);
+        gvk::display.draw_text(&font, money_text.str(), {w_width-16-static_cast<int>(money_text_size.x), 16}, 96.f, {1, 0.784313725, 0.145098039, 1});
+
         if (pause_menu_open) {
             gvk::display.clear(w_width, w_height, {0.f, 0.f, 0.f, 0.5f});
-            gvk::display.draw(image_ui_background, {384, 192});
+            gvk::display.draw(image_ui_background, {384, 188});
 
             // help menu
             if (current_menu_page == MenuPages::HELP) {
-                gvk::display.draw(image_ui_help_background, {384, 192});
+                gvk::display.draw(image_ui_help_background, {384, 188});
             }
 
             // upgrade menu
             else if (current_menu_page == MenuPages::UPGRADE) {
-                gvk::display.draw(image_ui_upgrade_background, {384, 192});
+                gvk::display.draw(image_ui_upgrade_background, {384, 188});
 
                 for (auto& b : buttons_upgrade_menu) {
                     b->draw();
+                }
+
+                // broom
+                if (!broom.unlocked) {
+                    stringstream broom_price_text;
+                    broom_price_text<<broom.price<<" $";
+                    glm::vec2 broom_price_text_size = gvk::get_text_size(&font, broom_price_text.str(), 48.f);
+                    gvk::display.draw_text(&font, broom_price_text.str(), {844+136-broom_price_text_size.x*0.5f, 248+40-broom_price_text_size.y*0.5f}, 48.f, {0.352941176, 0.77254902, 0.309803922, 1});
+                }
+
+                // vacuum
+                if (!vacuum.unlocked) {
+                    stringstream vacuum_price_text;
+                    vacuum_price_text<<vacuum.price<<" $";
+                    glm::vec2 vacuum_price_text_size = gvk::get_text_size(&font, vacuum_price_text.str(), 48.f);
+                    gvk::display.draw_text(&font, vacuum_price_text.str(), {1196+136-vacuum_price_text_size.x*0.5f, 248+40-vacuum_price_text_size.y*0.5f}, 48.f, {0.352941176, 0.77254902, 0.309803922, 1});
                 }
 
                 // upgrade completion bars
@@ -946,22 +1035,22 @@ int main() {
 
                 // upgrade names
                 if (upgrade_1_name != "") {
-                    glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_1_name, 72);
-                    gvk::display.draw_text(&font_medium, upgrade_1_name, {492+564-text_size.x*0.5, 376+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                    glm::vec2 text_size = gvk::get_text_size(&font, upgrade_1_name, 72);
+                    gvk::display.draw_text(&font, upgrade_1_name, {492+564-text_size.x*0.5, 376+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
                 }
                 if (upgrade_2_name != "") {
-                    glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_2_name, 72);
-                    gvk::display.draw_text(&font_medium, upgrade_2_name, {492+564-text_size.x*0.5, 540+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                    glm::vec2 text_size = gvk::get_text_size(&font, upgrade_2_name, 72);
+                    gvk::display.draw_text(&font, upgrade_2_name, {492+564-text_size.x*0.5, 540+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
                 }
                 if (upgrade_3_name != "") {
-                    glm::vec2 text_size = gvk::get_text_size(&font_medium, upgrade_3_name, 72);
-                    gvk::display.draw_text(&font_medium, upgrade_3_name, {492+564-text_size.x*0.5, 704+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                    glm::vec2 text_size = gvk::get_text_size(&font, upgrade_3_name, 72);
+                    gvk::display.draw_text(&font, upgrade_3_name, {492+564-text_size.x*0.5, 704+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
                 }
             }
 
             // storage upgrade menu
             else if (current_menu_page == MenuPages::STORAGE_UPGRADE) {
-                gvk::display.draw(image_ui_su_background, {384, 192});
+                gvk::display.draw(image_ui_su_background, {384, 188});
 
                 for (auto& b : buttons_storage_upgrade_menu) {
                     b->draw();
@@ -970,7 +1059,7 @@ int main() {
 
             // settings menu
             else if (current_menu_page == MenuPages::SETTINGS) {
-                gvk::display.draw_text(&font_medium, "SETTINGS MENU", {384+64, 192+64}, 72, {1, 1, 1, 1});
+                gvk::display.draw_text(&font, "SETTINGS MENU", {384+64, 192+64}, 72, {1, 1, 1, 1});
             }
 
             for (auto& b : buttons_to_update) {
