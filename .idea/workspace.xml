@@ -51,8 +51,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="and these I forgot to commit">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="broom animation and switching tools">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devenv.blend" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devenv.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.blend1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
@@ -64,8 +66,6 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/broom.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/textures/broom.aseprite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/hand.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/textures/hand.aseprite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7925" />
+    <option name="cachedIndexableFilesCount" value="7933" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
@@ -99,8 +99,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/include/GVK-Engine/gvk.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/gvk.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/main.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="mbIrZKIq" />
@@ -111,61 +110,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0323459640383237" />
-      <entry key="MS500" value="1.8834759320059224" />
-      <entry key="S2" value="4.694251018492295" />
-      <entry key="S5" value="6.743085058583971" />
-      <entry key="S10" value="7.7528398465715735" />
-      <entry key="S30" value="8.561828379215932" />
-      <entry key="S60" value="8.910106840659456" />
-      <entry key="M2" value="9.721953254886722" />
-      <entry key="M5" value="16.0945825987696" />
-      <entry key="M10" value="34.41284842390924" />
-      <entry key="M15" value="52.03692771491212" />
-      <entry key="M30" value="99.38436971172851" />
-      <entry key="H1" value="194.14990892087891" />
-      <entry key="H2" value="371.8814317569287" />
-      <entry key="H4" value="680.0003619454636" />
-      <entry key="D1" value="1595.4670574028685" />
-      <entry key="W1" value="1934.0074812052476" />
+      <entry key="MS100" value="1.000000000106384" />
+      <entry key="MS500" value="1.0101248918572034" />
+      <entry key="S2" value="1.3781425012256507" />
+      <entry key="S5" value="2.5236794817111408" />
+      <entry key="S10" value="4.204760007808996" />
+      <entry key="S30" value="7.505944704249015" />
+      <entry key="S60" value="10.273886112953766" />
+      <entry key="M2" value="13.543026550754686" />
+      <entry key="M5" value="21.433909973006905" />
+      <entry key="M10" value="41.805501415564216" />
+      <entry key="M15" value="66.61242163176733" />
+      <entry key="M30" value="138.3161589413051" />
+      <entry key="H1" value="258.52555515849485" />
+      <entry key="H2" value="458.811781137663" />
+      <entry key="H4" value="789.1422352693271" />
+      <entry key="D1" value="1794.498428869296" />
+      <entry key="W1" value="2178.4980503790553" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.6329604594479996E-144" />
-      <entry key="S5" value="4.208276514856235E-58" />
-      <entry key="S10" value="2.0514084222446375E-29" />
-      <entry key="S30" value="2.7375278586484E-10" />
-      <entry key="S60" value="1.677807850713544E-5" />
-      <entry key="M2" value="0.0060754411696370275" />
-      <entry key="M5" value="0.6611402542576589" />
-      <entry key="M10" value="4.1173766828011775" />
-      <entry key="M15" value="7.802478264093624" />
-      <entry key="M30" value="16.052680373135264" />
-      <entry key="H1" value="27.13440719234493" />
-      <entry key="H2" value="45.67132509389759" />
-      <entry key="H4" value="83.08508672665504" />
-      <entry key="D1" value="212.1789014518921" />
-      <entry key="W1" value="262.9760325988086" />
+      <entry key="MS100" value="1.2594358269890329E-17" />
+      <entry key="MS500" value="4.207765545397545E-4" />
+      <entry key="S2" value="0.19212713502263584" />
+      <entry key="S5" value="0.9689617488256256" />
+      <entry key="S10" value="2.0254326453808424" />
+      <entry key="S30" value="3.631462388474747" />
+      <entry key="S60" value="4.327200276479447" />
+      <entry key="M2" value="5.003426098131265" />
+      <entry key="M5" value="6.143649582032831" />
+      <entry key="M10" value="8.303967968608687" />
+      <entry key="M15" value="11.156145988094758" />
+      <entry key="M30" value="20.700060551063064" />
+      <entry key="H1" value="36.64230871176278" />
+      <entry key="H2" value="60.26459255882239" />
+      <entry key="H4" value="100.87381815209497" />
+      <entry key="D1" value="240.8238012230236" />
+      <entry key="W1" value="297.6783658298193" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0041164454095648" />
-      <entry key="MS500" value="1.8725227996889018" />
-      <entry key="S2" value="4.680144843520156" />
-      <entry key="S5" value="6.732778017374917" />
-      <entry key="S10" value="7.746448914461531" />
-      <entry key="S30" value="8.559328119937243" />
-      <entry key="S60" value="8.908300850329699" />
-      <entry key="M2" value="9.72484095629161" />
-      <entry key="M5" value="16.7392933936315" />
-      <entry key="M10" value="38.494888352410385" />
-      <entry key="M15" value="59.79799844555202" />
-      <entry key="M30" value="115.39493308261021" />
-      <entry key="H1" value="221.24554411025315" />
-      <entry key="H2" value="417.51804213543505" />
-      <entry key="H4" value="763.0549516417468" />
-      <entry key="D1" value="1807.6345479344723" />
-      <entry key="W1" value="2196.9815552308764" />
+      <entry key="MS100" value="4.4732236311347436E-10" />
+      <entry key="MS500" value="0.020073843304244793" />
+      <entry key="S2" value="0.7855686498253803" />
+      <entry key="S5" value="2.8878527338221653" />
+      <entry key="S10" value="5.770845168102072" />
+      <entry key="S30" value="10.899664026918606" />
+      <entry key="S60" value="14.452946150111469" />
+      <entry key="M2" value="18.453608810320038" />
+      <entry key="M5" value="27.520229412627412" />
+      <entry key="M10" value="50.06034645736453" />
+      <entry key="M15" value="77.72033965142853" />
+      <entry key="M30" value="158.96835021434603" />
+      <entry key="H1" value="295.122800299603" />
+      <entry key="H2" value="519.0364084481788" />
+      <entry key="H4" value="889.981877639666" />
+      <entry key="D1" value="2035.3095424124579" />
+      <entry key="W1" value="2476.1742291709897" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -186,38 +185,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake Application.City_Sweep.executor&quot;: &quot;Run&quot;,
-    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion&quot;: &quot;Natvis support suggestion&quot;,
-    &quot;Notification.DoNotAsk-CidrNatvisSuggestion&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/gungu/Documents/coding/c++/City Sweep&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.City_Sweep.executor": "Run",
+    "CidrDebugProfileConversion": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion": "Natvis support suggestion",
+    "Notification.DoNotAsk-CidrNatvisSuggestion": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/gungu/Documents/coding/c++/City Sweep",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="City_Sweep" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="City_Sweep" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="City_Sweep" RUN_TARGET_NAME="City_Sweep">
       <method v="2">
@@ -321,7 +320,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="holy shit it finally works, there's movement now" />
     <MESSAGE value="added trash you can pick up" />
     <MESSAGE value="trash counter woohoo" />
     <MESSAGE value="font loading and completely rewrote the text rendering and fixed refreshing" />
@@ -346,7 +344,8 @@
     <MESSAGE value="trash upgrades minus the wheelbarrow and trashcan for obvious reasons" />
     <MESSAGE value="money, buying tools, hand animation, broom animation wip" />
     <MESSAGE value="and these I forgot to commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="and these I forgot to commit" />
+    <MESSAGE value="broom animation and switching tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="broom animation and switching tools" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

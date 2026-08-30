@@ -54,6 +54,7 @@ public:
 
     ~PhysicsObject() {
         if (body) {
+            body->removeCollider(body->getCollider(0));
             world->destroyRigidBody(body);
         }
     }
@@ -594,10 +595,12 @@ int main() {
     struct {
         bool unlocked = false;
         float price=50.f;
+        float sweep_radius = 1.5f;
+        float sweep_strength = 3000.f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
-        bool anim_clicking;
+        bool anim_clicking=false;
     } broom;
 
     broom.idle_anim.resize(4); broom.click_anim.resize(4);
@@ -619,11 +622,27 @@ int main() {
     struct {
         bool unlocked = false;
         float price=1000.f;
+        float suck_distance = 10.0f;
+        float suck_strength = 500.f;
+        float suck_radius = 1.5f;
+        float pickup_radius = 3.5f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
-        bool anim_clicking;
+        bool anim_clicking=false;
     } vacuum;
+
+    vacuum.idle_anim.resize(4); vacuum.click_anim.resize(4);
+    for (int i = 0; i < 4; i++) {
+        stringstream ss;
+        ss<<"../textures/vacuum_idle"<<i+1<<".png";
+        vacuum.idle_anim[i].load_from_file(ss.str());
+    }
+    for (int i = 0; i < 4; i++) {
+        stringstream ss;
+        ss<<"../textures/vacuum_click"<<i+1<<".png";
+        vacuum.click_anim[i].load_from_file(ss.str());
+    }
 
     function<void()> vacuum_upgrade_1_buy = [&]{};
     function<void()> vacuum_upgrade_2_buy = [&]{};
@@ -945,11 +964,24 @@ int main() {
                         if (hit_opt.has_value()) {
                             RaycastReturns& hit = *hit_opt;
 
-// -------------------- RAYCASTS --------------------
+                            // -------------------- RAYCASTS --------------------
                             if (hit.object) {
-                                // trash
-                                if (hit.object->mesh->name.contains("pickuptrash")) {
+                                // picking up trash
+                                if (hit.object->mesh->name.contains("pickuptrash") && current_tool == TOOLHAND) {
                                     pickup_trash(hit);
+                                }
+
+                                // brooming
+                                else if (current_tool == TOOLBROOM) {
+                                    glm::vec3 pos;
+                                    for (auto& o : phys_objs) {
+                                        pos = {o->body->getTransform().getPosition().x, o->body->getTransform().getPosition().y, o->body->getTransform().getPosition().z};
+                                        if (glm::distance(hit.hit_position, pos) <= broom.sweep_radius && o.get()->mesh->name.contains("pickuptrash")) {
+                                            o.get()->body->applyWorldForceAtCenterOfMass({gvk::camera.direction.x*broom.sweep_strength, 0, gvk::camera.direction.z*broom.sweep_strength});
+                                            broom.anim_clicking = true;
+                                            current_tool_anim_frame = 0;
+                                        }
+                                    }
                                 }
 
                                 // trash bin
@@ -968,11 +1000,11 @@ int main() {
                 if (e.button.button == SDL_BUTTON_RIGHT) mouse_right=false;
             }
         }
-// -------------------- POST-EVENT UPDATES --------------------
+        // -------------------- POST-EVENT UPDATES --------------------
         // player stuffity stuff
         if (mouse_locked) player.update_input(key_inputs, mouse_motion_relative.x, mouse_motion_relative.y);
         // hold pickup
-        if (!pause_menu_open && mouse_left && hand.upgrade_3_bought) {
+        if (!pause_menu_open && mouse_left && hand.upgrade_3_bought && current_tool == TOOLHAND) {
             auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * 5.f);
 
             if (hit_opt.has_value()) {
@@ -984,6 +1016,45 @@ int main() {
                 }
             }
         }
+
+        // vacuum
+        if (!pause_menu_open && mouse_left && current_tool == TOOLVACUUM) {
+            auto hit_opt = raycast(phys_objs, gvk::camera.position, gvk::camera.position + gvk::camera.direction * vacuum.suck_distance);
+
+            // pulling in objects
+            if (hit_opt.has_value()) {
+                RaycastReturns& hit = *hit_opt;
+                if (hit.object) {
+                    glm::vec3 pos;
+
+                    for (auto& o : phys_objs) {
+                        if (o != nullptr) {
+                            pos = {o->body->getTransform().getPosition().x, o->body->getTransform().getPosition().y, o->body->getTransform().getPosition().z};
+                            if (glm::distance(hit.hit_position, pos) <= vacuum.suck_radius && o.get()->mesh->name.contains("pickuptrash")) {
+                                o.get()->body->applyWorldForceAtCenterOfMass({-gvk::camera.direction.x*vacuum.suck_strength, 0, -gvk::camera.direction.z*vacuum.suck_strength});
+                                vacuum.anim_clicking = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // picking up them bitches
+            for (auto& o : phys_objs) {
+                if (o != nullptr) {
+                    glm::vec3 pos = {o->body->getTransform().getPosition().x, o->body->getTransform().getPosition().y, o->body->getTransform().getPosition().z};
+                    if (glm::distance({player.body->getTransform().getPosition().x, player.body->getTransform().getPosition().y, player.body->getTransform().getPosition().z}, pos) <= vacuum.pickup_radius && trash.currently_stored < trash.max_storable && o.get()->mesh->name.contains("pickuptrash")) {
+                        auto it = std::find_if(phys_objs.begin(), phys_objs.end(), [&](const auto& up){ return up.get() == o.get();});
+                        if (it != phys_objs.end()) {
+                            phys_objs.erase(it);
+                        }
+                        trash.currently_stored++;
+                    }
+                }
+            }
+        }
+
+        if (!mouse_left && current_tool == TOOLVACUUM) vacuum.anim_clicking = false;
 
         // physics
         if (accumulator>=time_step) {
@@ -1018,6 +1089,13 @@ int main() {
                 if (current_tool_anim_frame == 3) broom.anim_clicking = false;
             } else {
                 gvk::display.draw(broom.idle_anim[current_tool_anim_frame], {0,0});
+            }
+        }
+        if (current_tool == TOOLVACUUM) {
+            if (vacuum.anim_clicking) {
+                gvk::display.draw(vacuum.click_anim[current_tool_anim_frame], {0,0});
+            } else {
+                gvk::display.draw(vacuum.idle_anim[current_tool_anim_frame], {0,0});
             }
         }
 
