@@ -518,7 +518,8 @@ int main() {
     FPSController player;
     player.initalize(0.5f, 2.f);
     player.mouse_sensitivity = 0.01f;
-    player.move_to({-12.5f, 5.f, 0.f});
+    player.move_to({-15.f, 5.f, 0.f});
+    player.can_jump = false;
     bool mouse_left = false;
     bool mouse_right = false;
     float money = 0;

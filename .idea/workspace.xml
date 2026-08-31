@@ -51,16 +51,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="Pixelation post-processing effect">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="fixed the bloom looping around to the other side of the frame">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.blend" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -70,6 +65,7 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/env.glb" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/env.glb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,61 +111,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="5.8784050017199416E-8" />
-      <entry key="MS500" value="0.035797434311867396" />
-      <entry key="S2" value="0.4349736763543254" />
-      <entry key="S5" value="0.7167788631592803" />
-      <entry key="S10" value="0.8466328857477107" />
-      <entry key="S30" value="1.0480813017059412" />
-      <entry key="S60" value="2.5667953141170368" />
-      <entry key="M2" value="8.544559407168611" />
-      <entry key="M5" value="25.21990969678773" />
-      <entry key="M10" value="47.008427962783436" />
-      <entry key="M15" value="65.83039208656683" />
-      <entry key="M30" value="110.85719268692894" />
-      <entry key="H1" value="197.99589244988036" />
-      <entry key="H2" value="384.34030040485015" />
-      <entry key="H4" value="727.7402435694544" />
-      <entry key="D1" value="1892.096308661557" />
-      <entry key="W1" value="2371.0670233956876" />
+      <entry key="MS100" value="1.0000000005858833" />
+      <entry key="MS500" value="1.0177595921295288" />
+      <entry key="S2" value="1.5890237838886216" />
+      <entry key="S5" value="2.222062904273382" />
+      <entry key="S10" value="2.5624176731651724" />
+      <entry key="S30" value="2.841733709026281" />
+      <entry key="S60" value="2.919203624617654" />
+      <entry key="M2" value="2.9591770513303812" />
+      <entry key="M5" value="2.9835677111450662" />
+      <entry key="M10" value="2.9919979917970605" />
+      <entry key="M15" value="3.008302914733851" />
+      <entry key="M30" value="4.29784865447524" />
+      <entry key="H1" value="23.290064366051283" />
+      <entry key="H2" value="124.0845145937791" />
+      <entry key="H4" value="410.68773509431804" />
+      <entry key="D1" value="1736.531257071844" />
+      <entry key="W1" value="2370.505166160456" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000008130256" />
-      <entry key="S10" value="1.000047062846891" />
-      <entry key="S30" value="1.0875072823701588" />
-      <entry key="S60" value="1.6599236738928544" />
-      <entry key="M2" value="2.9880975510842394" />
-      <entry key="M5" value="5.924254655507858" />
-      <entry key="M10" value="9.838943811738172" />
-      <entry key="M15" value="12.965187121146306" />
-      <entry key="M30" value="20.137015998905436" />
-      <entry key="H1" value="33.2773603465767" />
-      <entry key="H2" value="58.167690380980396" />
-      <entry key="H4" value="102.00345111604793" />
-      <entry key="D1" value="262.22300169302025" />
-      <entry key="W1" value="331.8716708132955" />
+      <entry key="MS100" value="7.779300703852919E-5" />
+      <entry key="MS500" value="0.15072597846134506" />
+      <entry key="S2" value="0.6230846150407823" />
+      <entry key="S5" value="0.8275968160782053" />
+      <entry key="S10" value="0.9097234833058919" />
+      <entry key="S30" value="0.9689539448887403" />
+      <entry key="S60" value="0.984354582906353" />
+      <entry key="M2" value="0.9921464523478138" />
+      <entry key="M5" value="0.9968511485565923" />
+      <entry key="M10" value="0.998466770917819" />
+      <entry key="M15" value="1.0020823362391647" />
+      <entry key="M30" value="1.3073498518468947" />
+      <entry key="H1" value="5.190514579392148" />
+      <entry key="H2" value="21.95765169239893" />
+      <entry key="H4" value="62.99064811840591" />
+      <entry key="D1" value="249.04515445280603" />
+      <entry key="W1" value="340.78056192393495" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.006615198193374665" />
-      <entry key="MS500" value="0.3799815203650977" />
-      <entry key="S2" value="1.1186496852155408" />
-      <entry key="S5" value="1.5544544710907415" />
-      <entry key="S10" value="1.7572961933870157" />
-      <entry key="S30" value="2.097309125637244" />
-      <entry key="S60" value="4.175948718838052" />
-      <entry key="M2" value="11.462673193984791" />
-      <entry key="M5" value="31.08193838779799" />
-      <entry key="M10" value="56.79897320508424" />
-      <entry key="M15" value="78.75436294025477" />
-      <entry key="M30" value="130.96205947161806" />
-      <entry key="H1" value="231.2435842683516" />
-      <entry key="H2" value="442.47744102175363" />
-      <entry key="H4" value="829.7137496309257" />
-      <entry key="D1" value="2154.3061878165604" />
-      <entry key="W1" value="2702.936349575371" />
+      <entry key="MS100" value="0.03303181470868097" />
+      <entry key="MS500" value="0.5279525984157861" />
+      <entry key="S2" value="1.665726145387917" />
+      <entry key="S5" value="2.7108311404150562" />
+      <entry key="S10" value="3.2728074046973172" />
+      <entry key="S30" value="3.7363012468138876" />
+      <entry key="S60" value="3.8652790691844467" />
+      <entry key="M2" value="3.9319049369584973" />
+      <entry key="M5" value="3.9725834885319964" />
+      <entry key="M10" value="3.9865355594632974" />
+      <entry key="M15" value="4.0077573157761455" />
+      <entry key="M30" value="5.603527849537082" />
+      <entry key="H1" value="28.47687968619344" />
+      <entry key="H2" value="146.03218963993803" />
+      <entry key="H4" value="473.6614180064706" />
+      <entry key="D1" value="1985.564349864474" />
+      <entry key="W1" value="2711.2833810436987" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -333,8 +329,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="added getting text size" />
-    <MESSAGE value="centered text" />
     <MESSAGE value="I forgot to commit he unversioned files" />
     <MESSAGE value="added vertex data to MeshAsset" />
     <MESSAGE value="optimized the physics" />
@@ -358,7 +352,9 @@
     <MESSAGE value="vacuum and broom" />
     <MESSAGE value="just adjusted 2 values that's it" />
     <MESSAGE value="Pixelation post-processing effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pixelation post-processing effect" />
+    <MESSAGE value="started working on map + pixelation shader" />
+    <MESSAGE value="fixed the bloom looping around to the other side of the frame" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the bloom looping around to the other side of the frame" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
