@@ -448,6 +448,7 @@ int main() {
     gvk::init();
     gvk::clear_color = {0.05f, 0.05f, 0.05f, 1.f};
     int max_fps = 120;
+    gvk::_material_default_sampler = gvk::_default_sampler_nearest;
 
     SDL_SetWindowTitle(gvk::window, "Town Sweep");
 
@@ -455,6 +456,11 @@ int main() {
     gvk::main_post_processing_stack.ao_bias = 0.008f;
     gvk::main_post_processing_stack.ao_samples = 8;
     gvk::main_post_processing_stack.vignette_strength = 0.5f;
+    gvk::main_post_processing_stack.bloom_filter_threshold = 0.75f;
+    gvk::main_post_processing_stack.bloom_blur_passes = 16;
+    gvk::main_post_processing_stack.bloom_intensity = 1.f;
+    gvk::main_post_processing_stack.pixelation_enabled = true;
+    gvk::main_post_processing_stack.pixelation_size = 4;
 
     // fonts
     stbtt_fontinfo font;
@@ -489,10 +495,10 @@ int main() {
     image_ui_su_background.load_from_file("../textures/ui storage upgrade background.png");
 
     // dev env loading
-    gvk::GLTFReturns dev_env = gvk::load_gltf_scene("../scenes/devenv.glb").value();
-    load_scene_lights(&dev_env);
-    vector<PhysicsObject*> dev_env_POs = load_scene_colliders(&dev_env);
-    for (auto po : dev_env_POs) {
+    gvk::GLTFReturns env = gvk::load_gltf_scene("../scenes/env.glb").value();
+    load_scene_lights(&env);
+    vector<PhysicsObject*> env_POs = load_scene_colliders(&env);
+    for (auto po : env_POs) {
         if (po->mesh->name.contains("pickuptrash")) { // trash
             po->body->removeCollider(po->body->getCollider(0));
             po->create_box_collider(po->mesh->vertices);
@@ -512,7 +518,7 @@ int main() {
     FPSController player;
     player.initalize(0.5f, 2.f);
     player.mouse_sensitivity = 0.01f;
-    player.move_to({0.f, 5.f, 0.f});
+    player.move_to({-12.5f, 5.f, 0.f});
     bool mouse_left = false;
     bool mouse_right = false;
     float money = 0;

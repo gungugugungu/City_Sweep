@@ -51,10 +51,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="broom animation and switching tools">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="Pixelation post-processing effect">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devenv.blend" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devenv.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.blend1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
@@ -76,7 +80,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7933" />
+    <option name="cachedIndexableFilesCount" value="7940" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
@@ -100,6 +104,7 @@
     <setting file="file://$PROJECT_DIR$/include/GVK-Engine/gvk.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/gvk.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="mbIrZKIq" />
@@ -110,61 +115,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000000106384" />
-      <entry key="MS500" value="1.0101248918572034" />
-      <entry key="S2" value="1.3781425012256507" />
-      <entry key="S5" value="2.5236794817111408" />
-      <entry key="S10" value="4.204760007808996" />
-      <entry key="S30" value="7.505944704249015" />
-      <entry key="S60" value="10.273886112953766" />
-      <entry key="M2" value="13.543026550754686" />
-      <entry key="M5" value="21.433909973006905" />
-      <entry key="M10" value="41.805501415564216" />
-      <entry key="M15" value="66.61242163176733" />
-      <entry key="M30" value="138.3161589413051" />
-      <entry key="H1" value="258.52555515849485" />
-      <entry key="H2" value="458.811781137663" />
-      <entry key="H4" value="789.1422352693271" />
-      <entry key="D1" value="1794.498428869296" />
-      <entry key="W1" value="2178.4980503790553" />
+      <entry key="MS100" value="5.8784050017199416E-8" />
+      <entry key="MS500" value="0.035797434311867396" />
+      <entry key="S2" value="0.4349736763543254" />
+      <entry key="S5" value="0.7167788631592803" />
+      <entry key="S10" value="0.8466328857477107" />
+      <entry key="S30" value="1.0480813017059412" />
+      <entry key="S60" value="2.5667953141170368" />
+      <entry key="M2" value="8.544559407168611" />
+      <entry key="M5" value="25.21990969678773" />
+      <entry key="M10" value="47.008427962783436" />
+      <entry key="M15" value="65.83039208656683" />
+      <entry key="M30" value="110.85719268692894" />
+      <entry key="H1" value="197.99589244988036" />
+      <entry key="H2" value="384.34030040485015" />
+      <entry key="H4" value="727.7402435694544" />
+      <entry key="D1" value="1892.096308661557" />
+      <entry key="W1" value="2371.0670233956876" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.2594358269890329E-17" />
-      <entry key="MS500" value="4.207765545397545E-4" />
-      <entry key="S2" value="0.19212713502263584" />
-      <entry key="S5" value="0.9689617488256256" />
-      <entry key="S10" value="2.0254326453808424" />
-      <entry key="S30" value="3.631462388474747" />
-      <entry key="S60" value="4.327200276479447" />
-      <entry key="M2" value="5.003426098131265" />
-      <entry key="M5" value="6.143649582032831" />
-      <entry key="M10" value="8.303967968608687" />
-      <entry key="M15" value="11.156145988094758" />
-      <entry key="M30" value="20.700060551063064" />
-      <entry key="H1" value="36.64230871176278" />
-      <entry key="H2" value="60.26459255882239" />
-      <entry key="H4" value="100.87381815209497" />
-      <entry key="D1" value="240.8238012230236" />
-      <entry key="W1" value="297.6783658298193" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000008130256" />
+      <entry key="S10" value="1.000047062846891" />
+      <entry key="S30" value="1.0875072823701588" />
+      <entry key="S60" value="1.6599236738928544" />
+      <entry key="M2" value="2.9880975510842394" />
+      <entry key="M5" value="5.924254655507858" />
+      <entry key="M10" value="9.838943811738172" />
+      <entry key="M15" value="12.965187121146306" />
+      <entry key="M30" value="20.137015998905436" />
+      <entry key="H1" value="33.2773603465767" />
+      <entry key="H2" value="58.167690380980396" />
+      <entry key="H4" value="102.00345111604793" />
+      <entry key="D1" value="262.22300169302025" />
+      <entry key="W1" value="331.8716708132955" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.4732236311347436E-10" />
-      <entry key="MS500" value="0.020073843304244793" />
-      <entry key="S2" value="0.7855686498253803" />
-      <entry key="S5" value="2.8878527338221653" />
-      <entry key="S10" value="5.770845168102072" />
-      <entry key="S30" value="10.899664026918606" />
-      <entry key="S60" value="14.452946150111469" />
-      <entry key="M2" value="18.453608810320038" />
-      <entry key="M5" value="27.520229412627412" />
-      <entry key="M10" value="50.06034645736453" />
-      <entry key="M15" value="77.72033965142853" />
-      <entry key="M30" value="158.96835021434603" />
-      <entry key="H1" value="295.122800299603" />
-      <entry key="H2" value="519.0364084481788" />
-      <entry key="H4" value="889.981877639666" />
-      <entry key="D1" value="2035.3095424124579" />
-      <entry key="W1" value="2476.1742291709897" />
+      <entry key="MS100" value="0.006615198193374665" />
+      <entry key="MS500" value="0.3799815203650977" />
+      <entry key="S2" value="1.1186496852155408" />
+      <entry key="S5" value="1.5544544710907415" />
+      <entry key="S10" value="1.7572961933870157" />
+      <entry key="S30" value="2.097309125637244" />
+      <entry key="S60" value="4.175948718838052" />
+      <entry key="M2" value="11.462673193984791" />
+      <entry key="M5" value="31.08193838779799" />
+      <entry key="M10" value="56.79897320508424" />
+      <entry key="M15" value="78.75436294025477" />
+      <entry key="M30" value="130.96205947161806" />
+      <entry key="H1" value="231.2435842683516" />
+      <entry key="H2" value="442.47744102175363" />
+      <entry key="H4" value="829.7137496309257" />
+      <entry key="D1" value="2154.3061878165604" />
+      <entry key="W1" value="2702.936349575371" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -178,6 +183,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3I8oWYtJBYzrQ7NNjnWRa0c37E2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectStatusUIService">{
   &quot;uiKindId&quot;: &quot;Widget&quot;
 }</component>
@@ -206,7 +214,7 @@
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/gungu/Documents/coding/c++/City Sweep",
+    "last_opened_file_path": "/home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/shaders",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -217,6 +225,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/include/GVK-Engine/shaders" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="City_Sweep" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="City_Sweep" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="City_Sweep" RUN_TARGET_NAME="City_Sweep">
       <method v="2">
@@ -320,9 +333,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="added trash you can pick up" />
-    <MESSAGE value="trash counter woohoo" />
-    <MESSAGE value="font loading and completely rewrote the text rendering and fixed refreshing" />
     <MESSAGE value="added getting text size" />
     <MESSAGE value="centered text" />
     <MESSAGE value="I forgot to commit he unversioned files" />
@@ -345,7 +355,10 @@
     <MESSAGE value="money, buying tools, hand animation, broom animation wip" />
     <MESSAGE value="and these I forgot to commit" />
     <MESSAGE value="broom animation and switching tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="broom animation and switching tools" />
+    <MESSAGE value="vacuum and broom" />
+    <MESSAGE value="just adjusted 2 values that's it" />
+    <MESSAGE value="Pixelation post-processing effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pixelation post-processing effect" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
