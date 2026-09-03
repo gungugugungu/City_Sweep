@@ -38,7 +38,7 @@ public:
     reactphysics3d::RigidBody* body;
     int still_frames = 0;
 
-    PhysicsObject(gvk::MeshAsset* mesh_asset, gvk::Material mat, std::vector<gvk::Vertex> mesh_vertices, glm::vec3 pos = {0.f, 0.f, 0.f}, glm::vec3 scl = {1.f, 1.f, 1.f}, glm::quat rot = {1.f, 0.f, 0.f, 0.f}, reactphysics3d::BodyType body_type = reactphysics3d::BodyType::STATIC, ColliderShape shape = ColliderShape::CONVEX)
+    PhysicsObject(gvk::MeshAsset* mesh_asset, gvk::Material mat, std::vector<gvk::Vertex> mesh_vertices, glm::vec3 pos = {0.f, 0.f, 0.f}, glm::vec3 scl = {1.f, 1.f, 1.f}, glm::quat rot = {1.f, 0.f, 0.f, 0.f}, reactphysics3d::BodyType body_type = reactphysics3d::BodyType::STATIC, ColliderShape shape = ColliderShape::BOX)
         : mesh(mesh_asset), material(mat), position(pos), scale(scl), rotation(rot)
     {
         reactphysics3d::Vector3 rp_position(position.x, position.y, position.z);
@@ -482,7 +482,7 @@ int main() {
     bool mouse_locked = true;
 
     // textures
-    gvk::load_skybox("../include/GVK-Engine/textures/skyboxes/generic clouds.png");
+    gvk::load_skybox("../textures/skybox.png");
     gvk::Surface image_trashbag;
     image_trashbag.load_from_file("../textures/trashbag.png");
     gvk::Surface image_ui_background;
@@ -494,31 +494,36 @@ int main() {
     gvk::Surface image_ui_su_background;
     image_ui_su_background.load_from_file("../textures/ui storage upgrade background.png");
 
-    // dev env loading
+    // env loading
     gvk::GLTFReturns env = gvk::load_gltf_scene("../scenes/env.glb").value();
     load_scene_lights(&env);
     vector<PhysicsObject*> env_POs = load_scene_colliders(&env);
+    int fulltrashcount = 0;
     for (auto po : env_POs) {
         if (po->mesh->name.contains("pickuptrash")) { // trash
-            po->body->removeCollider(po->body->getCollider(0));
-            po->create_box_collider(po->mesh->vertices);
             po->body->setType(rp3d::BodyType::DYNAMIC);
             po->body->setMass(5.f);
             po->body->setLinearDamping(5.f);
             po->body->getCollider(0)->setCollisionCategoryBits(CATEGORY_TRASH);
             po->body->getCollider(0)->setCollideWithMaskBits(CATEGORY_ENV | CATEGORY_PLAYER);
+            fulltrashcount++;
         } else {
+            if (po->mesh->name.contains("diner")) {
+                po->body->removeCollider(po->body->getCollider(0));
+                po->create_convex_collider(po->mesh->vertices);
+            }
             po->body->setType(rp3d::BodyType::KINEMATIC);
             po->body->getCollider(0)->setCollisionCategoryBits(CATEGORY_ENV);
             po->body->getCollider(0)->setCollideWithMaskBits(CATEGORY_TRASH | CATEGORY_PLAYER);
         }
     }
+    cout << "trash count: " << fulltrashcount << endl;
 
     // player
     FPSController player;
     player.initalize(0.5f, 2.f);
     player.mouse_sensitivity = 0.01f;
-    player.move_to({-15.f, 5.f, 0.f});
+    player.move_to({-15.f, 2.5f, 0.f});
     player.can_jump = false;
     bool mouse_left = false;
     bool mouse_right = false;

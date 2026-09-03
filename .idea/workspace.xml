@@ -51,7 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="fixed the bloom looping around to the other side of the frame">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="reflecting skybox">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/env.blend" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/env.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend1" afterDir="false" />
@@ -76,11 +76,12 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7940" />
+    <option name="cachedIndexableFilesCount" value="7947" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
@@ -111,61 +112,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000005858833" />
-      <entry key="MS500" value="1.0177595921295288" />
-      <entry key="S2" value="1.5890237838886216" />
-      <entry key="S5" value="2.222062904273382" />
-      <entry key="S10" value="2.5624176731651724" />
-      <entry key="S30" value="2.841733709026281" />
-      <entry key="S60" value="2.919203624617654" />
-      <entry key="M2" value="2.9591770513303812" />
-      <entry key="M5" value="2.9835677111450662" />
-      <entry key="M10" value="2.9919979917970605" />
-      <entry key="M15" value="3.008302914733851" />
-      <entry key="M30" value="4.29784865447524" />
-      <entry key="H1" value="23.290064366051283" />
-      <entry key="H2" value="124.0845145937791" />
-      <entry key="H4" value="410.68773509431804" />
-      <entry key="D1" value="1736.531257071844" />
-      <entry key="W1" value="2370.505166160456" />
+      <entry key="MS100" value="1.0032537142120852" />
+      <entry key="MS500" value="1.5652387070550517" />
+      <entry key="S2" value="3.243925361118837" />
+      <entry key="S5" value="4.147047708835829" />
+      <entry key="S10" value="4.5428083267376556" />
+      <entry key="S30" value="4.9256923217204935" />
+      <entry key="S60" value="6.270026728980504" />
+      <entry key="M2" value="10.454389777833724" />
+      <entry key="M5" value="19.18116734887313" />
+      <entry key="M10" value="26.42693772223633" />
+      <entry key="M15" value="30.270799679975887" />
+      <entry key="M30" value="36.39342648990518" />
+      <entry key="H1" value="46.253342389477865" />
+      <entry key="H2" value="98.47763303266268" />
+      <entry key="H4" value="313.94250785180554" />
+      <entry key="D1" value="1667.7077882006652" />
+      <entry key="W1" value="2403.0280597140277" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="7.779300703852919E-5" />
-      <entry key="MS500" value="0.15072597846134506" />
-      <entry key="S2" value="0.6230846150407823" />
-      <entry key="S5" value="0.8275968160782053" />
-      <entry key="S10" value="0.9097234833058919" />
-      <entry key="S30" value="0.9689539448887403" />
-      <entry key="S60" value="0.984354582906353" />
-      <entry key="M2" value="0.9921464523478138" />
-      <entry key="M5" value="0.9968511485565923" />
-      <entry key="M10" value="0.998466770917819" />
-      <entry key="M15" value="1.0020823362391647" />
-      <entry key="M30" value="1.3073498518468947" />
-      <entry key="H1" value="5.190514579392148" />
-      <entry key="H2" value="21.95765169239893" />
-      <entry key="H4" value="62.99064811840591" />
-      <entry key="D1" value="249.04515445280603" />
-      <entry key="W1" value="340.78056192393495" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="3.425582462299759E-135" />
+      <entry key="S2" value="2.6106279637767915E-34" />
+      <entry key="S5" value="4.873085326996608E-14" />
+      <entry key="S10" value="3.0298212266062434E-7" />
+      <entry key="S30" value="0.010586876883767027" />
+      <entry key="S60" value="0.14573600256726052" />
+      <entry key="M2" value="0.5998660557070711" />
+      <entry key="M5" value="2.5505892983550003" />
+      <entry key="M10" value="5.412593985382642" />
+      <entry key="M15" value="7.166087221525139" />
+      <entry key="M30" value="9.675159026209181" />
+      <entry key="H1" value="12.2133027900494" />
+      <entry key="H2" value="21.397506145848737" />
+      <entry key="H4" value="53.30216749246237" />
+      <entry key="D1" value="244.86159218893434" />
+      <entry key="W1" value="351.1189365833062" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.03303181470868097" />
-      <entry key="MS500" value="0.5279525984157861" />
-      <entry key="S2" value="1.665726145387917" />
-      <entry key="S5" value="2.7108311404150562" />
-      <entry key="S10" value="3.2728074046973172" />
-      <entry key="S30" value="3.7363012468138876" />
-      <entry key="S60" value="3.8652790691844467" />
-      <entry key="M2" value="3.9319049369584973" />
-      <entry key="M5" value="3.9725834885319964" />
-      <entry key="M10" value="3.9865355594632974" />
-      <entry key="M15" value="4.0077573157761455" />
-      <entry key="M30" value="5.603527849537082" />
-      <entry key="H1" value="28.47687968619344" />
-      <entry key="H2" value="146.03218963993803" />
-      <entry key="H4" value="473.6614180064706" />
-      <entry key="D1" value="1985.564349864474" />
-      <entry key="W1" value="2711.2833810436987" />
+      <entry key="MS100" value="0.9557622505985307" />
+      <entry key="MS500" value="1.5506207827338854" />
+      <entry key="S2" value="3.235011865441834" />
+      <entry key="S5" value="4.142199825959828" />
+      <entry key="S10" value="4.54009605848901" />
+      <entry key="S30" value="4.933640608496136" />
+      <entry key="S60" value="6.401308369569759" />
+      <entry key="M2" value="11.023958619278723" />
+      <entry key="M5" value="21.697335900012085" />
+      <entry key="M10" value="31.811702309108217" />
+      <entry key="M15" value="37.41430101150439" />
+      <entry key="M30" value="46.053425696796474" />
+      <entry key="H1" value="58.45598110905035" />
+      <entry key="H2" value="119.86481929001332" />
+      <entry key="H4" value="367.23027391588164" />
+      <entry key="D1" value="1912.5575109340891" />
+      <entry key="W1" value="2754.1445746987156" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -189,38 +190,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "CMake Application.City_Sweep.executor": "Run",
-    "CidrDebugProfileConversion": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion": "Natvis support suggestion",
-    "Notification.DoNotAsk-CidrNatvisSuggestion": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/shaders",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.City_Sweep.executor&quot;: &quot;Run&quot;,
+    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion&quot;: &quot;Natvis support suggestion&quot;,
+    &quot;Notification.DoNotAsk-CidrNatvisSuggestion&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/shaders&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/include/GVK-Engine/shaders" />
@@ -329,8 +330,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="I forgot to commit he unversioned files" />
-    <MESSAGE value="added vertex data to MeshAsset" />
     <MESSAGE value="optimized the physics" />
     <MESSAGE value="added a trashbin and max trash amount" />
     <MESSAGE value="UIButton class" />
@@ -354,7 +353,9 @@
     <MESSAGE value="Pixelation post-processing effect" />
     <MESSAGE value="started working on map + pixelation shader" />
     <MESSAGE value="fixed the bloom looping around to the other side of the frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the bloom looping around to the other side of the frame" />
+    <MESSAGE value="disabled jumping + liquor store" />
+    <MESSAGE value="reflecting skybox" />
+    <option name="LAST_COMMIT_MESSAGE" value="reflecting skybox" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
