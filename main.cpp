@@ -556,20 +556,24 @@ int main() {
     string upgrade_2_name;
     string upgrade_3_name;
 
+    float timer = 0.f;
+
     struct {
         float time_between_pickups = 0.5f;
-        float timer = 0.f;
         int upgrade_1_progress = 0;
         int upgrade_1_max = 10;
         float upgrade_1_decrease_by = 0.05f;
+        float upgrade_1_price = 0.8f;
 
         int upgrade_2_progress = 0;
         int upgrade_2_max = 4;
         float pickup_radius = 0.f;
         float upgrade_2_increase_by = 0.3f;
         int max_items_to_pick_up = 6;
+        float upgrade_2_price = 2.f;
 
         bool upgrade_3_bought = false;
+        float upgrade_3_price = 6.f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
@@ -612,6 +616,22 @@ int main() {
         float price=50.f;
         float sweep_radius = 1.5f;
         float sweep_strength = 3000.f;
+        float time=0.6f;
+
+        int upgrade_1_progress = 0;
+        int upgrade_1_max = 4;
+        float upgrade_1_increase_by = 0.3f;
+        float upgrade_1_price = 1.5f;
+
+        int upgrade_2_progress = 0;
+        int upgrade_2_max = 5;
+        float upgrade_2_increase_by = 0.25f;
+        float upgrade_2_price = 1.6f;
+
+        int upgrade_3_progress = 0;
+        int upgrade_3_max = 3;
+        float upgrade_3_decrease_by = 0.2f;
+        float upgrade_3_price = 2.5f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
@@ -630,9 +650,27 @@ int main() {
         broom.click_anim[i].load_from_file(ss.str());
     }
 
-    function<void()> broom_upgrade_1_buy = [&]{};
-    function<void()> broom_upgrade_2_buy = [&]{};
-    function<void()> broom_upgrade_3_buy = [&]{};
+    function<void()> broom_upgrade_1_buy = [&] {
+        if (broom.upgrade_1_progress < broom.upgrade_1_max) {
+            broom.sweep_radius += broom.upgrade_1_increase_by;
+            broom.upgrade_1_progress++;
+            upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
+        }
+    };
+    function<void()> broom_upgrade_2_buy = [&] {
+        if (broom.upgrade_2_progress < broom.upgrade_2_max) {
+            broom.sweep_strength += broom.upgrade_2_increase_by;
+            broom.upgrade_2_progress++;
+            upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
+        }
+    };
+    function<void()> broom_upgrade_3_buy = [&] {
+        if (broom.upgrade_3_progress < broom.upgrade_3_max) {
+            broom.time -= broom.upgrade_3_decrease_by;
+            broom.upgrade_3_progress++;
+            upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
+        }
+    };
 
     struct {
         bool unlocked = false;
@@ -641,6 +679,21 @@ int main() {
         float suck_strength = 500.f;
         float suck_radius = 1.5f;
         float pickup_radius = 3.5f;
+
+        int upgrade_1_progress = 0;
+        int upgrade_1_max = 4;
+        float upgrade_1_increase_by = 250.f;
+        float upgrade_1_price = 1.5f;
+
+        int upgrade_2_progress = 0;
+        int upgrade_2_max = 6;
+        float upgrade_2_increase_by = 1.0f;
+        float upgrade_2_price = 0.75f;
+
+        int upgrade_3_progress = 0;
+        int upgrade_3_max = 3;
+        float upgrade_3_increase_by = 0.2f;
+        float upgrade_3_price = 2.5f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
@@ -659,9 +712,27 @@ int main() {
         vacuum.click_anim[i].load_from_file(ss.str());
     }
 
-    function<void()> vacuum_upgrade_1_buy = [&]{};
-    function<void()> vacuum_upgrade_2_buy = [&]{};
-    function<void()> vacuum_upgrade_3_buy = [&]{};
+    function<void()> vacuum_upgrade_1_buy = [&] {
+        if (vacuum.upgrade_1_progress < vacuum.upgrade_1_max) {
+            vacuum.suck_strength += vacuum.upgrade_1_increase_by;
+            vacuum.upgrade_1_progress++;
+            upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
+        }
+    };
+    function<void()> vacuum_upgrade_2_buy = [&] {
+        if (vacuum.upgrade_2_progress < vacuum.upgrade_2_max) {
+            vacuum.suck_distance += vacuum.upgrade_2_increase_by;
+            vacuum.upgrade_2_progress++;
+            upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
+        }
+    };
+    function<void()> vacuum_upgrade_3_buy = [&] {
+        if (vacuum.upgrade_3_progress < vacuum.upgrade_3_max) {
+            vacuum.suck_radius += vacuum.upgrade_3_increase_by;
+            vacuum.upgrade_3_progress++;
+            upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
+        }
+    };
 
     // storage upgrades
     bool upgrade_backpack_bought=false;
@@ -784,6 +855,15 @@ int main() {
             current_tool_idx = available_tools.size()-1;
         }
         current_upgrade_page = BROOM;
+        upgrade_1_buy = broom_upgrade_1_buy;
+        upgrade_2_buy = broom_upgrade_2_buy;
+        upgrade_3_buy = broom_upgrade_3_buy;
+        upgrade_1_name = "Radius";
+        upgrade_2_name = "Strength";
+        upgrade_3_name = "Speed";
+        upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
+        upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
+        upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
     };
     buttons_upgrade_menu.push_back(&button_upgrade_broom);
 
@@ -798,6 +878,15 @@ int main() {
             current_tool_idx = available_tools.size()-1;
         }
         current_upgrade_page = VACUUM;
+        upgrade_1_buy = vacuum_upgrade_1_buy;
+        upgrade_2_buy = vacuum_upgrade_2_buy;
+        upgrade_3_buy = vacuum_upgrade_3_buy;
+        upgrade_1_name = "Power";
+        upgrade_2_name = "Distance";
+        upgrade_3_name = "Spread";
+        upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
+        upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
+        upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
     };
     buttons_upgrade_menu.push_back(&button_upgrade_vacuum);
 
@@ -863,7 +952,7 @@ int main() {
 
     // picking up trash
     function<void(RaycastReturns hit)> pickup_trash = [&](RaycastReturns hit) {
-        if (trash.currently_stored < trash.max_storable && hand.timer <= 0.f) {
+        if (trash.currently_stored < trash.max_storable && timer <= 0.f) {
             // pickup radius
             if (hand.upgrade_2_progress > 0) {
                 glm::vec3 ogpos = {hit.object->body->getTransform().getPosition().x, hit.object->body->getTransform().getPosition().y, hit.object->body->getTransform().getPosition().z};
@@ -893,7 +982,7 @@ int main() {
                     phys_objs.erase(it);
                 }
                 trash.currently_stored++;
-                hand.timer = hand.time_between_pickups;
+                timer = hand.time_between_pickups;
             }
 
             // anim
@@ -920,7 +1009,7 @@ int main() {
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
         gvk::display.clear(w_width, w_height, {1, 1, 1, 0});
 
-        hand.timer = clamp(hand.timer-dt, 0.f, 10.f);
+        timer = clamp(timer-dt, 0.f, 10.f);
 
         mouse_motion_relative.x = 0.f;
         mouse_motion_relative.y = 0.f;
@@ -998,14 +1087,17 @@ int main() {
 
                                 // brooming
                                 else if (current_tool == TOOLBROOM) {
-                                    glm::vec3 pos;
-                                    for (auto& o : phys_objs) {
-                                        pos = {o->body->getTransform().getPosition().x, o->body->getTransform().getPosition().y, o->body->getTransform().getPosition().z};
-                                        if (glm::distance(hit.hit_position, pos) <= broom.sweep_radius && o.get()->mesh->name.contains("pickuptrash")) {
-                                            o.get()->body->applyWorldForceAtCenterOfMass({gvk::camera.direction.x*broom.sweep_strength, 0, gvk::camera.direction.z*broom.sweep_strength});
-                                            broom.anim_clicking = true;
-                                            current_tool_anim_frame = 0;
+                                    if (timer <= 0) {
+                                        glm::vec3 pos;
+                                        for (auto& o : phys_objs) {
+                                            pos = {o->body->getTransform().getPosition().x, o->body->getTransform().getPosition().y, o->body->getTransform().getPosition().z};
+                                            if (glm::distance(hit.hit_position, pos) <= broom.sweep_radius && o.get()->mesh->name.contains("pickuptrash")) {
+                                                o->body->applyWorldForceAtCenterOfMass({gvk::camera.direction.x*broom.sweep_strength, 0, gvk::camera.direction.z*broom.sweep_strength});
+                                                broom.anim_clicking = true;
+                                                current_tool_anim_frame = 0;
+                                            }
                                         }
+                                        timer = broom.time;
                                     }
                                 }
 

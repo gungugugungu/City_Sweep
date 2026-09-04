@@ -51,10 +51,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="city 100% done">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="tweaked the default fog values to make them not suck">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -97,7 +96,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/include/GVK-Engine/gvk.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/main.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/gvk.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="mbIrZKIq" />
@@ -108,61 +107,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="8.895610571395457E-84" />
-      <entry key="S5" value="1.8212192587340196E-33" />
-      <entry key="S10" value="1.4544952656247578E-16" />
-      <entry key="S30" value="3.471042862243997E-5" />
-      <entry key="S60" value="0.025421121276455495" />
-      <entry key="M2" value="0.693223775298272" />
-      <entry key="M5" value="5.065549471353081" />
-      <entry key="M10" value="10.587187506096678" />
-      <entry key="M15" value="16.514656046723825" />
-      <entry key="M30" value="44.714540664950114" />
-      <entry key="H1" value="101.71459858810361" />
-      <entry key="H2" value="189.780687899127" />
-      <entry key="H4" value="403.41876352674865" />
-      <entry key="D1" value="1794.23241133005" />
-      <entry key="W1" value="2600.758928219453" />
+      <entry key="MS100" value="1.8902301413968913E-20" />
+      <entry key="MS500" value="1.1372009330238332E-4" />
+      <entry key="S2" value="0.1225717044653416" />
+      <entry key="S5" value="0.6133100367719486" />
+      <entry key="S10" value="1.2240962275944218" />
+      <entry key="S30" value="3.121716674460719" />
+      <entry key="S60" value="4.541017990319585" />
+      <entry key="M2" value="5.875489827520556" />
+      <entry key="M5" value="15.430679208352222" />
+      <entry key="M10" value="53.48098966709753" />
+      <entry key="M15" value="94.88592524792561" />
+      <entry key="M30" value="188.02758063929974" />
+      <entry key="H1" value="299.7021463631982" />
+      <entry key="H2" value="431.61126041949336" />
+      <entry key="H4" value="664.6070067157533" />
+      <entry key="D1" value="2095.413123178008" />
+      <entry key="W1" value="2949.5744515322185" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000000000122" />
-      <entry key="MS500" value="1.0016515083737842" />
-      <entry key="S2" value="1.2015905617325375" />
-      <entry key="S5" value="1.5269726529023449" />
-      <entry key="S10" value="1.7259505533802697" />
-      <entry key="S30" value="1.942897268306893" />
-      <entry key="S60" value="2.245097879849924" />
-      <entry key="M2" value="2.744406964315593" />
-      <entry key="M5" value="3.359810696510103" />
-      <entry key="M10" value="3.8782373231571556" />
-      <entry key="M15" value="4.795448766202789" />
-      <entry key="M30" value="9.614238247083328" />
-      <entry key="H1" value="19.079789152207905" />
-      <entry key="H2" value="33.56298508625104" />
-      <entry key="H4" value="65.83059719413495" />
-      <entry key="D1" value="263.91462729646685" />
-      <entry key="W1" value="380.4766442641845" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000001626271995" />
+      <entry key="S2" value="1.0357108092177203" />
+      <entry key="S5" value="1.2654261165485674" />
+      <entry key="S10" value="1.5612246002289845" />
+      <entry key="S30" value="2.3346672002117526" />
+      <entry key="S60" value="2.9184606858838116" />
+      <entry key="M2" value="3.4395647026630503" />
+      <entry key="M5" value="4.754456775586334" />
+      <entry key="M10" value="6.7744351625053785" />
+      <entry key="M15" value="8.3451839368349" />
+      <entry key="M30" value="12.596076396333725" />
+      <entry key="H1" value="21.379396570520562" />
+      <entry key="H2" value="36.698179263905644" />
+      <entry key="H4" value="68.95204293414493" />
+      <entry key="D1" value="270.7936117803783" />
+      <entry key="W1" value="393.7910468898241" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.684754672717458E-6" />
-      <entry key="MS500" value="0.08190199196056829" />
-      <entry key="S2" value="0.5743359960154465" />
-      <entry key="S5" value="1.0528436074668108" />
-      <entry key="S10" value="1.4060743500387003" />
-      <entry key="S30" value="1.8066743609428249" />
-      <entry key="S60" value="2.190150014965119" />
-      <entry key="M2" value="3.386142657297222" />
-      <entry key="M5" value="8.393947350354912" />
-      <entry key="M10" value="14.444500955088477" />
-      <entry key="M15" value="21.292622319632834" />
-      <entry key="M30" value="54.31154683531406" />
-      <entry key="H1" value="120.77673116729976" />
-      <entry key="H2" value="223.32745411970376" />
-      <entry key="H4" value="469.23220060555894" />
-      <entry key="D1" value="2058.134453857209" />
-      <entry key="W1" value="2981.2329775719168" />
+      <entry key="MS100" value="1.0810079743389336E-19" />
+      <entry key="MS500" value="2.263392652115276E-4" />
+      <entry key="S2" value="0.23984937917414567" />
+      <entry key="S5" value="1.2001676357924347" />
+      <entry key="S10" value="2.328137935580236" />
+      <entry key="S30" value="5.250413607890094" />
+      <entry key="S60" value="7.342495577575779" />
+      <entry key="M2" value="9.2488726293871" />
+      <entry key="M5" value="20.140616683971313" />
+      <entry key="M10" value="60.212253532526184" />
+      <entry key="M15" value="103.18855736662348" />
+      <entry key="M30" value="200.58493448691794" />
+      <entry key="H1" value="321.04911229787626" />
+      <entry key="H2" value="468.2838879700832" />
+      <entry key="H4" value="733.5369077623736" />
+      <entry key="D1" value="2366.1931095917635" />
+      <entry key="W1" value="3343.362708987527" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -326,8 +325,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="did a UI mockup" />
-    <MESSAGE value="whoa something's making this crash and I have no clue what" />
     <MESSAGE value="ah yeah that makes sense" />
     <MESSAGE value="fixed ao appearing over 2D rendering" />
     <MESSAGE value="surface blending" />
@@ -351,7 +348,9 @@
     <MESSAGE value="full fog implementation" />
     <MESSAGE value="oops misinput" />
     <MESSAGE value="city 100% done" />
-    <option name="LAST_COMMIT_MESSAGE" value="city 100% done" />
+    <MESSAGE value="trash upgrades" />
+    <MESSAGE value="tweaked the default fog values to make them not suck" />
+    <option name="LAST_COMMIT_MESSAGE" value="tweaked the default fog values to make them not suck" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
