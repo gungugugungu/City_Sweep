@@ -552,6 +552,9 @@ int main() {
     float upgrade_1_completion = 0.f;
     float upgrade_2_completion = 0.f;
     float upgrade_3_completion = 0.f;
+    float upgrade_1_price = 0.f;
+    float upgrade_2_price = 0.f;
+    float upgrade_3_price = 0.f;
     string upgrade_1_name;
     string upgrade_2_name;
     string upgrade_3_name;
@@ -840,6 +843,9 @@ int main() {
         upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
         upgrade_2_completion = static_cast<float>(hand.upgrade_2_progress)/static_cast<float>(hand.upgrade_2_max);
         upgrade_3_completion = (hand.upgrade_3_bought) ? 1.f : 0.f;
+        upgrade_1_price = hand.upgrade_1_price;
+        upgrade_2_price = hand.upgrade_2_price;
+        upgrade_3_price = hand.upgrade_3_price;
     };
     button_upgrade_hand.on_click_callback();
     buttons_upgrade_menu.push_back(&button_upgrade_hand);
@@ -864,6 +870,9 @@ int main() {
         upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
         upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
         upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
+        upgrade_1_price = broom.upgrade_1_price;
+        upgrade_2_price = broom.upgrade_2_price;
+        upgrade_3_price = broom.upgrade_3_price;
     };
     buttons_upgrade_menu.push_back(&button_upgrade_broom);
 
@@ -887,6 +896,9 @@ int main() {
         upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
         upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
         upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
+        upgrade_1_price = vacuum.upgrade_1_price;
+        upgrade_2_price = vacuum.upgrade_2_price;
+        upgrade_3_price = vacuum.upgrade_3_price;
     };
     buttons_upgrade_menu.push_back(&button_upgrade_vacuum);
 
@@ -992,6 +1004,7 @@ int main() {
     };
 
     Uint64 last_time = SDL_GetTicks();
+    float mouse_x, mouse_y = 0.f;
     bool running = true;
     button_quit.on_click_callback = [&] {
         running = false;
@@ -1007,7 +1020,11 @@ int main() {
         last_time = now;
         int w_width, w_height;
         SDL_GetWindowSize(gvk::window, &w_width, &w_height);
-        gvk::display.clear(w_width, w_height, {1, 1, 1, 0});
+        if (pause_menu_open) {
+            gvk::display.clear(w_width, w_height, {0.f, 0.f, 0.f, 0.5f});
+        } else {
+            gvk::display.clear(w_width, w_height, {1, 1, 1, 0});
+        }
 
         timer = clamp(timer-dt, 0.f, 10.f);
 
@@ -1058,6 +1075,8 @@ int main() {
             if (e.type == SDL_EVENT_MOUSE_MOTION) { // MOUSE MOVED
                 mouse_motion_relative.x = e.motion.xrel;
                 mouse_motion_relative.y = e.motion.yrel;
+                mouse_x = e.motion.x;
+                mouse_y = e.motion.y;
             }
             if (e.type == SDL_EVENT_MOUSE_WHEEL) { // MOUSE SCROLL
                 current_tool_idx += e.wheel.integer_y;
@@ -1232,7 +1251,6 @@ int main() {
         gvk::display.draw_text(&font, money_text.str(), {w_width-16-static_cast<int>(money_text_size.x), 16}, 96.f, {1, 0.784313725, 0.145098039, 1});
 
         if (pause_menu_open) {
-            gvk::display.clear(w_width, w_height, {0.f, 0.f, 0.f, 0.5f});
             gvk::display.draw(image_ui_background, {384, 188});
 
             // help menu
@@ -1284,6 +1302,24 @@ int main() {
                 if (upgrade_3_name != "") {
                     glm::vec2 text_size = gvk::get_text_size(&font, upgrade_3_name, 72);
                     gvk::display.draw_text(&font, upgrade_3_name, {492+564-text_size.x*0.5, 704+72-text_size.y*0.5}, 72, {0.152941176, 0.152941176, 0.152941176, 1});
+                }
+
+                // upgrade prices
+                if (mouse_x >= button_upgrade_frame_1.pos.x && mouse_x <= button_upgrade_frame_1.pos.x + button_upgrade_frame_1.surf.pixels[0].size() && mouse_y >= button_upgrade_frame_1.pos.y && mouse_y <= button_upgrade_frame_1.pos.y + button_upgrade_frame_1.surf.pixels.size()) {
+                    stringstream ss;
+                    ss<<upgrade_1_price<<"$";
+                    gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                }
+
+                if (mouse_x >= button_upgrade_frame_2.pos.x && mouse_x <= button_upgrade_frame_2.pos.x + button_upgrade_frame_2.surf.pixels[0].size() && mouse_y >= button_upgrade_frame_2.pos.y && mouse_y <= button_upgrade_frame_2.pos.y + button_upgrade_frame_2.surf.pixels.size()) {
+                    stringstream ss;
+                    ss<<upgrade_2_price<<"$";
+                    gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                }
+                if (mouse_x >= button_upgrade_frame_3.pos.x && mouse_x <= button_upgrade_frame_3.pos.x + button_upgrade_frame_3.surf.pixels[0].size() && mouse_y >= button_upgrade_frame_3.pos.y && mouse_y <= button_upgrade_frame_3.pos.y + button_upgrade_frame_3.surf.pixels.size()) {
+                    stringstream ss;
+                    ss<<upgrade_3_price<<"$";
+                    gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
                 }
             }
 
