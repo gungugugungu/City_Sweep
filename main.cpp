@@ -756,36 +756,40 @@ int main() {
     bool upgrade_trashbag_bought=false;
     bool upgrade_wheelbarrow_bought=false;
     bool upgrade_trashcan_bought=false;
-    int upgrade_backpack_price = 10;
+    float upgrade_backpack_price = 10.f;
     int upgrade_backpack_amount = 25;
-    int upgrade_trashbag_price = 25;
-    int upgrade_trashbag_amount = 75;
-    int upgrade_wheelbarrow_price = 50;
-    int upgrade_wheelbarrow_amount = 125;
-    int upgrade_trashcan_price = 75;
-    int upgrade_trashcan_amount = 200;
+    float upgrade_trashbag_price = 25.f;
+    int upgrade_trashbag_amount = 50;
+    float upgrade_wheelbarrow_price = 50.f;
+    int upgrade_wheelbarrow_amount = 100;
+    float upgrade_trashcan_price = 75.f;
+    int upgrade_trashcan_amount = 125;
     function<void()> buy_backpack_upgrade = [&] {
-        if (!upgrade_backpack_bought) {
+        if (!upgrade_backpack_bought && money >= upgrade_backpack_price) {
             upgrade_backpack_bought = true;
-            if (trash.max_storable < upgrade_backpack_amount) trash.max_storable = upgrade_backpack_amount;
+            trash.max_storable += upgrade_backpack_amount;
+            money -= upgrade_backpack_price;
         }
     };
     function<void()> buy_trashbag_upgrade = [&] {
-        if (!upgrade_trashbag_bought) {
+        if (!upgrade_trashbag_bought && money >= upgrade_trashbag_price) {
             upgrade_trashbag_bought = true;
-            if (trash.max_storable < upgrade_trashbag_amount) trash.max_storable = upgrade_trashbag_amount;
+            trash.max_storable += upgrade_trashbag_amount;
+            money -= upgrade_trashbag_price;
         }
     };
     function<void()> buy_wheelbarrow_upgrade = [&] {
-        if (!upgrade_wheelbarrow_bought) {
+        if (!upgrade_wheelbarrow_bought && money >= upgrade_wheelbarrow_price) {
             upgrade_wheelbarrow_bought = true;
-            if (trash.max_storable < upgrade_wheelbarrow_amount) trash.max_storable = upgrade_wheelbarrow_amount;
+            trash.max_storable += upgrade_wheelbarrow_amount;
+            money -= upgrade_wheelbarrow_price;
         }
     };
     function<void()> buy_trashcan_upgrade = [&] {
-        if (!upgrade_trashcan_bought) {
+        if (!upgrade_trashcan_bought && money >= upgrade_trashcan_price) {
             upgrade_trashcan_bought = true;
-            if (trash.max_storable < upgrade_trashcan_amount) trash.max_storable = upgrade_trashcan_amount;
+            trash.max_storable += upgrade_trashcan_amount;
+            money -= upgrade_trashcan_price;
         }
     };
 
