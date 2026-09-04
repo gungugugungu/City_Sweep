@@ -561,12 +561,13 @@ int main() {
 
     float timer = 0.f;
 
+    // hand
     struct {
         float time_between_pickups = 0.5f;
         int upgrade_1_progress = 0;
         int upgrade_1_max = 10;
         float upgrade_1_decrease_by = 0.05f;
-        float upgrade_1_price = 0.8f;
+        float upgrade_1_price = 1.6f;
 
         int upgrade_2_progress = 0;
         int upgrade_2_max = 4;
@@ -619,6 +620,7 @@ int main() {
         }
     };
 
+    // broom
     struct {
         bool unlocked = false;
         float price=50.f;
@@ -629,17 +631,17 @@ int main() {
         int upgrade_1_progress = 0;
         int upgrade_1_max = 4;
         float upgrade_1_increase_by = 0.3f;
-        float upgrade_1_price = 1.5f;
+        float upgrade_1_price = 3.f;
 
         int upgrade_2_progress = 0;
         int upgrade_2_max = 5;
         float upgrade_2_increase_by = 0.25f;
-        float upgrade_2_price = 1.6f;
+        float upgrade_2_price = 3.2f;
 
         int upgrade_3_progress = 0;
         int upgrade_3_max = 3;
         float upgrade_3_decrease_by = 0.2f;
-        float upgrade_3_price = 2.5f;
+        float upgrade_3_price = 5.0f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
@@ -683,6 +685,7 @@ int main() {
         }
     };
 
+    // vacuum
     struct {
         bool unlocked = false;
         float price=150.f;
@@ -694,17 +697,17 @@ int main() {
         int upgrade_1_progress = 0;
         int upgrade_1_max = 4;
         float upgrade_1_increase_by = 250.f;
-        float upgrade_1_price = 1.5f;
+        float upgrade_1_price = 3.0f;
 
         int upgrade_2_progress = 0;
         int upgrade_2_max = 6;
         float upgrade_2_increase_by = 1.0f;
-        float upgrade_2_price = 0.75f;
+        float upgrade_2_price = 1.5f;
 
         int upgrade_3_progress = 0;
         int upgrade_3_max = 3;
         float upgrade_3_increase_by = 0.2f;
-        float upgrade_3_price = 2.5f;
+        float upgrade_3_price = 5.f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
@@ -865,25 +868,27 @@ int main() {
     button_upgrade_broom.surf.load_from_file("../textures/ui upgrade broom button.png");
     button_upgrade_broom.pos = {844, 248};
     button_upgrade_broom.on_click_callback = [&] {
-        if (!broom.unlocked) {
+        if (!broom.unlocked && money>=broom.price) {
             broom.unlocked = true;
             current_tool = TOOLBROOM;
             available_tools.push_back(TOOLBROOM);
             current_tool_idx = available_tools.size()-1;
         }
-        current_upgrade_page = BROOM;
-        upgrade_1_buy = broom_upgrade_1_buy;
-        upgrade_2_buy = broom_upgrade_2_buy;
-        upgrade_3_buy = broom_upgrade_3_buy;
-        upgrade_1_name = "Radius";
-        upgrade_2_name = "Strength";
-        upgrade_3_name = "Speed";
-        upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
-        upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
-        upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
-        upgrade_1_price = broom.upgrade_1_price;
-        upgrade_2_price = broom.upgrade_2_price;
-        upgrade_3_price = broom.upgrade_3_price;
+        if (broom.unlocked) {
+            current_upgrade_page = BROOM;
+            upgrade_1_buy = broom_upgrade_1_buy;
+            upgrade_2_buy = broom_upgrade_2_buy;
+            upgrade_3_buy = broom_upgrade_3_buy;
+            upgrade_1_name = "Radius";
+            upgrade_2_name = "Strength";
+            upgrade_3_name = "Speed";
+            upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
+            upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
+            upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
+            upgrade_1_price = broom.upgrade_1_price;
+            upgrade_2_price = broom.upgrade_2_price;
+            upgrade_3_price = broom.upgrade_3_price;
+        }
     };
     buttons_upgrade_menu.push_back(&button_upgrade_broom);
 
