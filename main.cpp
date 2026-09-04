@@ -596,22 +596,27 @@ int main() {
     }
 
     function<void()> hand_upgrade_1_buy = [&] {
-        if (hand.upgrade_1_progress < hand.upgrade_1_max) {
+        if (hand.upgrade_1_progress < hand.upgrade_1_max && money>=upgrade_1_price) {
             hand.time_between_pickups -= hand.upgrade_1_decrease_by;
             hand.upgrade_1_progress++;
             upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
+            money -= upgrade_1_price;
         }
     };
     function<void()> hand_upgrade_2_buy = [&] {
-        if (hand.upgrade_2_progress < hand.upgrade_2_max) {
+        if (hand.upgrade_2_progress < hand.upgrade_2_max && money>=upgrade_2_price) {
             hand.pickup_radius += hand.upgrade_2_increase_by;
             hand.upgrade_2_progress++;
             upgrade_2_completion = static_cast<float>(hand.upgrade_2_progress)/static_cast<float>(hand.upgrade_2_max);
+            money -= upgrade_2_price;
         }
     };
     function<void()> hand_upgrade_3_buy = [&] {
-        hand.upgrade_3_bought = true;
-        upgrade_3_completion = 1.f;
+        if (money>=upgrade_3_price) {
+            hand.upgrade_3_bought = true;
+            upgrade_3_completion = 1.f;
+            money -= upgrade_3_price;
+        }
     };
 
     struct {
@@ -654,24 +659,27 @@ int main() {
     }
 
     function<void()> broom_upgrade_1_buy = [&] {
-        if (broom.upgrade_1_progress < broom.upgrade_1_max) {
+        if (broom.upgrade_1_progress < broom.upgrade_1_max && money>=upgrade_1_price) {
             broom.sweep_radius += broom.upgrade_1_increase_by;
             broom.upgrade_1_progress++;
             upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
+            money -= upgrade_1_price;
         }
     };
     function<void()> broom_upgrade_2_buy = [&] {
-        if (broom.upgrade_2_progress < broom.upgrade_2_max) {
+        if (broom.upgrade_2_progress < broom.upgrade_2_max && money>=upgrade_2_price) {
             broom.sweep_strength += broom.upgrade_2_increase_by;
             broom.upgrade_2_progress++;
             upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
+            money -= upgrade_2_price;
         }
     };
     function<void()> broom_upgrade_3_buy = [&] {
-        if (broom.upgrade_3_progress < broom.upgrade_3_max) {
+        if (broom.upgrade_3_progress < broom.upgrade_3_max && money>=upgrade_3_price) {
             broom.time -= broom.upgrade_3_decrease_by;
             broom.upgrade_3_progress++;
             upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
+            money -= upgrade_3_price;
         }
     };
 
@@ -716,24 +724,27 @@ int main() {
     }
 
     function<void()> vacuum_upgrade_1_buy = [&] {
-        if (vacuum.upgrade_1_progress < vacuum.upgrade_1_max) {
+        if (vacuum.upgrade_1_progress < vacuum.upgrade_1_max && money>=upgrade_1_price) {
             vacuum.suck_strength += vacuum.upgrade_1_increase_by;
             vacuum.upgrade_1_progress++;
             upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
+            money -= upgrade_1_price;
         }
     };
     function<void()> vacuum_upgrade_2_buy = [&] {
-        if (vacuum.upgrade_2_progress < vacuum.upgrade_2_max) {
+        if (vacuum.upgrade_2_progress < vacuum.upgrade_2_max && money>=upgrade_2_price) {
             vacuum.suck_distance += vacuum.upgrade_2_increase_by;
             vacuum.upgrade_2_progress++;
             upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
+            money -= upgrade_2_price;
         }
     };
     function<void()> vacuum_upgrade_3_buy = [&] {
-        if (vacuum.upgrade_3_progress < vacuum.upgrade_3_max) {
+        if (vacuum.upgrade_3_progress < vacuum.upgrade_3_max && money>=upgrade_3_price) {
             vacuum.suck_radius += vacuum.upgrade_3_increase_by;
             vacuum.upgrade_3_progress++;
             upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
+            money -= upgrade_3_price;
         }
     };
 
