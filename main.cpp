@@ -688,7 +688,7 @@ int main() {
     // vacuum
     struct {
         bool unlocked = false;
-        float price=150.f;
+        float price=200.f;
         float suck_distance = 10.0f;
         float suck_strength = 500.f;
         float suck_radius = 1.5f;
@@ -877,6 +877,7 @@ int main() {
             current_tool = TOOLBROOM;
             available_tools.push_back(TOOLBROOM);
             current_tool_idx = available_tools.size()-1;
+            money -= broom.price;
         }
         if (broom.unlocked) {
             current_upgrade_page = BROOM;
@@ -900,25 +901,28 @@ int main() {
     button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade vacuum button.png");
     button_upgrade_vacuum.pos = {1196, 248};
     button_upgrade_vacuum.on_click_callback = [&] {
-        if (!vacuum.unlocked) {
+        if (!vacuum.unlocked && money >= vacuum.price) {
             vacuum.unlocked = true;
             current_tool = TOOLVACUUM;
             available_tools.push_back(TOOLVACUUM);
             current_tool_idx = available_tools.size()-1;
+            money -= vacuum.price;
         }
-        current_upgrade_page = VACUUM;
-        upgrade_1_buy = vacuum_upgrade_1_buy;
-        upgrade_2_buy = vacuum_upgrade_2_buy;
-        upgrade_3_buy = vacuum_upgrade_3_buy;
-        upgrade_1_name = "Power";
-        upgrade_2_name = "Distance";
-        upgrade_3_name = "Spread";
-        upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
-        upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
-        upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
-        upgrade_1_price = vacuum.upgrade_1_price;
-        upgrade_2_price = vacuum.upgrade_2_price;
-        upgrade_3_price = vacuum.upgrade_3_price;
+        if (vacuum.unlocked) {
+            current_upgrade_page = VACUUM;
+            upgrade_1_buy = vacuum_upgrade_1_buy;
+            upgrade_2_buy = vacuum_upgrade_2_buy;
+            upgrade_3_buy = vacuum_upgrade_3_buy;
+            upgrade_1_name = "Power";
+            upgrade_2_name = "Distance";
+            upgrade_3_name = "Spread";
+            upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
+            upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
+            upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
+            upgrade_1_price = vacuum.upgrade_1_price;
+            upgrade_2_price = vacuum.upgrade_2_price;
+            upgrade_3_price = vacuum.upgrade_3_price;
+        }
     };
     buttons_upgrade_menu.push_back(&button_upgrade_vacuum);
 
