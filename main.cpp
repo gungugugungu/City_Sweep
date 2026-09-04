@@ -567,17 +567,17 @@ int main() {
         int upgrade_1_progress = 0;
         int upgrade_1_max = 10;
         float upgrade_1_decrease_by = 0.05f;
-        float upgrade_1_price = 1.6f;
+        float upgrade_1_price = 3.f;
 
         int upgrade_2_progress = 0;
         int upgrade_2_max = 4;
         float pickup_radius = 0.f;
         float upgrade_2_increase_by = 0.3f;
         int max_items_to_pick_up = 6;
-        float upgrade_2_price = 2.f;
+        float upgrade_2_price = 4.f;
 
         bool upgrade_3_bought = false;
-        float upgrade_3_price = 6.f;
+        float upgrade_3_price = 12.f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
@@ -696,18 +696,18 @@ int main() {
 
         int upgrade_1_progress = 0;
         int upgrade_1_max = 4;
-        float upgrade_1_increase_by = 250.f;
-        float upgrade_1_price = 3.0f;
+        float upgrade_1_increase_by = 300.f;
+        float upgrade_1_price = 6.0f;
 
         int upgrade_2_progress = 0;
         int upgrade_2_max = 6;
         float upgrade_2_increase_by = 1.0f;
-        float upgrade_2_price = 1.5f;
+        float upgrade_2_price = 3.0f;
 
         int upgrade_3_progress = 0;
         int upgrade_3_max = 3;
         float upgrade_3_increase_by = 0.2f;
-        float upgrade_3_price = 5.f;
+        float upgrade_3_price = 10.f;
 
         vector<gvk::Surface> idle_anim;
         vector<gvk::Surface> click_anim;
