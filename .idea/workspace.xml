@@ -51,15 +51,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="made the city, filled the city with trash, new skybox">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="oops misinput">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.blend" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/fastgltf" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/fastgltf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/fmt" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/fmt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/imgui" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/imgui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/vk-bootstrap" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/vk-bootstrap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -68,6 +65,7 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/env.glb" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/env.glb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,13 +76,13 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7961" />
+    <option name="cachedIndexableFilesCount" value="7963" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/include/GVK-Engine" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -113,61 +111,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.4614681043494217E-190" />
-      <entry key="S5" value="2.5215894952576673E-76" />
-      <entry key="S10" value="4.768579131962309E-38" />
-      <entry key="S30" value="2.1979987323443515E-12" />
-      <entry key="S60" value="6.090710541380274E-6" />
-      <entry key="M2" value="0.01106126818101257" />
-      <entry key="M5" value="1.8590981811440765" />
-      <entry key="M10" value="16.60616036433343" />
-      <entry key="M15" value="37.63836261668533" />
-      <entry key="M30" value="89.98811522024371" />
-      <entry key="H1" value="145.53758075535836" />
-      <entry key="H2" value="221.9758532700178" />
-      <entry key="H4" value="437.3124447761106" />
-      <entry key="D1" value="1809.1148725791877" />
-      <entry key="W1" value="2577.5901039079517" />
+      <entry key="MS100" value="1.0051901789613145" />
+      <entry key="MS500" value="1.3491710807018227" />
+      <entry key="S2" value="1.8063782378546205" />
+      <entry key="S5" value="2.2585402811580026" />
+      <entry key="S10" value="2.7727286568611627" />
+      <entry key="S30" value="3.6755959332638524" />
+      <entry key="S60" value="4.778065894959688" />
+      <entry key="M2" value="6.475595439756016" />
+      <entry key="M5" value="9.55870031163626" />
+      <entry key="M10" value="21.494308768069704" />
+      <entry key="M15" value="40.08169635936501" />
+      <entry key="M30" value="90.85660194111252" />
+      <entry key="H1" value="148.26411103146924" />
+      <entry key="H2" value="226.64134728621164" />
+      <entry key="H4" value="442.0876085319597" />
+      <entry key="D1" value="1815.8294955070517" />
+      <entry key="W1" value="2587.717591497442" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000000005023" />
-      <entry key="S30" value="1.0001260373349905" />
-      <entry key="S60" value="1.0158763547789582" />
-      <entry key="M2" value="1.181393096402375" />
-      <entry key="M5" value="2.175913890790083" />
-      <entry key="M10" value="5.059125583101249" />
-      <entry key="M15" value="8.340055672850795" />
-      <entry key="M30" value="16.09717458618504" />
-      <entry key="H1" value="24.436619858848932" />
-      <entry key="H2" value="36.6043604783936" />
-      <entry key="H4" value="68.48628198178191" />
-      <entry key="D1" value="262.91023970702486" />
-      <entry key="W1" value="373.9081450496788" />
+      <entry key="MS100" value="2.2139671489978726E-19" />
+      <entry key="MS500" value="1.903472267003957E-4" />
+      <entry key="S2" value="0.17677815024665763" />
+      <entry key="S5" value="0.9836695317660042" />
+      <entry key="S10" value="1.9206223382612395" />
+      <entry key="S30" value="3.109929608936465" />
+      <entry key="S60" value="3.5567073919479184" />
+      <entry key="M2" value="3.96813397351616" />
+      <entry key="M5" value="4.999931380895345" />
+      <entry key="M10" value="7.547623288041364" />
+      <entry key="M15" value="10.611541909038749" />
+      <entry key="M30" value="18.35205723182211" />
+      <entry key="H1" value="27.07918238291495" />
+      <entry key="H2" value="39.57546412331643" />
+      <entry key="H4" value="71.51880785218523" />
+      <entry key="D1" value="266.28858708109794" />
+      <entry key="W1" value="377.78173734067616" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.815589377408977E-4" />
-      <entry key="MS500" value="0.2170350569002607" />
-      <entry key="S2" value="0.6825468589425832" />
-      <entry key="S5" value="0.858327424550095" />
-      <entry key="S10" value="0.9264596184135457" />
-      <entry key="S30" value="0.9749834193801896" />
-      <entry key="S60" value="1.0030789356197847" />
-      <entry key="M2" value="1.1851765984940257" />
-      <entry key="M5" value="4.027087095825632" />
-      <entry key="M10" value="21.647347951698514" />
-      <entry key="M15" value="45.95385321555849" />
-      <entry key="M30" value="106.05705982443985" />
-      <entry key="H1" value="169.9508623567127" />
-      <entry key="H2" value="258.5618669048309" />
-      <entry key="H4" value="505.7803660315639" />
-      <entry key="D1" value="2072.0124565601477" />
-      <entry key="W1" value="2951.495681865718" />
+      <entry key="MS100" value="0.005774885360054207" />
+      <entry key="MS500" value="0.5748033417348878" />
+      <entry key="S2" value="1.5831614550538953" />
+      <entry key="S5" value="2.877227874628298" />
+      <entry key="S10" value="4.391592662339101" />
+      <entry key="S30" value="6.6337491748608794" />
+      <entry key="S60" value="8.249400258729" />
+      <entry key="M2" value="10.397332793919581" />
+      <entry key="M5" value="14.535902175059167" />
+      <entry key="M10" value="29.019689510687854" />
+      <entry key="M15" value="50.66731369983813" />
+      <entry key="M30" value="109.18027010457459" />
+      <entry key="H1" value="175.31964496994397" />
+      <entry key="H2" value="266.19817798327614" />
+      <entry key="H4" value="513.5879141559909" />
+      <entry key="D1" value="2082.105390020354" />
+      <entry key="W1" value="2965.496753077345" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -229,11 +227,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="City_Sweep" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="City_Sweep" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="City_Sweep" RUN_TARGET_NAME="City_Sweep">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -336,8 +329,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="added a trashbin and max trash amount" />
-    <MESSAGE value="UIButton class" />
     <MESSAGE value="I had a typo in the last commit" />
     <MESSAGE value="did a UI mockup" />
     <MESSAGE value="whoa something's making this crash and I have no clue what" />
@@ -361,7 +352,9 @@
     <MESSAGE value="disabled jumping + liquor store" />
     <MESSAGE value="reflecting skybox" />
     <MESSAGE value="made the city, filled the city with trash, new skybox" />
-    <option name="LAST_COMMIT_MESSAGE" value="made the city, filled the city with trash, new skybox" />
+    <MESSAGE value="full fog implementation" />
+    <MESSAGE value="oops misinput" />
+    <option name="LAST_COMMIT_MESSAGE" value="oops misinput" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

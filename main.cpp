@@ -462,6 +462,8 @@ int main() {
     gvk::main_post_processing_stack.pixelation_enabled = true;
     gvk::main_post_processing_stack.pixelation_size = 4;
     gvk::main_post_processing_stack.tonemap_values.op = 0;
+    gvk::main_post_processing_stack.fog_distance = 1000.f;
+    gvk::main_post_processing_stack.fog_intensity = 0.7f;
 
     // fonts
     stbtt_fontinfo font;
