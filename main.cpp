@@ -636,7 +636,7 @@ int main() {
 
     struct {
         bool unlocked = false;
-        float price=1000.f;
+        float price=150.f;
         float suck_distance = 10.0f;
         float suck_strength = 500.f;
         float suck_radius = 1.5f;
@@ -668,10 +668,14 @@ int main() {
     bool upgrade_trashbag_bought=false;
     bool upgrade_wheelbarrow_bought=false;
     bool upgrade_trashcan_bought=false;
-    int upgrade_backpack_price = 50;
+    int upgrade_backpack_price = 10;
     int upgrade_backpack_amount = 25;
-    int upgrade_trashbag_price = 150;
+    int upgrade_trashbag_price = 25;
     int upgrade_trashbag_amount = 75;
+    int upgrade_wheelbarrow_price = 50;
+    int upgrade_wheelbarrow_amount = 125;
+    int upgrade_trashcan_price = 75;
+    int upgrade_trashcan_amount = 200;
     function<void()> buy_backpack_upgrade = [&] {
         if (!upgrade_backpack_bought) {
             upgrade_backpack_bought = true;
@@ -685,10 +689,16 @@ int main() {
         }
     };
     function<void()> buy_wheelbarrow_upgrade = [&] {
-        if (!upgrade_wheelbarrow_bought) upgrade_wheelbarrow_bought = true;
+        if (!upgrade_wheelbarrow_bought) {
+            upgrade_wheelbarrow_bought = true;
+            if (trash.max_storable < upgrade_wheelbarrow_amount) trash.max_storable = upgrade_wheelbarrow_amount;
+        }
     };
     function<void()> buy_trashcan_upgrade = [&] {
-        if (!upgrade_trashcan_bought) upgrade_trashcan_bought = true;
+        if (!upgrade_trashcan_bought) {
+            upgrade_trashcan_bought = true;
+            if (trash.max_storable < upgrade_trashcan_amount) trash.max_storable = upgrade_trashcan_amount;
+        }
     };
 
     // UI

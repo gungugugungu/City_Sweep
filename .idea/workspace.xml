@@ -51,10 +51,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="oops misinput">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="city 100% done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env.blend" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/env.blend1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/gvk.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
@@ -65,7 +63,6 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/env.glb" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/env.glb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,61 +108,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0051901789613145" />
-      <entry key="MS500" value="1.3491710807018227" />
-      <entry key="S2" value="1.8063782378546205" />
-      <entry key="S5" value="2.2585402811580026" />
-      <entry key="S10" value="2.7727286568611627" />
-      <entry key="S30" value="3.6755959332638524" />
-      <entry key="S60" value="4.778065894959688" />
-      <entry key="M2" value="6.475595439756016" />
-      <entry key="M5" value="9.55870031163626" />
-      <entry key="M10" value="21.494308768069704" />
-      <entry key="M15" value="40.08169635936501" />
-      <entry key="M30" value="90.85660194111252" />
-      <entry key="H1" value="148.26411103146924" />
-      <entry key="H2" value="226.64134728621164" />
-      <entry key="H4" value="442.0876085319597" />
-      <entry key="D1" value="1815.8294955070517" />
-      <entry key="W1" value="2587.717591497442" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="8.895610571395457E-84" />
+      <entry key="S5" value="1.8212192587340196E-33" />
+      <entry key="S10" value="1.4544952656247578E-16" />
+      <entry key="S30" value="3.471042862243997E-5" />
+      <entry key="S60" value="0.025421121276455495" />
+      <entry key="M2" value="0.693223775298272" />
+      <entry key="M5" value="5.065549471353081" />
+      <entry key="M10" value="10.587187506096678" />
+      <entry key="M15" value="16.514656046723825" />
+      <entry key="M30" value="44.714540664950114" />
+      <entry key="H1" value="101.71459858810361" />
+      <entry key="H2" value="189.780687899127" />
+      <entry key="H4" value="403.41876352674865" />
+      <entry key="D1" value="1794.23241133005" />
+      <entry key="W1" value="2600.758928219453" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.2139671489978726E-19" />
-      <entry key="MS500" value="1.903472267003957E-4" />
-      <entry key="S2" value="0.17677815024665763" />
-      <entry key="S5" value="0.9836695317660042" />
-      <entry key="S10" value="1.9206223382612395" />
-      <entry key="S30" value="3.109929608936465" />
-      <entry key="S60" value="3.5567073919479184" />
-      <entry key="M2" value="3.96813397351616" />
-      <entry key="M5" value="4.999931380895345" />
-      <entry key="M10" value="7.547623288041364" />
-      <entry key="M15" value="10.611541909038749" />
-      <entry key="M30" value="18.35205723182211" />
-      <entry key="H1" value="27.07918238291495" />
-      <entry key="H2" value="39.57546412331643" />
-      <entry key="H4" value="71.51880785218523" />
-      <entry key="D1" value="266.28858708109794" />
-      <entry key="W1" value="377.78173734067616" />
+      <entry key="MS100" value="1.0000000000000122" />
+      <entry key="MS500" value="1.0016515083737842" />
+      <entry key="S2" value="1.2015905617325375" />
+      <entry key="S5" value="1.5269726529023449" />
+      <entry key="S10" value="1.7259505533802697" />
+      <entry key="S30" value="1.942897268306893" />
+      <entry key="S60" value="2.245097879849924" />
+      <entry key="M2" value="2.744406964315593" />
+      <entry key="M5" value="3.359810696510103" />
+      <entry key="M10" value="3.8782373231571556" />
+      <entry key="M15" value="4.795448766202789" />
+      <entry key="M30" value="9.614238247083328" />
+      <entry key="H1" value="19.079789152207905" />
+      <entry key="H2" value="33.56298508625104" />
+      <entry key="H4" value="65.83059719413495" />
+      <entry key="D1" value="263.91462729646685" />
+      <entry key="W1" value="380.4766442641845" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.005774885360054207" />
-      <entry key="MS500" value="0.5748033417348878" />
-      <entry key="S2" value="1.5831614550538953" />
-      <entry key="S5" value="2.877227874628298" />
-      <entry key="S10" value="4.391592662339101" />
-      <entry key="S30" value="6.6337491748608794" />
-      <entry key="S60" value="8.249400258729" />
-      <entry key="M2" value="10.397332793919581" />
-      <entry key="M5" value="14.535902175059167" />
-      <entry key="M10" value="29.019689510687854" />
-      <entry key="M15" value="50.66731369983813" />
-      <entry key="M30" value="109.18027010457459" />
-      <entry key="H1" value="175.31964496994397" />
-      <entry key="H2" value="266.19817798327614" />
-      <entry key="H4" value="513.5879141559909" />
-      <entry key="D1" value="2082.105390020354" />
-      <entry key="W1" value="2965.496753077345" />
+      <entry key="MS100" value="3.684754672717458E-6" />
+      <entry key="MS500" value="0.08190199196056829" />
+      <entry key="S2" value="0.5743359960154465" />
+      <entry key="S5" value="1.0528436074668108" />
+      <entry key="S10" value="1.4060743500387003" />
+      <entry key="S30" value="1.8066743609428249" />
+      <entry key="S60" value="2.190150014965119" />
+      <entry key="M2" value="3.386142657297222" />
+      <entry key="M5" value="8.393947350354912" />
+      <entry key="M10" value="14.444500955088477" />
+      <entry key="M15" value="21.292622319632834" />
+      <entry key="M30" value="54.31154683531406" />
+      <entry key="H1" value="120.77673116729976" />
+      <entry key="H2" value="223.32745411970376" />
+      <entry key="H4" value="469.23220060555894" />
+      <entry key="D1" value="2058.134453857209" />
+      <entry key="W1" value="2981.2329775719168" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -329,7 +326,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="I had a typo in the last commit" />
     <MESSAGE value="did a UI mockup" />
     <MESSAGE value="whoa something's making this crash and I have no clue what" />
     <MESSAGE value="ah yeah that makes sense" />
@@ -354,7 +350,8 @@
     <MESSAGE value="made the city, filled the city with trash, new skybox" />
     <MESSAGE value="full fog implementation" />
     <MESSAGE value="oops misinput" />
-    <option name="LAST_COMMIT_MESSAGE" value="oops misinput" />
+    <MESSAGE value="city 100% done" />
+    <option name="LAST_COMMIT_MESSAGE" value="city 100% done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
