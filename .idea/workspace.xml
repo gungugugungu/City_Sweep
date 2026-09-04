@@ -51,7 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="proper upgrades for storage, broom and vacuum">
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="upgrade price display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
@@ -107,60 +107,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000688469930927" />
-      <entry key="S2" value="1.1881211993264964" />
-      <entry key="S5" value="1.9807103003955187" />
-      <entry key="S10" value="2.712197110565181" />
-      <entry key="S30" value="3.6750235064903096" />
-      <entry key="S60" value="5.867910077913534" />
-      <entry key="M2" value="11.548728403400665" />
-      <entry key="M5" value="25.189596200514828" />
-      <entry key="M10" value="43.98914700691347" />
-      <entry key="M15" value="64.0371708755295" />
-      <entry key="M30" value="134.5859572942344" />
-      <entry key="H1" value="259.18309025576747" />
-      <entry key="H2" value="423.7645415207746" />
-      <entry key="H4" value="680.8431237653258" />
-      <entry key="D1" value="2155.41961546662" />
-      <entry key="W1" value="3049.4786211883556" />
+      <entry key="MS500" value="1.0000066498626092" />
+      <entry key="S2" value="1.072426306592611" />
+      <entry key="S5" value="1.7079097430431274" />
+      <entry key="S10" value="2.6466406164278977" />
+      <entry key="S30" value="3.9617885118847442" />
+      <entry key="S60" value="4.440023234397744" />
+      <entry key="M2" value="4.708940638259277" />
+      <entry key="M5" value="4.899416479434495" />
+      <entry key="M10" value="6.084706333446243" />
+      <entry key="M15" value="10.514908946758732" />
+      <entry key="M30" value="44.192442923764276" />
+      <entry key="H1" value="144.78175678820384" />
+      <entry key="H2" value="317.030544508922" />
+      <entry key="H4" value="590.3493284526006" />
+      <entry key="D1" value="2109.9946731243667" />
+      <entry key="W1" value="3049.747742088069" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.7254747098079518E-14" />
-      <entry key="MS500" value="0.001767590747818174" />
-      <entry key="S2" value="0.2050432279745368" />
-      <entry key="S5" value="0.5306896697745651" />
-      <entry key="S10" value="0.7395928609322915" />
-      <entry key="S30" value="1.1842429415976825" />
-      <entry key="S60" value="2.1008133674031506" />
-      <entry key="M2" value="4.056573741479557" />
-      <entry key="M5" value="7.811430804711264" />
-      <entry key="M10" value="11.182908242266342" />
-      <entry key="M15" value="13.496059922045262" />
-      <entry key="M30" value="18.92732482648679" />
-      <entry key="H1" value="28.423238456549146" />
-      <entry key="H2" value="44.74345032755011" />
-      <entry key="H4" value="77.37520447577799" />
-      <entry key="D1" value="282.3856686742819" />
-      <entry key="W1" value="410.45140875357475" />
+      <entry key="MS100" value="4.892222408439795E-21" />
+      <entry key="MS500" value="8.667647452047285E-5" />
+      <entry key="S2" value="0.09648844549405766" />
+      <entry key="S5" value="0.39245523255571135" />
+      <entry key="S10" value="0.6264624749781198" />
+      <entry key="S30" value="0.855654333065991" />
+      <entry key="S60" value="0.925015855575455" />
+      <entry key="M2" value="0.9617774614146484" />
+      <entry key="M5" value="0.9878815332333616" />
+      <entry key="M10" value="1.2238055773142544" />
+      <entry key="M15" value="2.012529436769782" />
+      <entry key="M30" value="6.194949986733754" />
+      <entry key="H1" value="15.893274860483945" />
+      <entry key="H2" value="33.38903547660746" />
+      <entry key="H4" value="66.83218850976738" />
+      <entry key="D1" value="275.88371028403327" />
+      <entry key="W1" value="409.8756367404006" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.041521431690516045" />
-      <entry key="MS500" value="0.5298474462303443" />
-      <entry key="S2" value="1.1631460655776948" />
-      <entry key="S5" value="2.3241714054525215" />
-      <entry key="S10" value="3.319174051231611" />
-      <entry key="S30" value="4.790642718107323" />
-      <entry key="S60" value="7.901501000774021" />
-      <entry key="M2" value="15.527663303838995" />
-      <entry key="M5" value="32.91763729368493" />
-      <entry key="M10" value="55.0959142101672" />
-      <entry key="M15" value="77.46551451289996" />
-      <entry key="M30" value="153.45955926792877" />
-      <entry key="H1" value="287.5641469514307" />
-      <entry key="H2" value="468.4759451828302" />
-      <entry key="H4" value="758.1924669380454" />
-      <entry key="D1" value="2437.790833590623" />
-      <entry key="W1" value="3459.927085636723" />
+      <entry key="MS100" value="0.04450156861240848" />
+      <entry key="MS500" value="0.5366479072998364" />
+      <entry key="S2" value="0.9756792561344703" />
+      <entry key="S5" value="1.9258170175206522" />
+      <entry key="S10" value="3.1352446010149815" />
+      <entry key="S30" value="4.751811752352351" />
+      <entry key="S60" value="5.328947519926881" />
+      <entry key="M2" value="5.651776469824311" />
+      <entry key="M5" value="5.879459876713373" />
+      <entry key="M10" value="7.3029941278206225" />
+      <entry key="M15" value="12.51969399655968" />
+      <entry key="M30" value="50.3713138686812" />
+      <entry key="H1" value="160.652261159961" />
+      <entry key="H2" value="350.3960475089198" />
+      <entry key="H4" value="657.1593463457499" />
+      <entry key="D1" value="2385.86428883619" />
+      <entry key="W1" value="3459.6204418374364" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -324,7 +324,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="fixed ao appearing over 2D rendering" />
     <MESSAGE value="surface blending" />
     <MESSAGE value="base for pause menu" />
     <MESSAGE value="this was a funny bug for sure" />
@@ -349,7 +348,8 @@
     <MESSAGE value="trash upgrades" />
     <MESSAGE value="tweaked the default fog values to make them not suck" />
     <MESSAGE value="proper upgrades for storage, broom and vacuum" />
-    <option name="LAST_COMMIT_MESSAGE" value="proper upgrades for storage, broom and vacuum" />
+    <MESSAGE value="upgrade price display" />
+    <option name="LAST_COMMIT_MESSAGE" value="upgrade price display" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

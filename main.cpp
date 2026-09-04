@@ -1308,18 +1308,30 @@ int main() {
                 if (mouse_x >= button_upgrade_frame_1.pos.x && mouse_x <= button_upgrade_frame_1.pos.x + button_upgrade_frame_1.surf.pixels[0].size() && mouse_y >= button_upgrade_frame_1.pos.y && mouse_y <= button_upgrade_frame_1.pos.y + button_upgrade_frame_1.surf.pixels.size()) {
                     stringstream ss;
                     ss<<upgrade_1_price<<"$";
-                    gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                    if (money>=upgrade_1_price) {
+                        gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                    } else {
+                        gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {0.917647059, 0.196078431, 0.196078431, 1});
+                    }
                 }
 
                 if (mouse_x >= button_upgrade_frame_2.pos.x && mouse_x <= button_upgrade_frame_2.pos.x + button_upgrade_frame_2.surf.pixels[0].size() && mouse_y >= button_upgrade_frame_2.pos.y && mouse_y <= button_upgrade_frame_2.pos.y + button_upgrade_frame_2.surf.pixels.size()) {
                     stringstream ss;
                     ss<<upgrade_2_price<<"$";
-                    gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                    if (money>=upgrade_2_price) {
+                        gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                    } else {
+                        gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {0.917647059, 0.196078431, 0.196078431, 1});
+                    }
                 }
                 if (mouse_x >= button_upgrade_frame_3.pos.x && mouse_x <= button_upgrade_frame_3.pos.x + button_upgrade_frame_3.surf.pixels[0].size() && mouse_y >= button_upgrade_frame_3.pos.y && mouse_y <= button_upgrade_frame_3.pos.y + button_upgrade_frame_3.surf.pixels.size()) {
                     stringstream ss;
                     ss<<upgrade_3_price<<"$";
-                    gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                    if (money>=upgrade_3_price) {
+                        gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {1, 0.784313725, 0.145098039, 1});
+                    } else {
+                        gvk::display.draw_text(&font, ss.str(), {mouse_x+8, mouse_y+8}, 64.f, {0.917647059, 0.196078431, 0.196078431, 1});
+                    }
                 }
             }
 
