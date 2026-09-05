@@ -4,3 +4,6 @@
 [submodule "include/GVK-Engine"]
 	path = include/GVK-Engine
 	url = https://github.com/gungugugungu/GVK-Engine.git
+[submodule "include/SDL_mixer"]
+	path = include/SDL_mixer
+	url = https://github.com/libsdl-org/SDL_mixer.git

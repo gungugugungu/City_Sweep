@@ -11,6 +11,7 @@
 #include <memory>
 #include <algorithm>
 #include <chrono>
+#include "include/SDL_mixer/include/SDL3_mixer/SDL_mixer.h"
 
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
@@ -450,6 +451,20 @@ int main() {
     int max_fps = 120;
     gvk::_material_default_sampler = gvk::_default_sampler_nearest;
 
+    // audio init
+    if (!MIX_Init()) {
+        SDL_Log("Mix init failed: %s", SDL_GetError());
+        return 1;
+    }
+    MIX_Mixer* mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, nullptr);
+    if (!mixer) {
+        SDL_Log("Failed creating mixer device: %s", SDL_GetError());
+        return 1;
+    }
+    MIX_Track* music_track = MIX_CreateTrack(mixer);
+    SDL_PropertiesID options = SDL_CreateProperties();
+    SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
+
     SDL_SetWindowTitle(gvk::window, "Town Sweep");
 
     gvk::main_post_processing_stack.ao_radius = 2.f;
@@ -464,6 +479,12 @@ int main() {
     gvk::main_post_processing_stack.tonemap_values.op = 0;
     gvk::main_post_processing_stack.fog_distance = 1000.f;
     gvk::main_post_processing_stack.fog_intensity = 0.7f;
+
+    // sounds
+    MIX_Audio* music = MIX_LoadAudio(mixer, "../sounds/soundtrack.mp3", false);
+    MIX_SetTrackAudio(music_track, music);
+    MIX_PlayTrack(music_track, options);
+    SDL_DestroyProperties(options);
 
     // fonts
     stbtt_fontinfo font;
