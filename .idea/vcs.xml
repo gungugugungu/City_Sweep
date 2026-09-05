@@ -11,6 +11,23 @@
     <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/stb" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/tinygltf" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/include/GVK-Engine/include/vk-bootstrap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/flac" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/gcem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/SoundFont-Spec-Test" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/sf2/ANMP-data" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/sf2/GeneralUser-GS" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/libgme" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/libxmp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/mpg123" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/ogg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/opus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/opusfile" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/tremor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/vorbis" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/SDL_mixer/external/wavpack" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/include/reactphysics3d" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" vcs="Git" />

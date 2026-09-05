@@ -1,0 +1,156 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"BackendCodeEditorMiscSettings\">\n    <option name=\"/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue\" value=\"26\" type=\"long\" />\n    <option name=\"/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue\" value=\"true\" type=\"bool\" />\n    <option name=\"/Default/Housekeeping/LiveTemplatesHousekeeping/HotspotSessionHintIsShown/@EntryValue\" value=\"true\" type=\"bool\" />\n  </component>\n  <component name=\"CMakePresetLoader\">{\n  &quot;useNewFormat&quot;: true\n}</component>\n  <component name=\"CMakeProjectFlavorService\">\n    <option name=\"flavorId\" value=\"CMakePlainProjectFlavor\" />\n  </component>\n  <component name=\"CMakeReloadState\">\n    <option name=\"reloaded\" value=\"true\" />\n  </component>\n  <component name=\"CMakeRunConfigurationManager\">\n    <generated>\n      <config projectName=\"City_Sweep\" targetName=\"glm\" />\n      <config projectName=\"City_Sweep\" targetName=\"ImGui\" />\n      <config projectName=\"City_Sweep\" targetName=\"tinygltf\" />\n      <config projectName=\"City_Sweep\" targetName=\"reactphysics3d\" />\n      <config projectName=\"City_Sweep\" targetName=\"SDL3-shared\" />\n      <config projectName=\"City_Sweep\" targetName=\"fmt\" />\n      <config projectName=\"City_Sweep\" targetName=\"fmt-c\" />\n      <config projectName=\"City_Sweep\" targetName=\"City_Sweep\" />\n      <config projectName=\"City_Sweep\" targetName=\"SDL_uclibc\" />\n      <config projectName=\"City_Sweep\" targetName=\"SDL3_test\" />\n      <config projectName=\"City_Sweep\" targetName=\"vk-bootstrap\" />\n    </generated>\n  </component>\n  <component name=\"CMakeSettings\">\n    <configurations>\n      <configuration PROFILE_NAME=\"Debug\" ENABLED=\"true\" CONFIG_NAME=\"Debug\" BUILD_OPTIONS=\"-j 10\">\n        <ADDITIONAL_GENERATION_ENVIRONMENT>\n          <envs>\n            <env name=\"VULKAN_SDK\" value=\"$USER_HOME$/VulkanSDK/1.4.341.1/x86_64/\" />\n          </envs>\n        </ADDITIONAL_GENERATION_ENVIRONMENT>\n      </configuration>\n      <configuration PROFILE_NAME=\"Release\" ENABLED=\"true\" CONFIG_NAME=\"Release\" BUILD_OPTIONS=\"-j 10\">\n        <ADDITIONAL_GENERATION_ENVIRONMENT>\n          <envs>\n            <env name=\"VULKAN_SDK\" value=\"$USER_HOME$/VulkanSDK/1.4.341.1/x86_64/\" />\n          </envs>\n        </ADDITIONAL_GENERATION_ENVIRONMENT>\n      </configuration>\n    </configurations>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"d54aedbc-a527-4c65-b380-f9f5f5934e34\" name=\"Changes\" comment=\"everything has a price now\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/main.cpp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.cpp\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ClangdSettings\">\n    <option name=\"formatViaClangd\" value=\"false\" />\n  </component>\n  <component name=\"EmbeddingIndexingInfo\">\n    <option name=\"cachedIndexableFilesCount\" value=\"7963\" />\n    <option name=\"fileBasedEmbeddingIndicesEnabled\" value=\"true\" />\n  </component>\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"CMakeBuildProfile:Release\" />\n  <component name=\"Git.Settings\">\n    <option name=\"PUSH_AUTO_UPDATE\" value=\"true\" />\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"ROOT_SYNC\" value=\"DONT_SYNC\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;gungugugungu&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/gungugugungu/City_Sweep.git&quot;,\n    &quot;accountId&quot;: &quot;528277da-126e-4ad2-b421-f6952c66122b&quot;\n  }\n}</component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/include/GVK-Engine/gvk.h\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/main.cpp\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"mock:///home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/gvk.h\" root0=\"SKIP_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MacroExpansionManager\">\n    <option name=\"directoryName\" value=\"mbIrZKIq\" />\n  </component>\n  <component name=\"McpProjectServerCommands\">\n    <commands />\n    <urls />\n  </component>\n  <component name=\"NextEditCompletionFeaturesState\">\n    <decayedCancelled>\n      <entry key=\"MS100\" value=\"1.162303452393432\" />\n      <entry key=\"MS500\" value=\"2.6932741610948128\" />\n      <entry key=\"S2\" value=\"5.019857030345916\" />\n      <entry key=\"S5\" value=\"6.06605928295478\" />\n      <entry key=\"S10\" value=\"6.504602770067441\" />\n      <entry key=\"S30\" value=\"6.828021055098541\" />\n      <entry key=\"S60\" value=\"6.9131191360668796\" />\n      <entry key=\"M2\" value=\"6.9568291083704645\" />\n      <entry key=\"M5\" value=\"7.407298473856334\" />\n      <entry key=\"M10\" value=\"11.924557585892005\" />\n      <entry key=\"M15\" value=\"19.031018552963396\" />\n      <entry key=\"M30\" value=\"43.31918095023405\" />\n      <entry key=\"H1\" value=\"110.3909634395279\" />\n      <entry key=\"H2\" value=\"264.5044864912093\" />\n      <entry key=\"H4\" value=\"541.5778275892775\" />\n      <entry key=\"D1\" value=\"2115.633529716359\" />\n      <entry key=\"W1\" value=\"3126.0956631061003\" />\n    </decayedCancelled>\n    <decayedSelected>\n      <entry key=\"MS100\" value=\"0.0\" />\n      <entry key=\"MS500\" value=\"0.0\" />\n      <entry key=\"S2\" value=\"3.17533162592642E-271\" />\n      <entry key=\"S5\" value=\"1.3361645342286725E-108\" />\n      <entry key=\"S10\" value=\"2.5769688149417214E-54\" />\n      <entry key=\"S30\" value=\"5.117605727432436E-18\" />\n      <entry key=\"S60\" value=\"7.304033942685937E-9\" />\n      <entry key=\"M2\" value=\"3.0820451542837394E-4\" />\n      <entry key=\"M5\" value=\"0.2029676250782929\" />\n      <entry key=\"M10\" value=\"1.9156215292290024\" />\n      <entry key=\"M15\" value=\"4.185843305285883\" />\n      <entry key=\"M30\" value=\"10.021022986593275\" />\n      <entry key=\"H1\" value=\"19.61418036122324\" />\n      <entry key=\"H2\" value=\"37.145076190872594\" />\n      <entry key=\"H4\" value=\"70.77482596548374\" />\n      <entry key=\"D1\" value=\"285.1042702661274\" />\n      <entry key=\"W1\" value=\"428.35635395516\" />\n    </decayedSelected>\n    <decayedShown>\n      <entry key=\"MS100\" value=\"1.1217094377076695\" />\n      <entry key=\"MS500\" value=\"2.6729104947018087\" />\n      <entry key=\"S2\" value=\"5.010052775681413\" />\n      <entry key=\"S5\" value=\"6.061281131596471\" />\n      <entry key=\"S10\" value=\"6.502033732704358\" />\n      <entry key=\"S30\" value=\"6.827120422943053\" />\n      <entry key=\"S60\" value=\"6.912662997722826\" />\n      <entry key=\"M2\" value=\"6.9569020811384075\" />\n      <entry key=\"M5\" value=\"7.608450783851421\" />\n      <entry key=\"M10\" value=\"13.831349222519746\" />\n      <entry key=\"M15\" value=\"23.203487024518427\" />\n      <entry key=\"M30\" value=\"53.322491449226064\" />\n      <entry key=\"H1\" value=\"129.98460100366577\" />\n      <entry key=\"H2\" value=\"301.6276131680308\" />\n      <entry key=\"H4\" value=\"612.3310610508987\" />\n      <entry key=\"D1\" value=\"2400.7234789403587\" />\n      <entry key=\"W1\" value=\"3554.448980027405\" />\n    </decayedShown>\n  </component>\n  <component name=\"ProjectApplicationVersion\">\n    <option name=\"ide\" value=\"CLion\" />\n    <option name=\"majorVersion\" value=\"2026\" />\n    <option name=\"minorVersion\" value=\"1.2\" />\n    <option name=\"productBranch\" value=\"Classic\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4,\n  &quot;fromUser&quot;: false\n}</component>\n  <component name=\"ProjectId\" id=\"3I8oWYtJBYzrQ7NNjnWRa0c37E2\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectStatusUIService\">{\n  &quot;uiKindId&quot;: &quot;Widget&quot;\n}</component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;CMake Application.City_Sweep.executor&quot;: &quot;Run&quot;,\n    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\n    &quot;Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion&quot;: &quot;Natvis support suggestion&quot;,\n    &quot;Notification.DoNotAsk-CidrNatvisSuggestion&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,\n    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/shaders&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/include/GVK-Engine/shaders\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"City_Sweep\" type=\"CMakeRunConfiguration\" factoryName=\"Application\" REDIRECT_INPUT=\"false\" ELEVATE=\"false\" USE_EXTERNAL_CONSOLE=\"false\" EMULATE_TERMINAL=\"false\" PASS_PARENT_ENVS_2=\"true\" PROJECT_NAME=\"City_Sweep\" TARGET_NAME=\"City_Sweep\" CONFIG_NAME=\"Debug\" RUN_TARGET_PROJECT_NAME=\"City_Sweep\" RUN_TARGET_NAME=\"City_Sweep\">\n      <method v=\"2\">\n        <option name=\"com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"RustProjectSettings\">\n    <option name=\"toolchainHomeDirectory\" value=\"$USER_HOME$/.cargo/bin\" />\n  </component>\n  <component name=\"SelectedDebugProfileService\">{\n  &quot;profileIdByStamp&quot;: [\n    {\n      &quot;first&quot;: {\n        &quot;##RUN_CONFIGURATION##&quot;: &quot;CMake Application.City_Sweep&quot;,\n        &quot;cmake&quot;: &quot;CMakeBuildProfile:Debug&quot;\n      },\n      &quot;second&quot;: &quot;25277b9a-c02e-431e-91ab-c9b96984cd92&quot;\n    },\n    {\n      &quot;first&quot;: {\n        &quot;##RUN_CONFIGURATION##&quot;: &quot;CMake Application.City_Sweep&quot;,\n        &quot;cmake&quot;: &quot;CMakeBuildProfile:Release&quot;\n      },\n      &quot;second&quot;: &quot;25277b9a-c02e-431e-91ab-c9b96984cd92&quot;\n    }\n  ],\n  &quot;modificationCount&quot;: 15\n}</component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"d54aedbc-a527-4c65-b380-f9f5f5934e34\" name=\"Changes\" comment=\"\" />\n      <created>1787155589221</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1787155589221</updated>\n      <workItem from=\"1787155590298\" duration=\"111000\" />\n      <workItem from=\"1787155735748\" duration=\"12507000\" />\n      <workItem from=\"1787168982951\" duration=\"355000\" />\n      <workItem from=\"1787169355668\" duration=\"617000\" />\n      <workItem from=\"1787175284966\" duration=\"1470000\" />\n      <workItem from=\"1787213318860\" duration=\"1445000\" />\n      <workItem from=\"1787214944512\" duration=\"8727000\" />\n      <workItem from=\"1787250872395\" duration=\"10603000\" />\n      <workItem from=\"1787299646191\" duration=\"8129000\" />\n      <workItem from=\"1787336542753\" duration=\"90000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"after toying with the cmake for like 4.5 hours I finally managed to make this project a proper library that you can add as a subdirectory. I also edited the readme\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1787224183402</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1787224183402</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"uh I did a thing I think\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1787300065646</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1787300065646</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"convex collider generation\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1787302415087</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1787302415087</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"ported over the fpscontroller and the charactercontroller\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1787304582721</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1787304582721</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"left these whatever files out of last commit sorry\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1787304613297</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1787304613297</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"6\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VCPKGProject\">\n    <isAutomaticCheckingOnLaunch value=\"false\" />\n    <isAutomaticFoundErrors value=\"true\" />\n    <isAutomaticReloadCMake value=\"true\" />\n    <isAutomaticBootstrapAfterUpdate value=\"false\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <ignored-roots>\n      <path value=\"$PROJECT_DIR$/include\" />\n    </ignored-roots>\n    <MESSAGE value=\"implemented all the hand upgrades\" />\n    <MESSAGE value=\"trash upgrades minus the wheelbarrow and trashcan for obvious reasons\" />\n    <MESSAGE value=\"money, buying tools, hand animation, broom animation wip\" />\n    <MESSAGE value=\"and these I forgot to commit\" />\n    <MESSAGE value=\"broom animation and switching tools\" />\n    <MESSAGE value=\"vacuum and broom\" />\n    <MESSAGE value=\"just adjusted 2 values that's it\" />\n    <MESSAGE value=\"Pixelation post-processing effect\" />\n    <MESSAGE value=\"started working on map + pixelation shader\" />\n    <MESSAGE value=\"fixed the bloom looping around to the other side of the frame\" />\n    <MESSAGE value=\"disabled jumping + liquor store\" />\n    <MESSAGE value=\"reflecting skybox\" />\n    <MESSAGE value=\"made the city, filled the city with trash, new skybox\" />\n    <MESSAGE value=\"full fog implementation\" />\n    <MESSAGE value=\"oops misinput\" />\n    <MESSAGE value=\"city 100% done\" />\n    <MESSAGE value=\"trash upgrades\" />\n    <MESSAGE value=\"tweaked the default fog values to make them not suck\" />\n    <MESSAGE value=\"proper upgrades for storage, broom and vacuum\" />\n    <MESSAGE value=\"upgrade price display\" />\n    <MESSAGE value=\"shows if you're poor or not\" />\n    <MESSAGE value=\"upgrade prices\" />\n    <MESSAGE value=\"heavy inflation\" />\n    <MESSAGE value=\"buying storage\" />\n    <MESSAGE value=\"everything has a price now\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"everything has a price now\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f0978f62ca4bbc9f5cc5e58c0aec3ea7ef39c351)
++++ b/.idea/workspace.xml	(date 1788608355411)
+@@ -51,7 +51,7 @@
+     </configurations>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="everything has a price now">
++    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="even more inflation so stuff is expensive">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
+@@ -60,7 +60,6 @@
+       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -106,61 +105,61 @@
+   </component>
+   <component name="NextEditCompletionFeaturesState">
+     <decayedCancelled>
+-      <entry key="MS100" value="1.162303452393432" />
+-      <entry key="MS500" value="2.6932741610948128" />
+-      <entry key="S2" value="5.019857030345916" />
+-      <entry key="S5" value="6.06605928295478" />
+-      <entry key="S10" value="6.504602770067441" />
+-      <entry key="S30" value="6.828021055098541" />
+-      <entry key="S60" value="6.9131191360668796" />
+-      <entry key="M2" value="6.9568291083704645" />
+-      <entry key="M5" value="7.407298473856334" />
+-      <entry key="M10" value="11.924557585892005" />
+-      <entry key="M15" value="19.031018552963396" />
+-      <entry key="M30" value="43.31918095023405" />
+-      <entry key="H1" value="110.3909634395279" />
+-      <entry key="H2" value="264.5044864912093" />
+-      <entry key="H4" value="541.5778275892775" />
+-      <entry key="D1" value="2115.633529716359" />
+-      <entry key="W1" value="3126.0956631061003" />
++      <entry key="MS100" value="1.0187777670874143" />
++      <entry key="MS500" value="1.9422669054504043" />
++      <entry key="S2" value="5.162567741182095" />
++      <entry key="S5" value="7.77391374782141" />
++      <entry key="S10" value="9.172709678276641" />
++      <entry key="S30" value="10.335756748573209" />
++      <entry key="S60" value="10.75072419208788" />
++      <entry key="M2" value="11.626504881816745" />
++      <entry key="M5" value="14.04697597306857" />
++      <entry key="M10" value="18.699768862774967" />
++      <entry key="M15" value="25.236922091577696" />
++      <entry key="M30" value="48.4866166482122" />
++      <entry key="H1" value="113.70088489605166" />
++      <entry key="H2" value="266.1295151473563" />
++      <entry key="H4" value="542.8951024646949" />
++      <entry key="D1" value="2120.2826237957033" />
++      <entry key="W1" value="3135.753351051118" />
+     </decayedCancelled>
+     <decayedSelected>
+       <entry key="MS100" value="0.0" />
+       <entry key="MS500" value="0.0" />
+-      <entry key="S2" value="3.17533162592642E-271" />
+-      <entry key="S5" value="1.3361645342286725E-108" />
+-      <entry key="S10" value="2.5769688149417214E-54" />
+-      <entry key="S30" value="5.117605727432436E-18" />
+-      <entry key="S60" value="7.304033942685937E-9" />
+-      <entry key="M2" value="3.0820451542837394E-4" />
+-      <entry key="M5" value="0.2029676250782929" />
+-      <entry key="M10" value="1.9156215292290024" />
+-      <entry key="M15" value="4.185843305285883" />
+-      <entry key="M30" value="10.021022986593275" />
+-      <entry key="H1" value="19.61418036122324" />
+-      <entry key="H2" value="37.145076190872594" />
+-      <entry key="H4" value="70.77482596548374" />
+-      <entry key="D1" value="285.1042702661274" />
+-      <entry key="W1" value="428.35635395516" />
++      <entry key="S2" value="0.0" />
++      <entry key="S5" value="3.6711800029441647E-131" />
++      <entry key="S10" value="1.3507719466853286E-65" />
++      <entry key="S30" value="8.889782050871075E-22" />
++      <entry key="S60" value="9.626644356025417E-11" />
++      <entry key="M2" value="3.538303398967399E-5" />
++      <entry key="M5" value="0.0853904297094033" />
++      <entry key="M10" value="1.2425129499819973" />
++      <entry key="M15" value="3.1364890551514235" />
++      <entry key="M30" value="8.674460288318691" />
++      <entry key="H1" value="18.24884434847336" />
++      <entry key="H2" value="35.82893133437198" />
++      <entry key="H4" value="69.50965143929193" />
++      <entry key="D1" value="284.24845029259126" />
++      <entry key="W1" value="428.17242705184316" />
+     </decayedSelected>
+     <decayedShown>
+-      <entry key="MS100" value="1.1217094377076695" />
+-      <entry key="MS500" value="2.6729104947018087" />
+-      <entry key="S2" value="5.010052775681413" />
+-      <entry key="S5" value="6.061281131596471" />
+-      <entry key="S10" value="6.502033732704358" />
+-      <entry key="S30" value="6.827120422943053" />
+-      <entry key="S60" value="6.912662997722826" />
+-      <entry key="M2" value="6.9569020811384075" />
+-      <entry key="M5" value="7.608450783851421" />
+-      <entry key="M10" value="13.831349222519746" />
+-      <entry key="M15" value="23.203487024518427" />
+-      <entry key="M30" value="53.322491449226064" />
+-      <entry key="H1" value="129.98460100366577" />
+-      <entry key="H2" value="301.6276131680308" />
+-      <entry key="H4" value="612.3310610508987" />
+-      <entry key="D1" value="2400.7234789403587" />
+-      <entry key="W1" value="3554.448980027405" />
++      <entry key="MS100" value="0.9840744271715559" />
++      <entry key="MS500" value="1.9287821315622273" />
++      <entry key="S2" value="5.15333456101206" />
++      <entry key="S5" value="7.768196478138459" />
++      <entry key="S10" value="9.169292780672667" />
++      <entry key="S30" value="10.334460860689891" />
++      <entry key="S60" value="10.750048229388844" />
++      <entry key="M2" value="11.626172556263905" />
++      <entry key="M5" value="14.131464999083311" />
++      <entry key="M10" value="19.936485478656387" />
++      <entry key="M15" value="28.36334316232749" />
++      <entry key="M30" value="57.1457214642579" />
++      <entry key="H1" value="131.9306048782751" />
++      <entry key="H2" value="301.9372689204069" />
++      <entry key="H4" value="612.3835445011629" />
++      <entry key="D1" value="2404.5167955534293" />
++      <entry key="W1" value="3563.9227423043785" />
+     </decayedShown>
+   </component>
+   <component name="ProjectApplicationVersion">
+@@ -324,7 +323,6 @@
+     <ignored-roots>
+       <path value="$PROJECT_DIR$/include" />
+     </ignored-roots>
+-    <MESSAGE value="implemented all the hand upgrades" />
+     <MESSAGE value="trash upgrades minus the wheelbarrow and trashcan for obvious reasons" />
+     <MESSAGE value="money, buying tools, hand animation, broom animation wip" />
+     <MESSAGE value="and these I forgot to commit" />
+@@ -349,7 +347,8 @@
+     <MESSAGE value="heavy inflation" />
+     <MESSAGE value="buying storage" />
+     <MESSAGE value="everything has a price now" />
+-    <option name="LAST_COMMIT_MESSAGE" value="everything has a price now" />
++    <MESSAGE value="even more inflation so stuff is expensive" />
++    <option name="LAST_COMMIT_MESSAGE" value="even more inflation so stuff is expensive" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />

@@ -52,16 +52,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="even more inflation so stuff is expensive">
-      <change afterPath="$PROJECT_DIR$/include/SDL_mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="playing the main background track">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/81 - city sweep demo st.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/soundtrack.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/fmt" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/fmt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/imgui" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/imgui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SDL_mixer" beforeDir="false" afterPath="$PROJECT_DIR$/include/SDL_mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth" beforeDir="false" afterPath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual" beforeDir="false" afterPath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/sf2/ANMP-data" beforeDir="false" afterPath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/sf2/ANMP-data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/sf2/GeneralUser-GS" beforeDir="false" afterPath="$PROJECT_DIR$/include/SDL_mixer/external/fluidsynth/test/manual/sf2/GeneralUser-GS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/documentation/doxygen-awesome-css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui" afterDir="false" />
@@ -80,7 +82,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="7963" />
+    <option name="cachedIndexableFilesCount" value="15214" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
@@ -115,61 +117,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0218681387326778E-11" />
-      <entry key="MS500" value="0.006336930902945646" />
-      <entry key="S2" value="0.28214330083827416" />
-      <entry key="S5" value="0.60282485466113" />
-      <entry key="S10" value="0.7809555494296145" />
-      <entry key="S30" value="1.976315989214507" />
-      <entry key="S60" value="7.42749316093007" />
-      <entry key="M2" value="21.733267454164288" />
-      <entry key="M5" value="51.82483172488633" />
-      <entry key="M10" value="76.28584900719147" />
-      <entry key="M15" value="90.98461952737064" />
-      <entry key="M30" value="122.7011592642253" />
-      <entry key="H1" value="189.21601796361327" />
-      <entry key="H2" value="340.0492442039534" />
-      <entry key="H4" value="617.2928816046774" />
-      <entry key="D1" value="2205.1105204949445" />
-      <entry key="W1" value="3234.919740536627" />
+      <entry key="MS100" value="4.022925630370078E-15" />
+      <entry key="MS500" value="0.002282950259113508" />
+      <entry key="S2" value="0.5008529591514792" />
+      <entry key="S5" value="1.9708590939790633" />
+      <entry key="S10" value="4.636209910267069" />
+      <entry key="S30" value="11.056237132819914" />
+      <entry key="S60" value="14.797986081706197" />
+      <entry key="M2" value="18.569313476017307" />
+      <entry key="M5" value="32.058117658812755" />
+      <entry key="M10" value="62.3229708812389" />
+      <entry key="M15" value="89.16161779435224" />
+      <entry key="M30" value="145.5959644396856" />
+      <entry key="H1" value="228.96951747319252" />
+      <entry key="H2" value="387.70157486878117" />
+      <entry key="H4" value="670.8091699649111" />
+      <entry key="D1" value="2276.632045426459" />
+      <entry key="W1" value="3325.8048008224264" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000000038" />
-      <entry key="S5" value="1.0000027361755472" />
-      <entry key="S10" value="1.003087755962954" />
-      <entry key="S30" value="1.5166657102008805" />
-      <entry key="S60" value="3.378768977823922" />
-      <entry key="M2" value="7.365795195061769" />
-      <entry key="M5" value="14.844966952766683" />
-      <entry key="M10" value="20.10504329448455" />
-      <entry key="M15" value="23.233596700862975" />
-      <entry key="M30" value="30.023451757813422" />
-      <entry key="H1" value="40.468085711155545" />
-      <entry key="H2" value="58.64173961438331" />
-      <entry key="H4" value="92.69970963058026" />
-      <entry key="D1" value="308.7892458365691" />
-      <entry key="W1" value="454.645775746093" />
+      <entry key="MS100" value="1.0001382914899042" />
+      <entry key="MS500" value="1.1691061385762005" />
+      <entry key="S2" value="1.6594672636696943" />
+      <entry key="S5" value="2.038556253863801" />
+      <entry key="S10" value="2.36465579631162" />
+      <entry key="S30" value="2.8700007705531623" />
+      <entry key="S60" value="3.4680566168557054" />
+      <entry key="M2" value="4.836596363077514" />
+      <entry key="M5" value="10.6664725361919" />
+      <entry key="M10" value="19.982774573247752" />
+      <entry key="M15" value="27.044378345113177" />
+      <entry key="M30" value="40.652995258572396" />
+      <entry key="H1" value="56.418051385614845" />
+      <entry key="H2" value="78.04074203437531" />
+      <entry key="H4" value="114.1148695951117" />
+      <entry key="D1" value="333.321538326779" />
+      <entry key="W1" value="481.92124951275457" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.492383567254236E-8" />
-      <entry key="MS500" value="0.03793959654042865" />
-      <entry key="S2" value="0.5782590988945646" />
-      <entry key="S5" value="1.1730873008243685" />
-      <entry key="S10" value="1.5282238571452753" />
-      <entry key="S30" value="3.341451309681385" />
-      <entry key="S60" value="10.61914222109849" />
-      <entry key="M2" value="28.87129696515136" />
-      <entry key="M5" value="66.46767113661988" />
-      <entry key="M10" value="96.24894882307262" />
-      <entry key="M15" value="114.1085756780305" />
-      <entry key="M30" value="152.65494736545384" />
-      <entry key="H1" value="229.63684422733547" />
-      <entry key="H2" value="398.6555118825749" />
-      <entry key="H4" value="709.9641294486077" />
-      <entry key="D1" value="2513.8842055247983" />
-      <entry key="W1" value="3689.5622833012612" />
+      <entry key="MS100" value="0.016288769259921752" />
+      <entry key="MS500" value="0.4878270958928634" />
+      <entry key="S2" value="1.6442612601440916" />
+      <entry key="S5" value="3.4381049919637716" />
+      <entry key="S10" value="6.477052270789779" />
+      <entry key="S30" value="13.626930804156439" />
+      <entry key="S60" value="18.081837252612075" />
+      <entry key="M2" value="23.290413746519874" />
+      <entry key="M5" value="42.63575124790389" />
+      <entry key="M10" value="82.21448514766081" />
+      <entry key="M15" value="116.11795276242299" />
+      <entry key="M30" value="186.1772066362922" />
+      <entry key="H1" value="285.3341556840789" />
+      <entry key="H2" value="465.7021720473379" />
+      <entry key="H4" value="784.8927342834835" />
+      <entry key="D1" value="2609.937398085594" />
+      <entry key="W1" value="3807.7227085420227" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -193,40 +195,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "CMake Application.City_Sweep.executor": "Run",
-    "CidrDebugProfileConversion": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion": "Natvis support suggestion",
-    "Notification.DoNotAsk-CidrNatvisSuggestion": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/shaders",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.City_Sweep.executor&quot;: &quot;Run&quot;,
+    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-CidrNatvisSuggestion&quot;: &quot;Natvis support suggestion&quot;,
+    &quot;Notification.DoNotAsk-CidrNatvisSuggestion&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gungu/Documents/coding/c++/City Sweep/include/GVK-Engine/shaders&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/include/GVK-Engine/shaders" />
@@ -236,17 +238,17 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.City_Sweep">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="City_Sweep" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="City_Sweep" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="City_Sweep" RUN_TARGET_NAME="City_Sweep">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="SDL3_mixer-shared" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="City_Sweep" TARGET_NAME="SDL3_mixer-shared" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -352,7 +354,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="trash upgrades minus the wheelbarrow and trashcan for obvious reasons" />
     <MESSAGE value="money, buying tools, hand animation, broom animation wip" />
     <MESSAGE value="and these I forgot to commit" />
     <MESSAGE value="broom animation and switching tools" />
@@ -377,7 +378,8 @@
     <MESSAGE value="buying storage" />
     <MESSAGE value="everything has a price now" />
     <MESSAGE value="even more inflation so stuff is expensive" />
-    <option name="LAST_COMMIT_MESSAGE" value="even more inflation so stuff is expensive" />
+    <MESSAGE value="playing the main background track" />
+    <option name="LAST_COMMIT_MESSAGE" value="playing the main background track" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -482,9 +482,15 @@ int main() {
 
     // sounds
     MIX_Audio* music = MIX_LoadAudio(mixer, "../sounds/soundtrack.mp3", false);
+    MIX_Audio* sfx_menuclick = MIX_LoadAudio(mixer, "../sounds/menuclick.mp3", false);
+    MIX_Audio* sfx_cash = MIX_LoadAudio(mixer, "../sounds/cash.mp3", false);
+    MIX_Audio* sfx_pickup = MIX_LoadAudio(mixer, "../sounds/pickup.mp3", false);
+    MIX_Audio* sfx_incorrect = MIX_LoadAudio(mixer, "../sounds/incorrect.mp3", false);
     MIX_SetTrackAudio(music_track, music);
     MIX_PlayTrack(music_track, options);
     SDL_DestroyProperties(options);
+    float music_volume = 0.5f;
+    MIX_SetTrackGain(music_track, music_volume);
 
     // fonts
     stbtt_fontinfo font;
@@ -623,6 +629,9 @@ int main() {
             hand.upgrade_1_progress++;
             upgrade_1_completion = static_cast<float>(hand.upgrade_1_progress)/static_cast<float>(hand.upgrade_1_max);
             money -= upgrade_1_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> hand_upgrade_2_buy = [&] {
@@ -631,13 +640,19 @@ int main() {
             hand.upgrade_2_progress++;
             upgrade_2_completion = static_cast<float>(hand.upgrade_2_progress)/static_cast<float>(hand.upgrade_2_max);
             money -= upgrade_2_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> hand_upgrade_3_buy = [&] {
-        if (money>=upgrade_3_price) {
+        if (!hand.upgrade_3_bought && money>=upgrade_3_price) {
             hand.upgrade_3_bought = true;
             upgrade_3_completion = 1.f;
             money -= upgrade_3_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
 
@@ -687,6 +702,9 @@ int main() {
             broom.upgrade_1_progress++;
             upgrade_1_completion = static_cast<float>(broom.upgrade_1_progress)/static_cast<float>(broom.upgrade_1_max);
             money -= upgrade_1_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> broom_upgrade_2_buy = [&] {
@@ -695,6 +713,9 @@ int main() {
             broom.upgrade_2_progress++;
             upgrade_2_completion = static_cast<float>(broom.upgrade_2_progress)/static_cast<float>(broom.upgrade_2_max);
             money -= upgrade_2_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> broom_upgrade_3_buy = [&] {
@@ -703,6 +724,9 @@ int main() {
             broom.upgrade_3_progress++;
             upgrade_3_completion = static_cast<float>(broom.upgrade_3_progress)/static_cast<float>(broom.upgrade_3_max);
             money -= upgrade_3_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
 
@@ -753,6 +777,9 @@ int main() {
             vacuum.upgrade_1_progress++;
             upgrade_1_completion = static_cast<float>(vacuum.upgrade_1_progress)/static_cast<float>(vacuum.upgrade_1_max);
             money -= upgrade_1_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> vacuum_upgrade_2_buy = [&] {
@@ -761,6 +788,9 @@ int main() {
             vacuum.upgrade_2_progress++;
             upgrade_2_completion = static_cast<float>(vacuum.upgrade_2_progress)/static_cast<float>(vacuum.upgrade_2_max);
             money -= upgrade_2_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> vacuum_upgrade_3_buy = [&] {
@@ -769,6 +799,9 @@ int main() {
             vacuum.upgrade_3_progress++;
             upgrade_3_completion = static_cast<float>(vacuum.upgrade_3_progress)/static_cast<float>(vacuum.upgrade_3_max);
             money -= upgrade_3_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
 
@@ -790,6 +823,9 @@ int main() {
             upgrade_backpack_bought = true;
             trash.max_storable += upgrade_backpack_amount;
             money -= upgrade_backpack_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> buy_trashbag_upgrade = [&] {
@@ -797,6 +833,9 @@ int main() {
             upgrade_trashbag_bought = true;
             trash.max_storable += upgrade_trashbag_amount;
             money -= upgrade_trashbag_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> buy_wheelbarrow_upgrade = [&] {
@@ -804,6 +843,9 @@ int main() {
             upgrade_wheelbarrow_bought = true;
             trash.max_storable += upgrade_wheelbarrow_amount;
             money -= upgrade_wheelbarrow_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
     function<void()> buy_trashcan_upgrade = [&] {
@@ -811,6 +853,9 @@ int main() {
             upgrade_trashcan_bought = true;
             trash.max_storable += upgrade_trashcan_amount;
             money -= upgrade_trashcan_price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
     };
 
@@ -828,6 +873,7 @@ int main() {
     button_help.pos = {272, 212};
     button_help.on_click_callback = [&] {
         current_menu_page = HELP;
+        MIX_PlayAudio(mixer, sfx_menuclick);
     };
     buttons_to_update.push_back(&button_help);
 
@@ -836,6 +882,7 @@ int main() {
     button_upgrades.pos = {272, 324};
     button_upgrades.on_click_callback = [&] {
         current_menu_page = UPGRADE;
+        MIX_PlayAudio(mixer, sfx_menuclick);
     };
     buttons_to_update.push_back(&button_upgrades);
 
@@ -844,6 +891,7 @@ int main() {
     button_storage_upgrades.pos = {272, 436};
     button_storage_upgrades.on_click_callback = [&] {
         current_menu_page = STORAGE_UPGRADE;
+        MIX_PlayAudio(mixer, sfx_menuclick);
     };
     buttons_to_update.push_back(&button_storage_upgrades);
 
@@ -852,6 +900,7 @@ int main() {
     button_settings.pos = {272, 652};
     button_settings.on_click_callback = [&] {
         current_menu_page = SETTINGS;
+        MIX_PlayAudio(mixer, sfx_menuclick);
     };
     buttons_to_update.push_back(&button_settings);
 
@@ -865,6 +914,7 @@ int main() {
     button_close.pos = {1600, 212};
     button_close.on_click_callback = [&] {
         close_pause_menu();
+        MIX_PlayAudio(mixer, sfx_menuclick);
     };
     buttons_to_update.push_back(&button_close);
 
@@ -885,6 +935,7 @@ int main() {
         upgrade_1_price = hand.upgrade_1_price;
         upgrade_2_price = hand.upgrade_2_price;
         upgrade_3_price = hand.upgrade_3_price;
+        MIX_PlayAudio(mixer, sfx_menuclick);
     };
     button_upgrade_hand.on_click_callback();
     buttons_upgrade_menu.push_back(&button_upgrade_hand);
@@ -899,8 +950,12 @@ int main() {
             available_tools.push_back(TOOLBROOM);
             current_tool_idx = available_tools.size()-1;
             money -= broom.price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else if (money < broom.price) {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
         if (broom.unlocked) {
+            MIX_PlayAudio(mixer, sfx_menuclick);
             current_upgrade_page = BROOM;
             upgrade_1_buy = broom_upgrade_1_buy;
             upgrade_2_buy = broom_upgrade_2_buy;
@@ -928,8 +983,12 @@ int main() {
             available_tools.push_back(TOOLVACUUM);
             current_tool_idx = available_tools.size()-1;
             money -= vacuum.price;
+            MIX_PlayAudio(mixer, sfx_cash);
+        } else if (money < vacuum.price) {
+            MIX_PlayAudio(mixer, sfx_incorrect);
         }
         if (vacuum.unlocked) {
+            MIX_PlayAudio(mixer, sfx_menuclick);
             current_upgrade_page = VACUUM;
             upgrade_1_buy = vacuum_upgrade_1_buy;
             upgrade_2_buy = vacuum_upgrade_2_buy;
@@ -1039,6 +1098,7 @@ int main() {
                     phys_objs.erase(it);
                 }
                 trash.currently_stored++;
+                MIX_PlayAudio(mixer, sfx_pickup);
                 timer = hand.time_between_pickups;
             }
 
@@ -1168,6 +1228,7 @@ int main() {
                                 // trash bin
                                 else if (hit.object->mesh->name.contains("trashbin")) {
                                     money += trash.currently_stored*trash_price;
+                                    if (trash.currently_stored > 0) MIX_PlayAudio(mixer, sfx_cash);
                                     trash.currently_stored = 0;
                                 }
                             }
