@@ -52,8 +52,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="playing the main background track">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="sound effects everywhere">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" afterDir="false" />
@@ -72,6 +71,8 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screen demo.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/screen demo.aseprite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/ui help background.png" beforeDir="false" afterPath="$PROJECT_DIR$/textures/ui help background.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,61 +118,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="4.022925630370078E-15" />
-      <entry key="MS500" value="0.002282950259113508" />
-      <entry key="S2" value="0.5008529591514792" />
-      <entry key="S5" value="1.9708590939790633" />
-      <entry key="S10" value="4.636209910267069" />
-      <entry key="S30" value="11.056237132819914" />
-      <entry key="S60" value="14.797986081706197" />
-      <entry key="M2" value="18.569313476017307" />
-      <entry key="M5" value="32.058117658812755" />
-      <entry key="M10" value="62.3229708812389" />
-      <entry key="M15" value="89.16161779435224" />
-      <entry key="M30" value="145.5959644396856" />
-      <entry key="H1" value="228.96951747319252" />
-      <entry key="H2" value="387.70157486878117" />
-      <entry key="H4" value="670.8091699649111" />
-      <entry key="D1" value="2276.632045426459" />
-      <entry key="W1" value="3325.8048008224264" />
+      <entry key="MS100" value="5.914868859316475E-23" />
+      <entry key="MS500" value="3.5841734961354144E-5" />
+      <entry key="S2" value="0.0773788268819086" />
+      <entry key="S5" value="0.3695735749278272" />
+      <entry key="S10" value="0.7412236448854588" />
+      <entry key="S30" value="1.8023974990511467" />
+      <entry key="S60" value="4.257360454852512" />
+      <entry key="M2" value="14.166591838756666" />
+      <entry key="M5" value="45.960657107423614" />
+      <entry key="M10" value="84.50244765350696" />
+      <entry key="M15" value="116.5668638260281" />
+      <entry key="M30" value="192.0514864320245" />
+      <entry key="H1" value="298.3445444223374" />
+      <entry key="H2" value="472.7071858998209" />
+      <entry key="H4" value="767.6637341465923" />
+      <entry key="D1" value="2403.194053068654" />
+      <entry key="W1" value="3481.216190764041" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0001382914899042" />
-      <entry key="MS500" value="1.1691061385762005" />
-      <entry key="S2" value="1.6594672636696943" />
-      <entry key="S5" value="2.038556253863801" />
-      <entry key="S10" value="2.36465579631162" />
-      <entry key="S30" value="2.8700007705531623" />
-      <entry key="S60" value="3.4680566168557054" />
-      <entry key="M2" value="4.836596363077514" />
-      <entry key="M5" value="10.6664725361919" />
-      <entry key="M10" value="19.982774573247752" />
-      <entry key="M15" value="27.044378345113177" />
-      <entry key="M30" value="40.652995258572396" />
-      <entry key="H1" value="56.418051385614845" />
-      <entry key="H2" value="78.04074203437531" />
-      <entry key="H4" value="114.1148695951117" />
-      <entry key="D1" value="333.321538326779" />
-      <entry key="W1" value="481.92124951275457" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000252050423702" />
+      <entry key="S2" value="1.1260003808894108" />
+      <entry key="S5" value="1.4366653629678723" />
+      <entry key="S10" value="1.6608746377521975" />
+      <entry key="S30" value="2.0137887784786113" />
+      <entry key="S60" value="3.3135816200424286" />
+      <entry key="M2" value="7.561723181373045" />
+      <entry key="M5" value="17.73768436115592" />
+      <entry key="M10" value="27.649062837179596" />
+      <entry key="M15" value="35.473535344755426" />
+      <entry key="M30" value="53.60139952379607" />
+      <entry key="H1" value="76.2086921550467" />
+      <entry key="H2" value="103.82980801089204" />
+      <entry key="H4" value="143.93682858015492" />
+      <entry key="D1" value="368.97653772869694" />
+      <entry key="W1" value="521.8199895436157" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.016288769259921752" />
-      <entry key="MS500" value="0.4878270958928634" />
-      <entry key="S2" value="1.6442612601440916" />
-      <entry key="S5" value="3.4381049919637716" />
-      <entry key="S10" value="6.477052270789779" />
-      <entry key="S30" value="13.626930804156439" />
-      <entry key="S60" value="18.081837252612075" />
-      <entry key="M2" value="23.290413746519874" />
-      <entry key="M5" value="42.63575124790389" />
-      <entry key="M10" value="82.21448514766081" />
-      <entry key="M15" value="116.11795276242299" />
-      <entry key="M30" value="186.1772066362922" />
-      <entry key="H1" value="285.3341556840789" />
-      <entry key="H2" value="465.7021720473379" />
-      <entry key="H4" value="784.8927342834835" />
-      <entry key="D1" value="2609.937398085594" />
-      <entry key="W1" value="3807.7227085420227" />
+      <entry key="MS100" value="0.009099481144284811" />
+      <entry key="MS500" value="0.3907484038231073" />
+      <entry key="S2" value="0.949635982745177" />
+      <entry key="S5" value="1.643474979376665" />
+      <entry key="S10" value="2.28121346890353" />
+      <entry key="S30" value="3.7309115830960558" />
+      <entry key="S60" value="7.477405936312957" />
+      <entry key="M2" value="21.597745251607652" />
+      <entry key="M5" value="63.557550045042454" />
+      <entry key="M10" value="112.03405120794582" />
+      <entry key="M15" value="151.93573876476512" />
+      <entry key="M30" value="245.56785881830808" />
+      <entry key="H1" value="374.48825655277943" />
+      <entry key="H2" value="576.4888127229079" />
+      <entry key="H4" value="911.564404437653" />
+      <entry key="D1" value="2772.153350268835" />
+      <entry key="W1" value="4003.032658580247" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -354,7 +355,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="money, buying tools, hand animation, broom animation wip" />
     <MESSAGE value="and these I forgot to commit" />
     <MESSAGE value="broom animation and switching tools" />
     <MESSAGE value="vacuum and broom" />
@@ -379,7 +379,8 @@
     <MESSAGE value="everything has a price now" />
     <MESSAGE value="even more inflation so stuff is expensive" />
     <MESSAGE value="playing the main background track" />
-    <option name="LAST_COMMIT_MESSAGE" value="playing the main background track" />
+    <MESSAGE value="sound effects everywhere" />
+    <option name="LAST_COMMIT_MESSAGE" value="sound effects everywhere" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

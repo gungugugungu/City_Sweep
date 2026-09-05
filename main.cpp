@@ -365,6 +365,34 @@ public:
     }
 };
 
+class UIToggleButton {
+public:
+    gvk::Surface on_surf;
+    gvk::Surface off_surf;
+    glm::vec2 pos;
+    bool *toggle;
+
+    void draw() {
+        if (toggle) {
+            if (*toggle==true) {
+                gvk::display.draw(on_surf, pos);
+            } else {
+                gvk::display.draw(off_surf, pos);
+            }
+        }
+    }
+
+    void update(SDL_Event* event) {
+        if (event->type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+            if (event->button.button == SDL_BUTTON_LEFT && event->button.x >= pos.x && event->button.x <= pos.x + on_surf.pixels[0].size() && event->button.y >= pos.y && event->button.y <= pos.y + on_surf.pixels.size()) {
+                if (toggle) {
+                    *toggle = !*toggle;
+                }
+            }
+        }
+    }
+};
+
 enum MenuPages {
     HELP,
     UPGRADE,
@@ -462,8 +490,8 @@ int main() {
         return 1;
     }
     MIX_Track* music_track = MIX_CreateTrack(mixer);
-    SDL_PropertiesID options = SDL_CreateProperties();
-    SDL_SetNumberProperty(options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
+    SDL_PropertiesID music_options = SDL_CreateProperties();
+    SDL_SetNumberProperty(music_options, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 
     SDL_SetWindowTitle(gvk::window, "Town Sweep");
 
@@ -487,9 +515,9 @@ int main() {
     MIX_Audio* sfx_pickup = MIX_LoadAudio(mixer, "../sounds/pickup.mp3", false);
     MIX_Audio* sfx_incorrect = MIX_LoadAudio(mixer, "../sounds/incorrect.mp3", false);
     MIX_SetTrackAudio(music_track, music);
-    MIX_PlayTrack(music_track, options);
-    SDL_DestroyProperties(options);
+    MIX_PlayTrack(music_track, music_options);
     float music_volume = 0.5f;
+    bool music_on = true;
     MIX_SetTrackGain(music_track, music_volume);
 
     // fonts
@@ -1066,6 +1094,28 @@ int main() {
         (vacuum.unlocked) ? button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade vacuum button.png") : button_upgrade_vacuum.surf.load_from_file("../textures/ui upgrade buy button.png");
     };
 
+    // settings buttons
+    UIToggleButton button_pixelation;
+    button_pixelation.on_surf.load_from_file("../textures/ui settings pixelation on.png");
+    button_pixelation.off_surf.load_from_file("../textures/ui settings pixelation off.png");
+    button_pixelation.pos = {448, 256};
+    button_pixelation.toggle = &gvk::main_post_processing_stack.pixelation_enabled;
+
+    UIButton button_music;
+    button_music.surf.load_from_file("../textures/ui settings music on.png");
+    button_music.pos = {448, 448};
+    button_music.on_click_callback = [&] {
+        if (music_on) {
+            music_on = false;
+            MIX_StopTrack(music_track, 20);
+            button_music.surf.load_from_file("../textures/ui settings music off.png");
+        } else {
+            music_on = true;
+            MIX_PlayTrack(music_track, music_options);
+            button_music.surf.load_from_file("../textures/ui settings music on.png");
+        }
+    };
+
     // picking up trash
     function<void(RaycastReturns hit)> pickup_trash = [&](RaycastReturns hit) {
         if (trash.currently_stored < trash.max_storable && timer <= 0.f) {
@@ -1161,6 +1211,9 @@ int main() {
                     for (auto& b : buttons_storage_upgrade_menu) {
                         b->update(&e);
                     }
+                } else if (current_menu_page == SETTINGS) {
+                    button_pixelation.update(&e);
+                    button_music.update(&e);
                 }
             }
 
@@ -1452,7 +1505,8 @@ int main() {
 
             // settings menu
             else if (current_menu_page == MenuPages::SETTINGS) {
-                gvk::display.draw_text(&font, "SETTINGS MENU", {384+64, 192+64}, 72, {1, 1, 1, 1});
+                button_pixelation.draw();
+                button_music.draw();
             }
 
             for (auto& b : buttons_to_update) {
