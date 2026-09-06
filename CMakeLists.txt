@@ -26,10 +26,3 @@ target_link_libraries(City_Sweep PRIVATE
         reactphysics3d
         SDL3_mixer::SDL3_mixer
 )
-
-install(TARGETS City_Sweep RUNTIME DESTINATION bin)
-install(DIRECTORY textures/ DESTINATION textures)
-install(DIRECTORY include/ DESTINATION include)
-install(DIRECTORY sounds/ DESTINATION sounds)
-install(DIRECTORY fonts/ DESTINATION fonts)
-install(DIRECTORY scenes/ DESTINATION scenes)

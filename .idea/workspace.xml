@@ -53,8 +53,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="added readme">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d54aedbc-a527-4c65-b380-f9f5f5934e34" name="Changes" comment="proper build">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" beforeDir="false" afterPath="$PROJECT_DIR$/include/GVK-Engine/include/SDL" afterDir="false" />
@@ -72,7 +72,6 @@
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nanobind/ext/robin_map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" beforeDir="false" afterPath="$PROJECT_DIR$/include/reactphysics3d/testbed/extern/nanogui/ext/nativefiledialog-extended/3ps/wayland-protocols" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,61 +117,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000016423377" />
-      <entry key="MS500" value="1.0430892140296617" />
-      <entry key="S2" value="2.3622789871026137" />
-      <entry key="S5" value="4.223459242803239" />
-      <entry key="S10" value="5.379079375592243" />
-      <entry key="S30" value="7.581950089217565" />
-      <entry key="S60" value="18.410494205318148" />
-      <entry key="M2" value="52.92960794459528" />
-      <entry key="M5" value="124.73441205679045" />
-      <entry key="M10" value="186.4421308704116" />
-      <entry key="M15" value="229.74622631070372" />
-      <entry key="M30" value="325.0844810348621" />
-      <entry key="H1" value="452.50416987453536" />
-      <entry key="H2" value="643.121163208262" />
-      <entry key="H4" value="949.9131864700274" />
-      <entry key="D1" value="2608.8123379287667" />
-      <entry key="W1" value="3706.183337934926" />
+      <entry key="MS100" value="1.0028595423751074" />
+      <entry key="MS500" value="1.3133106277294124" />
+      <entry key="S2" value="2.125114389021884" />
+      <entry key="S5" value="2.9111498297048124" />
+      <entry key="S10" value="3.371058477857826" />
+      <entry key="S30" value="3.814324963893797" />
+      <entry key="S60" value="5.3231650503734755" />
+      <entry key="M2" value="18.754683752732987" />
+      <entry key="M5" value="78.92854630635178" />
+      <entry key="M10" value="148.51350865478332" />
+      <entry key="M15" value="197.86415728785917" />
+      <entry key="M30" value="302.62351344099375" />
+      <entry key="H1" value="437.6979703356249" />
+      <entry key="H2" value="633.6156591062726" />
+      <entry key="H4" value="943.8864582558017" />
+      <entry key="D1" value="2608.202655862093" />
+      <entry key="W1" value="3709.2471054098314" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="8.05670065926251E-188" />
-      <entry key="S5" value="1.9916044940748214E-75" />
-      <entry key="S10" value="6.183873422134694E-38" />
-      <entry key="S30" value="6.724425130533051E-13" />
-      <entry key="S60" value="1.914777411989687E-6" />
-      <entry key="M2" value="0.005748189621603442" />
-      <entry key="M5" value="1.0029078878523718" />
-      <entry key="M10" value="6.574496186730278" />
-      <entry key="M15" value="13.615257140422091" />
-      <entry key="M30" value="33.20754857822882" />
-      <entry key="H1" value="59.98392116840838" />
-      <entry key="H2" value="92.11645639130718" />
-      <entry key="H4" value="135.57496949702028" />
-      <entry key="D1" value="365.31430809428724" />
-      <entry key="W1" value="521.076928778877" />
+      <entry key="S2" value="5.326974170441841E-221" />
+      <entry key="S5" value="1.064957907874434E-88" />
+      <entry key="S10" value="1.4299645266869146E-44" />
+      <entry key="S30" value="4.127401522743266E-15" />
+      <entry key="S60" value="1.5001306151633576E-7" />
+      <entry key="M2" value="0.0016089275031374091" />
+      <entry key="M5" value="0.6026472828420336" />
+      <entry key="M10" value="5.096400570936835" />
+      <entry key="M15" value="11.489291100948215" />
+      <entry key="M30" value="30.504963470116277" />
+      <entry key="H1" value="57.4912430191006" />
+      <entry key="H2" value="90.18216267399806" />
+      <entry key="H4" value="134.14399217868473" />
+      <entry key="D1" value="364.668822125946" />
+      <entry key="W1" value="520.9452993380565" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.004157696252286805" />
-      <entry key="MS500" value="0.35939035004440545" />
-      <entry key="S2" value="2.015761082376772" />
-      <entry key="S5" value="4.030284301445798" />
-      <entry key="S10" value="5.267554576376864" />
-      <entry key="S30" value="7.535516480401243" />
-      <entry key="S60" value="18.37941916499664" />
-      <entry key="M2" value="52.914268319638005" />
-      <entry key="M5" value="125.71832767335209" />
-      <entry key="M10" value="192.9825165139052" />
-      <entry key="M15" value="243.3170201496485" />
-      <entry key="M30" value="358.2371126036527" />
-      <entry key="H1" value="512.4358000644442" />
-      <entry key="H2" value="735.1942948524163" />
-      <entry key="H4" value="1085.4538071056581" />
-      <entry key="D1" value="2974.109527858331" />
-      <entry key="W1" value="4227.256743030611" />
+      <entry key="MS100" value="0.9554001339081479" />
+      <entry key="MS500" value="1.3014644682416203" />
+      <entry key="S2" value="2.119714110234938" />
+      <entry key="S5" value="2.9076480100363784" />
+      <entry key="S10" value="3.368884478008119" />
+      <entry key="S30" value="3.813190160109864" />
+      <entry key="S60" value="5.320287524414182" />
+      <entry key="M2" value="18.75016397390159" />
+      <entry key="M5" value="79.51968949879317" />
+      <entry key="M10" value="153.58342149170835" />
+      <entry key="M15" value="209.31589712867626" />
+      <entry key="M30" value="333.0780139225157" />
+      <entry key="H1" value="495.1390876720409" />
+      <entry key="H2" value="723.7554029319316" />
+      <entry key="H4" value="1077.9964621960855" />
+      <entry key="D1" value="2972.854389749077" />
+      <entry key="W1" value="4230.188881908972" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -356,7 +355,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/include" />
     </ignored-roots>
-    <MESSAGE value="vacuum and broom" />
     <MESSAGE value="just adjusted 2 values that's it" />
     <MESSAGE value="Pixelation post-processing effect" />
     <MESSAGE value="started working on map + pixelation shader" />
@@ -381,7 +379,8 @@
     <MESSAGE value="sound effects everywhere" />
     <MESSAGE value="settings and help menu" />
     <MESSAGE value="added readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="added readme" />
+    <MESSAGE value="proper build" />
+    <option name="LAST_COMMIT_MESSAGE" value="proper build" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
