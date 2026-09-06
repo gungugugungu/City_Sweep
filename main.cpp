@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <chrono>
 #include "include/SDL_mixer/include/SDL3_mixer/SDL_mixer.h"
+#include <filesystem>
 
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
